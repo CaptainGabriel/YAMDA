@@ -7,7 +7,11 @@ The "visual part" of the app was not intended to be as good as it could be since
 
 The only thing I regret is the way I schedule the services that will later update the local storage. I don´t like the way its done but time is not always our friend. 
 
-This app uses all the four components. It also allows the user to set some configurations. Down below there is a few images just so you can have a peek at the final result.
+This app uses all the four components. It makes use of the [Retrofit Library](http://square.github.io/retrofit) to perform the access into the web service provided by [tMDB](https://www.themoviedb.org/). in order to cache images I've used [Picasso](https://github.com/square/picasso). 
+
+It also allows the user to set some configurations. Down below there is a few images just so you can have a peek at the final result.
+
+BTW if you touch the small pink fav you can watch the trailer using youtube's app ;).
 
 ###List of movies with navigation tabs
 ![Ecrã Inicial](http://i.imgur.com/xobTyXK.png?1)

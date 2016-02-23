@@ -1,0 +1,122 @@
+<resources>
+    <string name="app_name" translatable="false">YAMDA</string>
+
+    <string name="settings">Settings</string>
+
+    <string name="most_popular_movies">PopularMovies</string>
+    <string name="now_playing_movies">NowPlaying</string>
+    <string name="upcoming_movies">UpcomingMovies</string>
+
+    <string name="hint_input_search_box">Search for a movie...</string>
+
+    <string name="details_card_option">Details</string>
+
+    <!-- Strings para estados dos filmes -->
+    <string name="details_movie_release_state">Released</string>
+    <string name="details_movie_production_state">In Prod.</string>
+
+    <!-- Strings para titulos das Tab's -->
+    <string name="tab_title_in_theaters">In Theaters</string>
+    <string name="tab_title_upcoming">Upcoming</string>
+    <string name="tab_title_most_popular">Most Popular</string>
+
+
+    <!-- Dialog Alert Box Strings -->
+    <string name="internet_service_dialog_message">
+        We\'ve just checked your current internet connection and we couldn\'t
+        find any trace of it ! Do you want to check your device\'s Network Settings ?
+    </string>
+
+    <string name="positive_dialog_button" translatable="false">OK</string>
+
+    <string name="negative_dialog_button">NO</string>
+
+    <string name="dialog_title">Network Settings</string>
+
+
+    <!-- Web requests Toast Messages -->
+    <string name="request_most_popular_message">Most Popular Movies</string>
+    <string name="request_in_theaters_message">In Theaters</string>
+    <string name="request_upcoming_movies_message">Upcoming Movies</string>
+    <string name="searching_by_keyword">Searching for</string>
+    <string name="about_us">About Us</string>
+
+    <!-- AboutMe activity descriptions -->
+    <string name="about_pedro_description">
+        Hi, I\'m Pedro and I\'m a student from Lisbon.
+        I\'m currently studying Computer Science at ISEL
+        and I am part of the team that developed this app.
+    </string>
+    <string name="about_jose_description">
+        Hi, I\'m José and I\'m a student from Lisbon.
+        I\'m currently studying Computer Science at ISEL
+        and I am also part of the team that developed this app.
+    </string>
+    <string name="about_ricardo_description">
+        Hi, I\'m Ricardo and I\'m a student from Lisbon.
+        I\'m currently studying Computer Science at ISEL
+        and I am also part of the team that developed this app.
+    </string>
+    <string name="made_with_tmdb">Made with the help of TMDB API</string>
+    <string name="fetching_info_from_server">Could not fetch data from the server. There might be a
+        problem with the wifi connection.
+    </string>
+    <string name="fetching_info_from_storage">Couldn\'t fetch data. There might not be any data
+        available to show.
+    </string>
+
+
+    <!-- snack bars -->
+    <string name="snackmsg_marked_favorite">Marked as Favorite</string>
+
+    <!-- User Preferences -->
+    <string name="network_services_config">Network Connections</string>
+    <string name="type_of_connection">Type of network</string>
+    <string name="summary_list_preference">
+        Specify the type of network you want to use when updating data from web.
+    </string>
+    <string name="wifi_conn">The WIFI data connection</string>
+    <string name="mobile_conn">The Mobile data connection</string>
+    <string name="both_conn">Any of them</string>
+    <string name="dialog_title_list_preference">Choose one option</string>
+    <string name="settings_action_bar_title">Settings</string>
+
+    <string name="update_interval_category">Data Updates Interval</string>
+    <string name="update_interval">Specify the time</string>
+    <string name="summary_data_update_interval_preference">Specify, in minutes, the interval between
+        data updates.
+    </string>
+    <string name="dialog_title_data_update_interval_preference">Time in minutes</string>
+    <string name="erase_obsolete_data_preferences">On Configuration Changes</string>
+    <string name="title_obsolete_data_preference">Obsolete data</string>
+    <string name="summary_obsolete_data_preference">
+        Check this option if you want to erase all data that was saved in cache after occurring a
+        configuration change.
+    </string>
+    <string name="cannot_show_the_detail">Cannot show the details. Try again later.</string>
+
+    <!-- Labels to be used in activities. Try to summarize the main intent of the activity -->
+    <string name="details_label">Details</string>
+    <string name="settings_label">User Preferences</string>
+    <string name="about_us_label">About Us</string>
+
+    <!-- DO NOT TRANSLATE THIS ONES -->
+    <string name="type_connection_list_preference" translatable="false">
+        type_connection_list_preference
+    </string>
+    <string name="update_interval_preference" translatable="false">update_interval_preference
+    </string>
+    <string name="obsolete_data_preference" translatable="false">
+        erase_data_on_configuration_changes
+    </string>
+    <string name="title_activity_search_options_tab">SearchOptionsTabActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="deleted_repo_msg">Language was changed so data in cache was obsolete. Try to
+        connect to retrieve data again.
+    </string>
+    <string name="notification_content">The upcoming movie is about to hit the threaters !</string>
+
+
+</resources>

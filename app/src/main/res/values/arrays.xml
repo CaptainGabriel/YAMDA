@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="entries_list_preference">
+        <item>@string/wifi_conn</item>
+        <item>@string/mobile_conn</item>
+        <item>@string/both_conn</item>
+    </string-array>
+
+    <string-array name="entry_values_list_preference">
+        <item>TYPE_WIFI</item>
+        <item>TYPE_MOBILE</item>
+        <item>BOTH</item>
+    </string-array>
+
+</resources>

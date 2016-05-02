@@ -12,7 +12,7 @@
     android:focusableInTouchMode="true">
 
     <fragment android:id="@+id/search_content_frame_layout"
-        android:name="com.example.ricardopeixe.moviedb.fragment.SearchListFragment"
+        android:name="com.example.dev.moviedb.fragment.SearchListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"

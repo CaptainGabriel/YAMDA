@@ -1,7 +1,7 @@
 package utils;
 
-import com.example.ricardopeixe.moviedb.utils.MD5Util;
-import com.example.ricardopeixe.moviedb.utils.Utils;
+import com.example.dev.moviedb.utils.MD5Util;
+import com.example.dev.moviedb.utils.Utils;
 
 import junit.framework.Assert;
 

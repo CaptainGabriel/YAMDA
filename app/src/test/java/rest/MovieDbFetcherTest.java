@@ -2,11 +2,11 @@ package rest;
 
 import android.support.annotation.NonNull;
 
-import com.example.ricardopeixe.moviedb.model.async.CallResult;
-import com.example.ricardopeixe.moviedb.model.async.Completion;
-import com.example.ricardopeixe.moviedb.model.dto.MovieDTO;
-import com.example.ricardopeixe.moviedb.model.Movie;
-import com.example.ricardopeixe.moviedb.network.http.provider.MovieApiProvider;
+import com.example.dev.moviedb.model.async.CallResult;
+import com.example.dev.moviedb.model.async.Completion;
+import com.example.dev.moviedb.model.dto.MovieDTO;
+import com.example.dev.moviedb.model.Movie;
+import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
 
 import junit.framework.Assert;
 

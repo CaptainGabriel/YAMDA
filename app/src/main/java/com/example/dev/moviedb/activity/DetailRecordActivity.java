@@ -1,10 +1,11 @@
 package com.example.dev.moviedb.activity;
 
-import com.example.dev.moviedb.R;
-import com.example.dev.moviedb.fragment.DetailRecordFragment;
-
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
+
+import com.example.dev.moviedb.fragment.DetailRecordFragment;
+
+import petegabriel.com.yamda.R;
 
 /**
  * Activity responsible for presenting the details of a certain movie.

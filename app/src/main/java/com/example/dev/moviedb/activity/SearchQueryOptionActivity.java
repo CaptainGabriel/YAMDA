@@ -1,6 +1,10 @@
 package com.example.dev.moviedb.activity;
 
-import com.example.dev.moviedb.R;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+
 import com.example.dev.moviedb.YamdaApplication;
 import com.example.dev.moviedb.fragment.options.OnItemSelectedListener;
 import com.example.dev.moviedb.fragment.options.SearchQueryOptionFragment;
@@ -9,10 +13,7 @@ import com.example.dev.moviedb.model.async.CallResult;
 import com.example.dev.moviedb.model.async.Completion;
 import com.example.dev.moviedb.utils.ToastUtils;
 
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.util.Log;
+import petegabriel.com.yamda.R;
 
 /**
  * The activity that provides a view with the results of a certain query in the

@@ -1,16 +1,5 @@
 package com.example.dev.moviedb.views.adapters;
 
-import com.example.dev.moviedb.R;
-import com.example.dev.moviedb.YamdaApplication;
-import com.example.dev.moviedb.model.async.CallResult;
-import com.example.dev.moviedb.model.async.Completion;
-import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
-import com.example.dev.moviedb.storage.repo.IRepository;
-import com.example.dev.moviedb.storage.repo.Repository;
-import com.example.dev.moviedb.storage.repo.db.DataProvider;
-import com.example.dev.moviedb.storage.repo.db.DataRecord;
-import com.example.dev.moviedb.storage.repo.db.DataUnit;
-
 import android.app.Application;
 import android.content.ContentUris;
 import android.content.Context;
@@ -23,7 +12,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dev.moviedb.YamdaApplication;
+import com.example.dev.moviedb.model.async.CallResult;
+import com.example.dev.moviedb.model.async.Completion;
+import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
+import com.example.dev.moviedb.storage.repo.IRepository;
+import com.example.dev.moviedb.storage.repo.Repository;
+import com.example.dev.moviedb.storage.repo.db.DataProvider;
+import com.example.dev.moviedb.storage.repo.db.DataRecord;
+import com.example.dev.moviedb.storage.repo.db.DataUnit;
+
 import java.util.List;
+
+import petegabriel.com.yamda.R;
 
 /**
  * This class represents the adapter used by the fragment that displays

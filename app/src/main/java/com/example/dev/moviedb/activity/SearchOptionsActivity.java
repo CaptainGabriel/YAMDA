@@ -1,16 +1,5 @@
 package com.example.dev.moviedb.activity;
 
-import com.example.dev.moviedb.R;
-import com.example.dev.moviedb.YamdaApplication;
-import com.example.dev.moviedb.fragment.options.OnItemSelectedListener;
-import com.example.dev.moviedb.model.async.CallResult;
-import com.example.dev.moviedb.model.async.Completion;
-import com.example.dev.moviedb.storage.repo.Repository;
-import com.example.dev.moviedb.storage.repo.db.DataRecord;
-import com.example.dev.moviedb.utils.NetworkUtils;
-import com.example.dev.moviedb.utils.ToastUtils;
-import com.example.dev.moviedb.views.adapters.SearchOptionsPagerAdapter;
-
 import android.content.ContentUris;
 import android.content.Intent;
 import android.net.Uri;
@@ -27,6 +16,18 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.dev.moviedb.YamdaApplication;
+import com.example.dev.moviedb.fragment.options.OnItemSelectedListener;
+import com.example.dev.moviedb.model.async.CallResult;
+import com.example.dev.moviedb.model.async.Completion;
+import com.example.dev.moviedb.storage.repo.Repository;
+import com.example.dev.moviedb.storage.repo.db.DataRecord;
+import com.example.dev.moviedb.utils.NetworkUtils;
+import com.example.dev.moviedb.utils.ToastUtils;
+import com.example.dev.moviedb.views.adapters.SearchOptionsPagerAdapter;
+
+import petegabriel.com.yamda.R;
 
 /**
  * This class is the main activity of the application as of this moment (0.0.2).

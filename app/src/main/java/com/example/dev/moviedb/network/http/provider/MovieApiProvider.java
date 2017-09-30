@@ -16,11 +16,12 @@ import android.widget.ImageView;
 
 import java.util.Locale;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 /**
  * This class represents a specific implementation of the interface {@link MovieApiService}.
@@ -95,9 +96,9 @@ public class MovieApiProvider {
     private Callback<MovieDTO> wrapMovieResponseTask(final Completion<Movie> completionCallback) {
         return new Callback<MovieDTO>() {
             @Override
-            public void onResponse(Response<MovieDTO> response, Retrofit retrofit) {
+            public void onResponse(Call<MovieDTO> call,Response<MovieDTO> response) {
 
-                final CallResult<Movie> result = response.isSuccess() ?
+                final CallResult<Movie> result = response.isSuccessful() ?
                         new CallResult<>(mMapper.convertFrom(response.body())) :
                         new CallResult<Movie>(new Exception(response.errorBody().toString()));
 
@@ -105,7 +106,7 @@ public class MovieApiProvider {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<MovieDTO> call, Throwable t) {
                 completionCallback.onResult(new CallResult<Movie>(new Exception(t)));
             }
         };
@@ -121,9 +122,9 @@ public class MovieApiProvider {
     private Callback<MovieAggregatorDTO> wrapMovieAggregatorResponseTask(final Completion<MovieAggregator> completionCallback) {
         return new Callback<MovieAggregatorDTO>() {
             @Override
-            public void onResponse(Response<MovieAggregatorDTO> response, Retrofit retrofit) {
+            public void onResponse(Call<MovieAggregatorDTO> call,Response<MovieAggregatorDTO> response){
 
-                final CallResult<MovieAggregator> result = response.isSuccess() ?
+                final CallResult<MovieAggregator> result = response.isSuccessful() ?
                         new CallResult<>(mMapper.convertFrom(response.body())) :
                         new CallResult<MovieAggregator>(new Exception(response.errorBody().toString()));
 
@@ -131,7 +132,7 @@ public class MovieApiProvider {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<MovieAggregatorDTO> call, Throwable t) {
                 completionCallback.onResult(new CallResult<MovieAggregator>(new Exception(t)));
             }
         };

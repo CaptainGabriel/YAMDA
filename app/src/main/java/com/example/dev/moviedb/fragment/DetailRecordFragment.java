@@ -1,11 +1,5 @@
 package com.example.dev.moviedb.fragment;
 
-import com.example.dev.moviedb.R;
-import com.example.dev.moviedb.YamdaApplication;
-import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
-import com.example.dev.moviedb.storage.repo.db.DataRecord;
-import com.example.dev.moviedb.utils.DtoUtils;
-
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -16,6 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.dev.moviedb.YamdaApplication;
+import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
+import com.example.dev.moviedb.storage.repo.db.DataRecord;
+import com.example.dev.moviedb.utils.DtoUtils;
+
+import petegabriel.com.yamda.R;
 
 /**
  * This class builds the view in order to show the details of a certain {@link DataRecord}.

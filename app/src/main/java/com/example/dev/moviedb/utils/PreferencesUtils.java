@@ -1,13 +1,14 @@
 package com.example.dev.moviedb.utils;
 
-import com.example.dev.moviedb.R;
-import com.example.dev.moviedb.activity.UserPreferencesActivity;
-
 import android.app.AlarmManager;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.util.Log;
+
+import com.example.dev.moviedb.activity.UserPreferencesActivity;
+
+import petegabriel.com.yamda.R;
 
 /**
  * Provides easy retrieval of preferences.

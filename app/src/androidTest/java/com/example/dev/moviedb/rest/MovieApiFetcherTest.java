@@ -4,7 +4,6 @@ import com.example.dev.moviedb.model.Movie;
 import com.example.dev.moviedb.network.http.apiservice.MovieApiService;
 import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
 
-import org.junit.Before;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,7 @@ public class MovieApiFetcherTest {
     private MovieApiProvider apiFetcher;
     private List<Movie> adapter;
 
-    @Before
+    //@Before
     public void createResources(){
         apiFetcher = new MovieApiProvider();
         adapter = new ArrayList<>();

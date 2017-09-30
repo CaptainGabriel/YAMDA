@@ -4,10 +4,11 @@ import com.example.dev.moviedb.model.dto.MovieAggregatorDTO;
 import com.example.dev.moviedb.model.dto.MovieDTO;
 import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
 
-import retrofit.Call;
-import retrofit.http.GET;
-import retrofit.http.Path;
-import retrofit.http.Query;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+
 
 /**
  * MovieDTO Database API Specification

@@ -1,7 +1,5 @@
 package com.example.dev.moviedb.storage.repo.db;
 
-import com.example.dev.moviedb.utils.Utils;
-
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -10,6 +8,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.net.Uri;
 import android.util.Log;
+
+import com.example.dev.moviedb.utils.Utils;
 
 /**
  * The concrete implementation of a ContentProvider. This class performs the actions that
@@ -32,7 +32,7 @@ public class DataProvider extends ContentProvider {
     /**
      * The authority of this provider
      */
-    public static final String AUTHORITY = "com.example.ricardopeixe.moviedb.yamdaprov";
+    public static final String AUTHORITY = "petegabriel.com.moviedb.yamdaprov";
 
     /**
      * The basic uri of this provider
@@ -92,7 +92,7 @@ public class DataProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        db = new DatabaseHelper(getContext().getApplicationContext());//((YamdaApplication) getContext().getApplicationContext()).getDatabaseHelper();
+        db = new DatabaseHelper(getContext().getApplicationContext());
         return ((db == null) ? false : true);
     }
 

@@ -1,10 +1,12 @@
 package com.example.dev.moviedb.activity;
 
-import com.example.dev.moviedb.R;
-import com.example.dev.moviedb.fragment.DetailMovieFragment;
 
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
+
+import com.example.dev.moviedb.fragment.DetailMovieFragment;
+
+import petegabriel.com.yamda.R;
 
 public class DetailMovieActivity extends SingleFragmentActivity {
 

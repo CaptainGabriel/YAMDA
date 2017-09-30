@@ -1,13 +1,14 @@
 package com.example.dev.moviedb.model;
 
-import com.example.dev.moviedb.R;
+import android.app.Application;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.dev.moviedb.utils.DateUtils;
 
 import org.joda.time.DateTime;
 
-import android.app.Application;
-import android.os.Parcel;
-import android.os.Parcelable;
+import petegabriel.com.yamda.R;
 
 /**
  * This class represents data that describes a certain movie in a more detailed way.

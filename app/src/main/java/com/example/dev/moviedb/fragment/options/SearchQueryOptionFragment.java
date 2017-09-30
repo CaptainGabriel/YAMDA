@@ -20,7 +20,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit.Call;
+import retrofit2.Call;
+
 
 /**
  * This class manages the list of items obtained through an online search based

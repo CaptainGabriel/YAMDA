@@ -1,5 +1,14 @@
 package com.example.dev.moviedb;
 
+import android.app.AlarmManager;
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
 import com.example.dev.moviedb.activity.UserPreferencesActivity;
 import com.example.dev.moviedb.fragment.options.AbstractSearchOptionsListFragment;
 import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
@@ -13,16 +22,9 @@ import com.example.dev.moviedb.utils.Utils;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
-import android.app.AlarmManager;
-import android.app.Application;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.preference.PreferenceManager;
-import android.util.Log;
-
 import java.util.Locale;
+
+import petegabriel.com.yamda.R;
 
 /**
  * Singleton class that solves the problem of listening to configuration

@@ -1,6 +1,13 @@
 package com.example.dev.moviedb.service;
 
-import com.example.dev.moviedb.R;
+import android.app.Application;
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.Log;
+
 import com.example.dev.moviedb.YamdaApplication;
 import com.example.dev.moviedb.model.async.CallResult;
 import com.example.dev.moviedb.model.async.Completion;
@@ -11,15 +18,9 @@ import com.example.dev.moviedb.utils.NotificationUtils;
 import com.example.dev.moviedb.utils.PreferencesUtils;
 import com.example.dev.moviedb.utils.Utils;
 
-import android.app.Application;
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.Log;
-
 import java.util.List;
+
+import petegabriel.com.yamda.R;
 
 /**
  * This service checks the upcoming movies list for movies about to release

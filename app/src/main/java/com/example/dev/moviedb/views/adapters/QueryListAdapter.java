@@ -1,10 +1,5 @@
 package com.example.dev.moviedb.views.adapters;
 
-import com.example.dev.moviedb.R;
-import com.example.dev.moviedb.YamdaApplication;
-import com.example.dev.moviedb.model.Movie;
-import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
-
 import android.app.Application;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +7,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dev.moviedb.YamdaApplication;
+import com.example.dev.moviedb.model.Movie;
+import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
+
 import java.util.List;
+
+import petegabriel.com.yamda.R;
 
 /**
  * Custom adapter to be used by the components that need to display data coming

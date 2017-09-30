@@ -1,8 +1,5 @@
 package com.example.dev.moviedb.fragment;
 
-import com.example.dev.moviedb.R;
-import com.example.dev.moviedb.utils.ToastUtils;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -13,6 +10,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.dev.moviedb.utils.ToastUtils;
+
+import petegabriel.com.yamda.R;
 
 /**
  * This class represents the common behavior between fragments that display details

@@ -1,14 +1,5 @@
 package com.example.dev.moviedb.fragment.options;
 
-import com.example.dev.moviedb.R;
-import com.example.dev.moviedb.fragment.LifecycleLogListFragment;
-import com.example.dev.moviedb.model.Identifiable;
-import com.example.dev.moviedb.model.async.CallResult;
-import com.example.dev.moviedb.model.async.Completion;
-import com.example.dev.moviedb.utils.ToastUtils;
-import com.example.dev.moviedb.utils.Utils;
-import com.example.dev.moviedb.views.adapters.AbstractListAdapter;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -18,8 +9,18 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.dev.moviedb.fragment.LifecycleLogListFragment;
+import com.example.dev.moviedb.model.Identifiable;
+import com.example.dev.moviedb.model.async.CallResult;
+import com.example.dev.moviedb.model.async.Completion;
+import com.example.dev.moviedb.utils.ToastUtils;
+import com.example.dev.moviedb.utils.Utils;
+import com.example.dev.moviedb.views.adapters.AbstractListAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import petegabriel.com.yamda.R;
 
 /**
  * Represents the common behavior between list fragments.

@@ -1,9 +1,5 @@
 package com.example.dev.moviedb.activity;
 
-import com.example.dev.moviedb.R;
-import com.example.dev.moviedb.storage.repo.messenger.OnPreferencesChangeReceiver;
-import com.example.dev.moviedb.utils.PreferencesUtils;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +7,11 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+
+import com.example.dev.moviedb.storage.repo.messenger.OnPreferencesChangeReceiver;
+import com.example.dev.moviedb.utils.PreferencesUtils;
+
+import petegabriel.com.yamda.R;
 
 /**
  * The activity that provides support to the user in order be able to specify some

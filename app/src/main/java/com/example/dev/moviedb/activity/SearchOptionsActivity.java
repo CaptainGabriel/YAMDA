@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -41,7 +42,7 @@ import petegabriel.com.yamda.R;
  *
  * @version 0.0.2
  */
-public class SearchOptionsActivity extends LoggingActivity
+public class SearchOptionsActivity extends AppCompatActivity
         implements OnItemSelectedListener<DataRecord> {
 
     /**
@@ -91,7 +92,7 @@ public class SearchOptionsActivity extends LoggingActivity
     @Override
     public void onItemSelected(String table, DataRecord obj) {
         long id = obj.getId();
-        Log.d(TAG, "onItemSelected - #" + id);
+        //TODO Log.d(TAG, "onItemSelected - #" + id);
         YamdaApplication app = ((YamdaApplication) getApplication());
         //offline mode
         Uri uri = Repository.makeUri(table);
@@ -163,7 +164,7 @@ public class SearchOptionsActivity extends LoggingActivity
             public boolean onQueryTextSubmit(String query) {
                 //perform search
                 String msg = getResources().getString(R.string.searching_by_keyword) + "\"" + query + "\"";
-                Log.d(TAG, msg);
+                //TODO Log.d(TAG, msg);
 
                 //send query to the activity through the intent. SHe will know what to do with it
                 Intent intentToChange =
@@ -230,8 +231,7 @@ public class SearchOptionsActivity extends LoggingActivity
      * @param recordClicked the item which details will be shown
      */
     private void startActivityForDetail(DataRecord recordClicked) {
-        Log.d(TAG, "Starting an activity to display the details of the movie "
-                + recordClicked.getOriginalTitle());
+        //TODO Log.d(TAG, "Starting an activity to display the details of the movie " + recordClicked.getOriginalTitle());
         Intent intentToMoveForward = new Intent(getApplicationContext(), DetailRecordActivity.class);
         //being parcelable guarantees cross-process storage
         startActivity(intentToMoveForward.putExtra(DetailRecordActivity.DETAILS_INTENT_ITEM_KEY, recordClicked));

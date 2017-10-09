@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.dev.moviedb.storage.repo.messenger.OnPreferencesChangeReceiver;
 import com.example.dev.moviedb.utils.PreferencesUtils;
@@ -19,7 +19,7 @@ import petegabriel.com.yamda.R;
  *
  * @version 0.0.2
  */
-public class UserPreferencesActivity extends LoggingActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class UserPreferencesActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     /**
      * Use this constant every time you need to say "invalid time read go figure it out!"
@@ -56,10 +56,10 @@ public class UserPreferencesActivity extends LoggingActivity implements SharedPr
      */
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Log.d(TAG, "Preferences changed - Key " + key);
+        //TODO Log.d(TAG, "Preferences changed - Key " + key);
         if (key.equals(UserPreferencesActivity.DATA_UPDATES_INTERVAL_KEY)) {
             long interval = PreferencesUtils.getUpdateInterval(sharedPreferences);
-            Log.d(TAG, "New time interval : " + interval);
+            //TODO Log.d(TAG, "New time interval : " + interval);
             Intent newMsg = new Intent().setAction(OnPreferencesChangeReceiver.ON_PREFERENCES_CHANGE_NOTIFICATION);
             newMsg.putExtra(OnPreferencesChangeReceiver.ON_PREFERENCES_CHANGE_NOTIFICATION_KEY, interval);
             sendBroadcast(newMsg);

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "petegabriel.com.moviedb"
         minSdkVersion 19
@@ -22,6 +22,8 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile 'com.jakewharton.timber:timber:4.5.1'
 
     compile 'net.danlew:android.joda:2.9.1'
 }

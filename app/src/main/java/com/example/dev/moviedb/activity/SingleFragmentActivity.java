@@ -3,6 +3,7 @@ package com.example.dev.moviedb.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Class that provides common behavior for those who intend to host
@@ -10,7 +11,7 @@ import android.support.v4.app.FragmentManager;
  *
  * @version 0.0.1
  */
-public abstract class SingleFragmentActivity extends LoggingActivity {
+public abstract class SingleFragmentActivity extends AppCompatActivity {
 
     /**
      * Override this method in order to instantiate a specific

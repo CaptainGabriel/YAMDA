@@ -78,7 +78,7 @@ public class SearchQueryOptionActivity extends SingleFragmentActivity
     @Override
     public void onItemSelected(Movie obj) {
         long id = obj.getPrimaryFacts().getId();
-        Log.d(TAG, "onItemSelected - #" + id);
+        //TODO Log.d(TAG, "onItemSelected - #" + id);
         YamdaApplication app = ((YamdaApplication) getApplication());
 
         // this function only supports online mode.

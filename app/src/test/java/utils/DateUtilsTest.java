@@ -1,6 +1,7 @@
 package utils;
 
-import com.example.dev.moviedb.utils.DateUtils;
+
+import com.dev.moviedb.utils.DateUtils;
 
 import junit.framework.Assert;
 

@@ -2,10 +2,10 @@ package rest;
 
 import android.support.annotation.NonNull;
 
-import com.example.dev.moviedb.model.Movie;
-import com.example.dev.moviedb.model.async.CallResult;
-import com.example.dev.moviedb.model.async.Completion;
-import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
+import com.dev.moviedb.model.Movie;
+import com.dev.moviedb.model.async.CallResult;
+import com.dev.moviedb.model.async.Completion;
+import com.dev.moviedb.network.http.provider.MovieApiProvider;
 
 import junit.framework.Assert;
 

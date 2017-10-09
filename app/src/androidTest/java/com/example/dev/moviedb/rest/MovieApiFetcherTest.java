@@ -1,9 +1,8 @@
 package com.example.dev.moviedb.rest;
 
-import com.example.dev.moviedb.model.Movie;
-import com.example.dev.moviedb.network.http.apiservice.MovieApiService;
-import com.example.dev.moviedb.network.http.provider.MovieApiProvider;
 
+import com.dev.moviedb.model.Movie;
+import com.dev.moviedb.network.http.provider.MovieApiProvider;
 
 import java.util.ArrayList;
 import java.util.List;

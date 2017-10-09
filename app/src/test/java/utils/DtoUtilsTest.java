@@ -1,6 +1,7 @@
 package utils;
 
-import com.example.dev.moviedb.utils.DtoUtils;
+
+import com.dev.moviedb.utils.DtoUtils;
 
 import junit.framework.Assert;
 

@@ -18,18 +18,18 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name="com.example.dev.moviedb.activity.DetailMovieActivity"
+                android:name="com.dev.moviedb.activity.DetailMovieActivity"
                 android:label="@string/details_label">
         </activity>
         <activity
-                android:name="com.example.dev.moviedb.activity.DetailRecordActivity"
+                android:name="com.dev.moviedb.activity.DetailRecordActivity"
                 android:label="@string/details_label"/>
         <activity
-                android:name="com.example.dev.moviedb.activity.UserPreferencesActivity"
+                android:name="com.dev.moviedb.activity.UserPreferencesActivity"
                 android:parentActivityName="com.example.dev.moviedb.activity.SearchOptionsActivity"
                 android:theme="@style/AppTheme"/>
         <activity
-                android:name="com.example.dev.moviedb.activity.SearchOptionsActivity"
+                android:name="com.dev.moviedb.activity.SearchOptionsActivity"
                 android:label="@string/app_name"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -39,15 +39,15 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="com.example.dev.moviedb.activity.SearchQueryOptionActivity"
+                android:name="com.dev.moviedb.activity.SearchQueryOptionActivity"
                 android:parentActivityName="com.example.dev.moviedb.activity.SearchOptionsActivity"/>
 
         <service
-                android:name="com.example.dev.moviedb.service.UpdateItemDetailsService"
+                android:name="com.dev.moviedb.service.UpdateItemDetailsService"
                 android:exported="false"/>
 
         <receiver
-                android:name="com.example.dev.moviedb.storage.repo.messenger.UpdateItemMessageReceiver"
+                android:name="com.dev.moviedb.storage.repo.messenger.UpdateItemMessageReceiver"
                 android:enabled="true"
                 android:exported="false">
             <intent-filter>
@@ -56,11 +56,11 @@
         </receiver>
 
         <service
-                android:name="com.example.dev.moviedb.service.FetchInTheatersMoviesService"
+                android:name="com.dev.moviedb.service.FetchInTheatersMoviesService"
                 android:exported="false"/>
 
         <receiver
-                android:name="com.example.dev.moviedb.storage.repo.messenger.FetchInTheatersMoviesResultsReceiver"
+                android:name="com.dev.moviedb.storage.repo.messenger.FetchInTheatersMoviesResultsReceiver"
                 android:enabled="true"
                 android:exported="false">
             <intent-filter>
@@ -69,11 +69,11 @@
         </receiver>
 
         <service
-                android:name="com.example.dev.moviedb.service.FetchUpcomingMoviesService"
+                android:name="com.dev.moviedb.service.FetchUpcomingMoviesService"
                 android:exported="false"/>
 
         <receiver
-                android:name="com.example.dev.moviedb.storage.repo.messenger.FetchUpcomingMoviesResultsReceiver"
+                android:name="com.dev.moviedb.storage.repo.messenger.FetchUpcomingMoviesResultsReceiver"
                 android:enabled="true"
                 android:exported="false">
             <intent-filter>
@@ -82,11 +82,11 @@
         </receiver>
 
         <service
-                android:name="com.example.dev.moviedb.service.FetchPopularMoviesService"
+                android:name="com.dev.moviedb.service.FetchPopularMoviesService"
                 android:exported="false"/>
 
         <receiver
-                android:name="com.example.dev.moviedb.storage.repo.messenger.FetchPopularMoviesResultsReceiver"
+                android:name="com.dev.moviedb.storage.repo.messenger.FetchPopularMoviesResultsReceiver"
                 android:enabled="true"
                 android:exported="false">
             <intent-filter>
@@ -95,24 +95,24 @@
         </receiver>
 
         <service
-                android:name="com.example.dev.moviedb.service.NotificationReleaseService"
+                android:name="com.dev.moviedb.service.NotificationReleaseService"
                 android:exported="false"/>
 
         <receiver
-                android:name="com.example.dev.moviedb.network.ConnectivityReceiver"
+                android:name="com.dev.moviedb.network.ConnectivityReceiver"
                 android:enabled="true"
                 android:exported="false">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
-        <receiver android:name="com.example.dev.moviedb.storage.repo.messenger.OnBootReceiver">
+        <receiver android:name="com.dev.moviedb.storage.repo.messenger.OnBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
         <receiver
-                android:name="com.example.dev.moviedb.storage.repo.messenger.OnPreferencesChangeReceiver"
+                android:name="com.dev.moviedb.storage.repo.messenger.OnPreferencesChangeReceiver"
                 android:enabled="true"
                 android:exported="false">
             <intent-filter>
@@ -121,7 +121,7 @@
         </receiver>
 
         <provider
-                android:name="com.example.dev.moviedb.storage.repo.db.DataProvider"
+                android:name="com.dev.moviedb.storage.repo.db.DataProvider"
                 android:authorities="petegabriel.com.yamdaprov"
                 android:enabled="true"
                 android:exported="true">

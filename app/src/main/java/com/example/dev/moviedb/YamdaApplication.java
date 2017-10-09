@@ -27,12 +27,9 @@ import java.util.Locale;
 import petegabriel.com.yamda.R;
 
 /**
- * Singleton class that solves the problem of listening to configuration
- * changes in a more centralized way than the implementation made in version 0.0.1
- * as well as locating services.
  *
- * @version 0.0.1
- * @see "https://github.com/isel-leic-pdm/1516-1-LI51D-G02/releases/tag/v0.0.1"
+ *
+ * @version 1.0.0
  */
 public class YamdaApplication extends Application{
 

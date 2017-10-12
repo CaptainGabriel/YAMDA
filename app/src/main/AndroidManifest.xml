@@ -128,12 +128,11 @@
             android:name="com.dev.moviedb.storage.repo.db.DataProvider"
             android:authorities="petegabriel.com.yamdaprov"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true"/>
 
         <activity
             android:name="com.dev.moviedb.acomponents.tabs_layout.TabOptionsActivity"
-            android:label="@string/title_activity_tab_options"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

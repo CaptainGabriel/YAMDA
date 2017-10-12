@@ -1,24 +1,22 @@
 package com.dev.moviedb.acomponents.splash
 
+import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
+import com.dev.moviedb.acomponents.tabs_layout.TabOptionsActivity
 
 /**
- * The entrance of this app. Presents the splash screen
- * with the app logo.
+ * Presents the splash screen with the app logo.
  *
- * @author pedrogabriel on 10/10/2017
+ * @author PeteGabriel on 10/10/2017
  * Copyright (c) 2017
  * All rights reserved.
  */
 class SplashActivity : AppCompatActivity(){
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?,
-                          persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-
+        startActivity(Intent(this, TabOptionsActivity::class.java))
     }
-
 }

@@ -42,6 +42,7 @@ import petegabriel.com.yamda.R;
  *
  * @version 0.0.2
  */
+@Deprecated //TabOptionsActivity
 public class SearchOptionsActivity extends AppCompatActivity
         implements OnItemSelectedListener<DataRecord> {
 
@@ -56,12 +57,12 @@ public class SearchOptionsActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_search_options_layout);
 
-        initInstances();
+        //initInstances();
 
         //restore state of query string
-        if (savedInstanceState != null) {
-            mSearchQueryState = savedInstanceState.getCharSequence(QUERY_SAVE_STATE_KEY);
-        }
+        //if (savedInstanceState != null) {
+         //   mSearchQueryState = savedInstanceState.getCharSequence(QUERY_SAVE_STATE_KEY);
+        //}
     }
 
     private void initInstances(){

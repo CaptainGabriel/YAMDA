@@ -3,6 +3,7 @@ package com.dev.moviedb.acomponents.tabs_layout
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_tab_options.*
+import kotlinx.android.synthetic.main.toolbar_center_text.*
 import petegabriel.com.yamda.R
 
 
@@ -23,12 +24,22 @@ class TabOptionsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_tab_options)
+        /*
+        The internal implementation of the support library just checks if the Toolbar has a title
+        (not null) at the moment the SupportActionBar is set up.
+        If there is, then this title will be used instead of the window title.
+         */
+        toolbar.title = ""
         setSupportActionBar(toolbar)
 
         //setup the pager
         featuresAdapter = MainOptionsPagerAdapter(supportFragmentManager)
         pagerLayoutFrame.adapter = featuresAdapter
 
+        setupTabLayout()
+    }
+
+    private fun setupTabLayout() {
         //setup the tab layout
         tabLayoutFrame.setupWithViewPager(pagerLayoutFrame)
 
@@ -36,17 +47,7 @@ class TabOptionsActivity : AppCompatActivity() {
         tabLayoutFrame.getTabAt(TAB_TWO)?.icon = resources.getDrawable(R.drawable.ic_tv)
         tabLayoutFrame.getTabAt(TAB_THREE)?.icon = resources.getDrawable(R.drawable.ic_videocam)
         tabLayoutFrame.getTabAt(TAB_FOUR)?.icon = resources.getDrawable(R.drawable.ic_person_outline)
-
-
-
     }
-
-
-    override fun onStart() {
-        super.onStart()
-        supportActionBar?.title = "Yamda"
-    }
-
 
 
 }

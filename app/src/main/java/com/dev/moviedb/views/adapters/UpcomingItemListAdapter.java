@@ -68,7 +68,7 @@ public class UpcomingItemListAdapter extends AbstractListAdapter<DataRecord> {
                 R.drawable.list_placeholder,
                 holder.getItemImageView());
 
-        int color = (itemToMap.isFavorite()) ? ctx.getResources().getColor(R.color.colorAccent)
+        int color = (itemToMap.isFavorite()) ? ctx.getResources().getColor(R.color.tumbleweed)
                 : ctx.getResources().getColor(R.color.medium_grey);
         holder.mLikeIconView.setColorFilter(color);
 
@@ -136,7 +136,7 @@ public class UpcomingItemListAdapter extends AbstractListAdapter<DataRecord> {
                 } catch (Exception e) {
                     Log.e("UpcomAdapter", "Movie is not marked as favorite.");
 
-                    holder.mLikeIconView.setColorFilter(ctx.getResources().getColor(R.color.colorAccent));
+                    holder.mLikeIconView.setColorFilter(ctx.getResources().getColor(R.color.tumbleweed));
                     itemToMap.setFavorite(true);
                     //Update state in upcoming table and mark as favorite.
                     updateFavoriteStatusOfRecord(ctx, itemToMap);

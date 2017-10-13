@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.dev.moviedb.acomponents.movies_tab.MoviesInfoFragment
+import com.dev.moviedb.acomponents.popular_tab.PopularInfoFragment
 import com.dev.moviedb.acomponents.series_tab.SeriesTvInfoFragment
 import com.dev.moviedb.acomponents.user_acount_tab.UserAccountInfoFragment
 
@@ -20,22 +21,17 @@ import com.dev.moviedb.acomponents.user_acount_tab.UserAccountInfoFragment
 class MainOptionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     //The amount fo fragments managed by this adapter.
-    private val TOTAL_FRAGS = 3
+    private val TOTAL_FRAGS = 4
 
-    private val titles = listOf("Movies","Tv Series","Account")
 
     override fun getItem(position: Int): Fragment =
             when(position){
-                0 -> MoviesInfoFragment()
-                1 -> SeriesTvInfoFragment()
-                2 -> UserAccountInfoFragment()
+                0 -> PopularInfoFragment()
+                1 -> MoviesInfoFragment()
+                2 -> SeriesTvInfoFragment()
+                3 -> UserAccountInfoFragment()
                 else -> MoviesInfoFragment()
             }
-
-    override fun getPageTitle(position: Int): CharSequence {
-        var a = titles[position]
-        return a
-    }
 
     override fun getCount(): Int = TOTAL_FRAGS
 

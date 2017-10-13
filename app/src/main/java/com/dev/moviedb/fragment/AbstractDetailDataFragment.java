@@ -115,7 +115,7 @@ public abstract class AbstractDetailDataFragment<T extends Parcelable> extends L
             trailerFab.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
         } else {
             trailerFab.setEnabled(true);
-            int color = getResources().getColor(R.color.colorAccent);
+            int color = getResources().getColor(R.color.tumbleweed);
             trailerFab.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
         }
         trailerFab.setOnClickListener(new View.OnClickListener() {

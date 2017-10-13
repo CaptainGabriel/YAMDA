@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:titleTextColor="@color/donJuan"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
@@ -37,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        app:tabTextColor="@color/white"
+        app:tabTextColor="@color/donJuan"
         app:tabMode="fixed"
         android:theme="@style/AppTheme"/>
 

@@ -13,12 +13,17 @@ class TabOptionsActivity : AppCompatActivity() {
 
     private var featuresAdapter: MainOptionsPagerAdapter? = null
 
-    private val titles = listOf("Movies","Tv Series","Account")
+    private val TAB_ONE = 0
+    private val TAB_TWO = 1
+    private val TAB_THREE = 2
+    private val TAB_FOUR = 3
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_tab_options)
+        setSupportActionBar(toolbar)
 
         //setup the pager
         featuresAdapter = MainOptionsPagerAdapter(supportFragmentManager)
@@ -27,11 +32,20 @@ class TabOptionsActivity : AppCompatActivity() {
         //setup the tab layout
         tabLayoutFrame.setupWithViewPager(pagerLayoutFrame)
 
-        tabLayoutFrame.getTabAt(0)?.text = titles[0]
-        tabLayoutFrame.getTabAt(1)?.text = titles[1]
-        tabLayoutFrame.getTabAt(2)?.text = titles[2]
+        tabLayoutFrame.getTabAt(TAB_ONE)?.icon = resources.getDrawable(R.drawable.ic_local_movies)
+        tabLayoutFrame.getTabAt(TAB_TWO)?.icon = resources.getDrawable(R.drawable.ic_tv)
+        tabLayoutFrame.getTabAt(TAB_THREE)?.icon = resources.getDrawable(R.drawable.ic_videocam)
+        tabLayoutFrame.getTabAt(TAB_FOUR)?.icon = resources.getDrawable(R.drawable.ic_person_outline)
+
+
+
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        supportActionBar?.title = "Yamda"
+    }
 
 
 

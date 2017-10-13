@@ -1,4 +1,4 @@
-package com.dev.moviedb.acomponents.tabs_layout
+package com.dev.moviedb.mvvm.components.tabs_layout
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

@@ -1,12 +1,12 @@
-package com.dev.moviedb.acomponents.tabs_layout
+package com.dev.moviedb.mvvm.components.tabs_layout
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.dev.moviedb.acomponents.movies_tab.MoviesInfoFragment
-import com.dev.moviedb.acomponents.popular_tab.PopularInfoFragment
-import com.dev.moviedb.acomponents.series_tab.SeriesTvInfoFragment
-import com.dev.moviedb.acomponents.user_acount_tab.UserAccountInfoFragment
+import com.dev.moviedb.mvvm.components.movies_tab.MoviesInfoFragment
+import com.dev.moviedb.mvvm.components.popular_tab.PopularInfoFragment
+import com.dev.moviedb.mvvm.components.series_tab.SeriesTvInfoFragment
+import com.dev.moviedb.mvvm.components.user_acount_tab.UserAccountInfoFragment
 
 /**
  * The adapter used to resolve the fragments that

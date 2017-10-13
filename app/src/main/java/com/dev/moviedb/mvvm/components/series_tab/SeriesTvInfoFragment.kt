@@ -1,4 +1,4 @@
-package com.dev.moviedb.acomponents.series_tab
+package com.dev.moviedb.mvvm.components.series_tab
 
 
 import android.os.Bundle

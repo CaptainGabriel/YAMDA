@@ -1,4 +1,4 @@
-package com.dev.moviedb.acomponents.popular_tab
+package com.dev.moviedb.mvvm.components.popular_tab
 
 
 import android.os.Bundle

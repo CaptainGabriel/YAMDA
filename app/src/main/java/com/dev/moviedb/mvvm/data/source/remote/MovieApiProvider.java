@@ -1,4 +1,4 @@
-package com.dev.moviedb.network.http.provider;
+package com.dev.moviedb.mvvm.data.source.remote;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,7 +11,7 @@ import com.dev.moviedb.model.async.Completion;
 import com.dev.moviedb.model.dto.MovieAggregatorDTO;
 import com.dev.moviedb.model.dto.MovieDTO;
 import com.dev.moviedb.model.mapper.DataMapper;
-import com.dev.moviedb.network.http.apiservice.MovieApiService;
+import com.dev.moviedb.network.http.provider.ImageDownloader;
 import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
@@ -24,13 +24,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
- * This class represents a specific implementation of the interface {@link MovieApiService}.
+ * This class represents a specific implementation of the interface {@link TmdbApiService}.
  *
  * An instance of this class provides access to the api specified by
  * that very same interface.
  *
  * @version 0.0.1
- * @see MovieApiService
+ * @see TmdbApiService
  */
 public class MovieApiProvider {
 
@@ -48,7 +48,7 @@ public class MovieApiProvider {
      * The service instance that provides concrete implementation of
      * all the methods available to this api.
      */
-    private MovieApiService mService;
+    private TmdbApiService mService;
 
     /**
      * The api key used to communicate with the api.
@@ -66,7 +66,7 @@ public class MovieApiProvider {
     /**
      * /**
      * Creates an instance of {@link MovieApiProvider} that provides access
-     * to the api specified by {@link MovieApiService}.
+     * to the api specified by {@link TmdbApiService}.
      *
      * The Retrofit client's converter used underneath is based upon Gson.
      */
@@ -80,7 +80,7 @@ public class MovieApiProvider {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        mService = retro.create(MovieApiService.class);
+        mService = retro.create(TmdbApiService.class);
 
         mMapper = new DataMapper();
     }

@@ -1,4 +1,4 @@
-package com.dev.moviedb.acomponents.user_acount_tab
+package com.dev.moviedb.mvvm.components.user_acount_tab
 
 
 import android.os.Bundle

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.dev.moviedb.YamdaApplication;
 import com.dev.moviedb.model.Movie;
-import com.dev.moviedb.network.http.provider.MovieApiProvider;
+import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 
 import java.util.List;
 

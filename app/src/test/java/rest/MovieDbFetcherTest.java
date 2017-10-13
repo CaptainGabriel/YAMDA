@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import com.dev.moviedb.model.Movie;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
-import com.dev.moviedb.network.http.provider.MovieApiProvider;
+import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 
 import junit.framework.Assert;
 

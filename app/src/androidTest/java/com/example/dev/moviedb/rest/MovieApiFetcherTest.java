@@ -2,7 +2,7 @@ package com.example.dev.moviedb.rest;
 
 
 import com.dev.moviedb.model.Movie;
-import com.dev.moviedb.network.http.provider.MovieApiProvider;
+import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 
 import java.util.ArrayList;
 import java.util.List;

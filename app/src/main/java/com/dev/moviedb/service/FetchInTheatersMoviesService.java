@@ -14,7 +14,7 @@ import com.dev.moviedb.YamdaApplication;
 import com.dev.moviedb.model.MovieAggregator;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
-import com.dev.moviedb.network.http.provider.MovieApiProvider;
+import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 import com.dev.moviedb.storage.repo.messenger.FetchInTheatersMoviesResultsReceiver;
 import com.dev.moviedb.utils.NetworkUtils;
 import com.dev.moviedb.utils.PreferencesUtils;

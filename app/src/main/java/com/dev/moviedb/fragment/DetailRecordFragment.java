@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.network.http.provider.MovieApiProvider;
+import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 import com.dev.moviedb.storage.repo.db.DataRecord;
 import com.dev.moviedb.utils.DtoUtils;
 

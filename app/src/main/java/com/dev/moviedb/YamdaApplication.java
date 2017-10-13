@@ -10,7 +10,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.dev.moviedb.fragment.options.AbstractSearchOptionsListFragment;
-import com.dev.moviedb.network.http.provider.MovieApiProvider;
+import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 import com.dev.moviedb.storage.repo.IRepository;
 import com.dev.moviedb.storage.repo.Repository;
 import com.dev.moviedb.storage.repo.db.DatabaseHelper;

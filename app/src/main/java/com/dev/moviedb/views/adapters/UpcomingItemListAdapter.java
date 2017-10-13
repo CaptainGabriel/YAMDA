@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.dev.moviedb.YamdaApplication;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
-import com.dev.moviedb.network.http.provider.MovieApiProvider;
+import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 import com.dev.moviedb.storage.repo.IRepository;
 import com.dev.moviedb.storage.repo.Repository;
 import com.dev.moviedb.storage.repo.db.DataProvider;

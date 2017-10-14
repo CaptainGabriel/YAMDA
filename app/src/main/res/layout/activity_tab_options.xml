@@ -28,7 +28,8 @@
         android:id="@+id/tabLayoutFrame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/pattensBlue"
+        android:elevation="8dp"
         app:tabTextColor="@color/donJuan"
         app:tabMode="fixed"
         android:theme="@style/AppTheme"/>

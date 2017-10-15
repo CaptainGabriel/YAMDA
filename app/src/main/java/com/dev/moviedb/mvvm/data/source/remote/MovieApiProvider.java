@@ -177,10 +177,7 @@ public class MovieApiProvider {
      * @return An instance of {@link Call} that is capable of being canceled.
      */
     public Call<MovieAggregatorDTO> findMostPopularMoviesAsync(Locale queryLang, final Completion<MovieAggregator> completionCallback) {
-        Call<MovieAggregatorDTO> futureTask = mService.findMostPopularMovies(API_KEY,
-                queryLang.getLanguage());
-        futureTask.enqueue(wrapMovieAggregatorResponseTask(completionCallback));
-        return futureTask;
+        return null;
     }
 
     /**

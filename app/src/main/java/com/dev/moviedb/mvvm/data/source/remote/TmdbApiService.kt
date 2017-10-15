@@ -2,6 +2,7 @@ package com.dev.moviedb.mvvm.data.source.remote
 
 import com.dev.moviedb.model.dto.MovieAggregatorDTO
 import com.dev.moviedb.model.dto.MovieDTO
+import io.reactivex.Observable
 
 import retrofit2.Call
 import retrofit2.http.GET
@@ -17,7 +18,7 @@ interface TmdbApiService {
 
     @GET("/3/movie/popular")
     fun findMostPopularMovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
-                              @Query("language") lang: String = "en"): Call<MovieAggregatorDTO>
+                              @Query("language") lang: String = "en"): Observable<MovieAggregatorDTO>
 
     @GET("/3/movie/now_playing")
     fun findNowPlayingMovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,

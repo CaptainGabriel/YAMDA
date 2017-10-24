@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context="com.dev.moviedb.mvvm.components.movies_tab.MoviesInfoFragment">
+    tools:context="com.dev.moviedb.mvvm.components.front.movies_tab.MoviesInfoFragment">
 
 
 </FrameLayout>

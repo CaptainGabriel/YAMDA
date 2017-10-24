@@ -131,7 +131,7 @@
             android:exported="true"/>
 
         <activity
-            android:name="com.dev.moviedb.mvvm.components.tabs_layout.TabOptionsActivity"
+            android:name="com.dev.moviedb.mvvm.components.front.tabs_layout.TabOptionsActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

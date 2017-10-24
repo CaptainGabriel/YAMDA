@@ -1,9 +1,8 @@
-package com.dev.moviedb.mvvm.data.source.remote
+package com.dev.moviedb.mvvm.repository.remote
 
 import com.dev.moviedb.model.dto.MovieAggregatorDTO
 import com.dev.moviedb.model.dto.MovieDTO
 import io.reactivex.Observable
-
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -49,5 +48,5 @@ interface TmdbApiService {
 
     @GET("/3/tv/top_rated")
     fun findTopRatedTvSeries(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
-                            @Query("language") lang: String = "en")
+                             @Query("language") lang: String = "en")
 }

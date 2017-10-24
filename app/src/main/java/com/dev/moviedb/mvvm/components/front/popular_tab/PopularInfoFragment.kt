@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.components.popular_tab
+package com.dev.moviedb.mvvm.components.front.popular_tab
 
 
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dev.moviedb.mvvm.data.source.remote.TmdbApiProvider
+import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider
 import com.dev.moviedb.utils.ToastUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

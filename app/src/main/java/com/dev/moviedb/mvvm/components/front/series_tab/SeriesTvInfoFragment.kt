@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.components.user_acount_tab
+package com.dev.moviedb.mvvm.components.front.series_tab
 
 
 import android.os.Bundle
@@ -12,13 +12,13 @@ import petegabriel.com.yamda.R
 /**
  * A simple [Fragment] subclass.
  */
-class UserAccountInfoFragment : Fragment() {
+class SeriesTvInfoFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.fragment_user_account_info, container, false)
+        return inflater!!.inflate(R.layout.fragment_series_tv_info, container, false)
     }
 
 }// Required empty public constructor

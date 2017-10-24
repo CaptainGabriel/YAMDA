@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.data.source.remote
+package com.dev.moviedb.mvvm.repository.remote
 
 /**
  *

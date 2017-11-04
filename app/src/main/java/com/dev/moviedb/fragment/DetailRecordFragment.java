@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 import com.dev.moviedb.storage.repo.db.DataRecord;
 import com.dev.moviedb.utils.DtoUtils;
 
@@ -94,11 +93,7 @@ public class DetailRecordFragment extends AbstractDetailDataFragment<DataRecord>
                 String.valueOf(mToDetail.getVoteAverage()));
 
         //Query for an image based upon the path and a custom image size.
-        MovieApiProvider fetcher = ((YamdaApplication) getActivity().getApplication()).getApiFetcher();
-        ImageView imgView = (ImageView) view.findViewById(R.id.details_main_picture);
 
-        fetcher.loadImage(getActivity(), mToDetail.getBackdropImagePath(),
-                MovieApiProvider.DETAILS_IMG_SIZE, R.drawable.details_placeholder, imgView);
     }
 
     private void setupAdvancedFacts(View view, StringBuilder internalBuffer) {

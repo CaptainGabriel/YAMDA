@@ -14,7 +14,7 @@ import com.dev.moviedb.model.Movie;
 import com.dev.moviedb.model.MovieAggregator;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
-import com.dev.moviedb.model.dto.MovieAggregatorDTO;
+import com.dev.moviedb.model.dto.MovieCollectionDto;
 import com.dev.moviedb.views.adapters.QueryListAdapter;
 
 import java.util.ArrayList;
@@ -90,9 +90,6 @@ public class SearchQueryOptionFragment extends AbstractSearchOptionsListFragment
      */
     private void loadElements(){
         YamdaApplication app = ((YamdaApplication) getActivity().getApplication());
-        mAsyncRequestData = app.getApiFetcher()
-                .searchMoviesByKeywordAsync(mQuery, app.getCurrentAppLanguage(), mCurrentPage,
-                        populateListCallback(getActivity()));
     }
 
     /**
@@ -136,7 +133,7 @@ public class SearchQueryOptionFragment extends AbstractSearchOptionsListFragment
      * in order to be possible, if necessary, to cancel later during
      * the lifetime of this component.
      */
-    private Call<MovieAggregatorDTO> mAsyncRequestData;
+    private Call<MovieCollectionDto> mAsyncRequestData;
 
     /**{@inheritDoc}*/
     @Override

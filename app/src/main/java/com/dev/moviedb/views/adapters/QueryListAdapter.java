@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.dev.moviedb.YamdaApplication;
 import com.dev.moviedb.model.Movie;
-import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 
 import java.util.List;
 
@@ -30,9 +29,6 @@ public class QueryListAdapter extends AbstractListAdapter<Movie> {
     @Override
     protected void populateViewComponents(Application ctx, SearchListViewHolder holder, int pos) {
         Movie movie = getItem(pos);
-        MovieApiProvider fetcher = ((YamdaApplication) ctx).getApiFetcher();
-        fetcher.loadImage(getContext(), movie.getMovieImages().getPosterImagePath(),
-                MovieApiProvider.DEFAULT_IMG_SIZE, R.drawable.list_placeholder, holder.getItemImageView());
 
         holder.getTitleTextView()
                 .setText(movie.getPrimaryFacts().getOriginalTitle());

@@ -1,31 +1,7 @@
 package com.example.dev.moviedb.rest;
 
-
-import com.dev.moviedb.model.Movie;
-import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
-
-import java.util.ArrayList;
-import java.util.List;
-
-
-/**
- * Unit tests for the {@link MovieApiProvider} class.
- *
- * Contains async and sync versions of the retrofit library.
- *
- * @see MovieApiProvider
- * @see MovieApiService
- */
 public class MovieApiFetcherTest {
 
-    private MovieApiProvider apiFetcher;
-    private List<Movie> adapter;
-
-    //@Before
-    public void createResources(){
-        apiFetcher = new MovieApiProvider();
-        adapter = new ArrayList<>();
-    }
 
 /*
 
@@ -59,10 +35,10 @@ public class MovieApiFetcherTest {
         apiFetcher.findUpcomingMovies(badCallback("some msg"));
     }
 
-    private Callback<MovieAggregatorDTO> goodCallback(final String msg){
-        return new Callback<MovieAggregatorDTO>() {
+    private Callback<MovieCollectionDto> goodCallback(final String msg){
+        return new Callback<MovieCollectionDto>() {
             @Override
-            public void onResponse(Response<MovieAggregatorDTO> response, Retrofit retrofit) {
+            public void onResponse(Response<MovieCollectionDto> response, Retrofit retrofit) {
                 Assert.assertNotNull(response.body());
                 adapter.clear();
                 for (MovieDTO m : response.body().results)
@@ -78,10 +54,10 @@ public class MovieApiFetcherTest {
         };
     }
 
-    private Callback<MovieAggregatorDTO> badCallback(final String msg){
-        return new Callback<MovieAggregatorDTO>() {
+    private Callback<MovieCollectionDto> badCallback(final String msg){
+        return new Callback<MovieCollectionDto>() {
             @Override
-            public void onResponse(Response<MovieAggregatorDTO> response, Retrofit retrofit) {
+            public void onResponse(Response<MovieCollectionDto> response, Retrofit retrofit) {
                 Assert.assertFalse(response.isSuccess());
             }
 

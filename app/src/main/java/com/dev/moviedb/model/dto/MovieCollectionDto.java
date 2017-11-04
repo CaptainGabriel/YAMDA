@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @version 0.0.1
  */
-public class MovieAggregatorDTO {
+public class MovieCollectionDto {
 
     private int page;
 
@@ -23,7 +23,7 @@ public class MovieAggregatorDTO {
 
     private int total_results;
 
-    public MovieAggregatorDTO(int page, List<MovieDTO> results, int totalPages, int totalResults) {
+    public MovieCollectionDto(int page, List<MovieDTO> results, int totalPages, int totalResults) {
         this.page = page;
         this.results = results;
         this.total_pages = totalPages;

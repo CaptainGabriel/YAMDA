@@ -1,6 +1,6 @@
 package com.dev.moviedb.mvvm.repository.remote
 
-import com.dev.moviedb.model.dto.MovieAggregatorDTO
+import com.dev.moviedb.model.dto.MovieCollectionDto
 import com.dev.moviedb.model.dto.MovieDTO
 import io.reactivex.Observable
 import retrofit2.Call
@@ -17,16 +17,16 @@ interface TmdbApiService {
 
     @GET("/3/movie/popular")
     fun findMostPopularMovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
-                              @Query("language") lang: String = "en"): Observable<MovieAggregatorDTO>
+                              @Query("language") lang: String = "en"): Observable<MovieCollectionDto>
 
     @GET("/3/movie/now_playing")
     fun findNowPlayingMovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
-                             @Query("language") lang: String = "en"): Call<MovieAggregatorDTO>
+                             @Query("language") lang: String = "en"): Observable<MovieCollectionDto>
 
     @GET("/3/movie/upcoming")
     fun findUpcomingMovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
                            @Query("language") lang: String = "en",
-                           @Query("page") page: Int): Call<MovieAggregatorDTO>
+                           @Query("page") page: Int): Observable<MovieCollectionDto>
 
     @GET("/3/movie/{id}")
     fun findMovieById(@Path("id") id: Long,
@@ -38,7 +38,7 @@ interface TmdbApiService {
     fun searchMoviesByKeyword(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
                               @Query("query") title: String,
                               @Query("language") lang: String = "en",
-                              @Query("page") page: Int): Call<MovieAggregatorDTO>
+                              @Query("page") page: Int): Call<MovieCollectionDto>
 
 
     @GET("/3/tv/popular")

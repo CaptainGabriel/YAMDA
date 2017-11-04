@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.dev.moviedb.YamdaApplication;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
-import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 import com.dev.moviedb.storage.repo.IRepository;
 import com.dev.moviedb.storage.repo.Repository;
 import com.dev.moviedb.storage.repo.db.DataProvider;
@@ -60,13 +59,7 @@ public class UpcomingItemListAdapter extends AbstractListAdapter<DataRecord> {
     protected void populateViewComponents(final Application ctx, final SearchListViewHolder holder, final int position) {
 
         final DataRecord itemToMap = getItem(position);
-        MovieApiProvider fetcher = ((YamdaApplication) ctx).getApiFetcher();
 
-        fetcher.loadImage(getContext(),
-                itemToMap.getPosterImagePath(),
-                MovieApiProvider.DEFAULT_IMG_SIZE,
-                R.drawable.list_placeholder,
-                holder.getItemImageView());
 
         int color = (itemToMap.isFavorite()) ? ctx.getResources().getColor(R.color.tumbleweed)
                 : ctx.getResources().getColor(R.color.medium_grey);

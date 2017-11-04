@@ -31,14 +31,13 @@ class PopularInfoFragment : Fragment() {
 
         service = TmdbApiProvider()
 
-        service?.findMostPopularMovies()
+        service?.getTmdbApiService()
+                ?.findMostPopularMovies()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(
                         { ToastUtils.showShortMessage("OK", context) },
                         { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
-
-
     }
 
 }// Required empty public constructor

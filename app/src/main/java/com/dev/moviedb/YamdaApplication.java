@@ -10,7 +10,6 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.dev.moviedb.fragment.options.AbstractSearchOptionsListFragment;
-import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 import com.dev.moviedb.storage.repo.IRepository;
 import com.dev.moviedb.storage.repo.Repository;
 import com.dev.moviedb.storage.repo.db.DatabaseHelper;
@@ -50,10 +49,6 @@ public class YamdaApplication extends Application{
      */
     private IRepository mRepoOfData;
 
-    /**
-     * Reference to the web api provider.
-     */
-    private MovieApiProvider fetchApi;
 
     /**
      * Reference to the SharedPreferences created in {@link com.dev.moviedb.activity.UserPreferencesActivity}.
@@ -73,7 +68,6 @@ public class YamdaApplication extends Application{
         mCurrentAppLanguage = getResources().getConfiguration().locale;
 
         mRepoOfData = new Repository(this);
-        fetchApi = new MovieApiProvider();
 
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
@@ -144,12 +138,6 @@ public class YamdaApplication extends Application{
         return mRepoOfData;
     }
 
-    /**
-     * Gives back the running instance of the web api provider.
-     */
-    public synchronized MovieApiProvider getApiFetcher() {
-        return fetchApi;
-    }
 
     /**
      * Returns a reference to the default shared preferences.

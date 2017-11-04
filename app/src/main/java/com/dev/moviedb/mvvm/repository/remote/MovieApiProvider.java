@@ -8,7 +8,7 @@ import com.dev.moviedb.model.Movie;
 import com.dev.moviedb.model.MovieAggregator;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
-import com.dev.moviedb.model.dto.MovieAggregatorDTO;
+import com.dev.moviedb.model.dto.MovieCollectionDto;
 import com.dev.moviedb.model.dto.MovieDTO;
 import com.dev.moviedb.model.mapper.DataMapper;
 import com.dev.moviedb.network.http.provider.ImageDownloader;
@@ -119,10 +119,10 @@ public class MovieApiProvider {
      * @param completionCallback The callback to encapsulate into another callback.
      * @see Callback
      */
-    private Callback<MovieAggregatorDTO> wrapMovieAggregatorResponseTask(final Completion<MovieAggregator> completionCallback) {
-        return new Callback<MovieAggregatorDTO>() {
+    private Callback<MovieCollectionDto> wrapMovieAggregatorResponseTask(final Completion<MovieAggregator> completionCallback) {
+        return new Callback<MovieCollectionDto>() {
             @Override
-            public void onResponse(Call<MovieAggregatorDTO> call,Response<MovieAggregatorDTO> response){
+            public void onResponse(Call<MovieCollectionDto> call, Response<MovieCollectionDto> response){
 
                 final CallResult<MovieAggregator> result = response.isSuccessful() ?
                         new CallResult<>(mMapper.convertFrom(response.body())) :
@@ -132,7 +132,7 @@ public class MovieApiProvider {
             }
 
             @Override
-            public void onFailure(Call<MovieAggregatorDTO> call, Throwable t) {
+            public void onFailure(Call<MovieCollectionDto> call, Throwable t) {
                 completionCallback.onResult(new CallResult<MovieAggregator>(new Exception(t)));
             }
         };
@@ -162,8 +162,8 @@ public class MovieApiProvider {
      * @param completionCallback The callback to be invoked when results are available.
      * @return An instance of {@link Call} that is capable of being canceled.
      */
-    public Call<MovieAggregatorDTO> searchMoviesByKeywordAsync(String queryKeyWorks, Locale queryLang, int page, final Completion<MovieAggregator> completionCallback) {
-        Call<MovieAggregatorDTO> futureTask = mService.searchMoviesByKeyword(API_KEY,
+    public Call<MovieCollectionDto> searchMoviesByKeywordAsync(String queryKeyWorks, Locale queryLang, int page, final Completion<MovieAggregator> completionCallback) {
+        Call<MovieCollectionDto> futureTask = mService.searchMoviesByKeyword(API_KEY,
                 queryKeyWorks, queryLang.getLanguage(), page);
         futureTask.enqueue(wrapMovieAggregatorResponseTask(completionCallback));
         return futureTask;
@@ -176,7 +176,7 @@ public class MovieApiProvider {
      * @param completionCallback The callback to be invoked when results are available.
      * @return An instance of {@link Call} that is capable of being canceled.
      */
-    public Call<MovieAggregatorDTO> findMostPopularMoviesAsync(Locale queryLang, final Completion<MovieAggregator> completionCallback) {
+    public Call<MovieCollectionDto> findMostPopularMoviesAsync(Locale queryLang, final Completion<MovieAggregator> completionCallback) {
         return null;
     }
 
@@ -187,9 +187,8 @@ public class MovieApiProvider {
      * @param completionCallback The callback to be invoked when results are available.
      * @return An instance of {@link Call} that is capable of being canceled.
      */
-    public Call<MovieAggregatorDTO> findInTheatersMoviesAsync(Locale queryLang, final Completion<MovieAggregator> completionCallback) {
-        Call<MovieAggregatorDTO> futureTask = mService.findNowPlayingMovies(API_KEY,
-                queryLang.getLanguage());
+    public Call<MovieCollectionDto> findInTheatersMoviesAsync(Locale queryLang, final Completion<MovieAggregator> completionCallback) {
+        Call<MovieCollectionDto> futureTask = null;
         futureTask.enqueue(wrapMovieAggregatorResponseTask(completionCallback));
         return futureTask;
     }
@@ -203,8 +202,8 @@ public class MovieApiProvider {
      * @param completionCallback The callback to be invoked when results are available.
      * @return An instance of {@link Call} that is capable of being canceled.
      */
-    public Call<MovieAggregatorDTO> findUpcomingMoviesAsync(Locale queryLang, final Completion<MovieAggregator> completionCallback, int page) {
-        Call<MovieAggregatorDTO> futureTask = mService.findUpcomingMovies(API_KEY, queryLang.getLanguage(), page);
+    public Call<MovieCollectionDto> findUpcomingMoviesAsync(Locale queryLang, final Completion<MovieAggregator> completionCallback, int page) {
+        Call<MovieCollectionDto> futureTask = null;
         futureTask.enqueue(wrapMovieAggregatorResponseTask(completionCallback));
         return futureTask;
     }

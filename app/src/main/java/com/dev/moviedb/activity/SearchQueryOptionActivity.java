@@ -83,8 +83,6 @@ public class SearchQueryOptionActivity extends SingleFragmentActivity
 
         // this function only supports online mode.
         String appendToResult = "trailers";
-        app.getApiFetcher()
-                .findMovieByIdAsync(id, app.getCurrentAppLanguage(), appendToResult, handleSpecificMovieCallback());
     }
 
 }

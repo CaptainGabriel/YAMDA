@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 import com.dev.moviedb.storage.repo.db.DataRecord;
 
 import java.util.List;
@@ -29,9 +27,6 @@ public class ItemListAdapter extends AbstractListAdapter<DataRecord> {
     @Override
     protected void populateViewComponents(Application ctx, SearchListViewHolder holder, int pos) {
         DataRecord itemToMap = getItem(pos);
-        MovieApiProvider fetcher = ((YamdaApplication) ctx).getApiFetcher();
-        fetcher.loadImage(getContext(), itemToMap.getPosterImagePath(),
-                MovieApiProvider.DEFAULT_IMG_SIZE, R.drawable.list_placeholder, holder.getItemImageView());
 
         holder.getTitleTextView().setText(itemToMap.getOriginalTitle());
         holder.getVoteAverageView().setText(String.valueOf(itemToMap.getVoteAverage()));

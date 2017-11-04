@@ -56,8 +56,7 @@ public class UpdateItemDetailsService extends Service {
         if (NetworkUtils.isConnected(app, connType)) {
             //TODO Log.d(TAG, "Connected. Fetching data.");
             String appendToResult = "trailers";
-            app.getApiFetcher()
-                    .findMovieByIdAsync(item.getPrimaryFacts().getId(), lang, appendToResult, handleMovie(startId));
+            //app.getApiFetcher().findMovieByIdAsync(item.getPrimaryFacts().getId(), lang, appendToResult, handleMovie(startId));
         } else {
             //TODO Log.d(TAG, "Not Connected. Cant fetch data.");
             stopSelf(startId);

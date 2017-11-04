@@ -14,10 +14,7 @@ import com.dev.moviedb.YamdaApplication;
 import com.dev.moviedb.model.MovieAggregator;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
-import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 import com.dev.moviedb.storage.repo.messenger.FetchInTheatersMoviesResultsReceiver;
-import com.dev.moviedb.utils.NetworkUtils;
-import com.dev.moviedb.utils.PreferencesUtils;
 import com.dev.moviedb.utils.Utils;
 
 import java.util.ArrayList;
@@ -73,13 +70,6 @@ public class FetchInTheatersMoviesService extends Service {
 
         YamdaApplication app = ((YamdaApplication)getApplication());
         Locale lang = app.getCurrentAppLanguage();
-        MovieApiProvider mMovieApiServiceFetcher = app.getApiFetcher();
-
-        //perform tasks if the device is connected and respects the user's settings
-        long connType = PreferencesUtils.getConnectionSpecifiedByUser(getResources(), app.getPrefs());
-        if (NetworkUtils.isConnected(app, connType)) {
-            mMovieApiServiceFetcher.findInTheatersMoviesAsync(lang, handleResultsCallback(startId));
-        }else stopSelf(startId);
 
         return START_NOT_STICKY;
     }

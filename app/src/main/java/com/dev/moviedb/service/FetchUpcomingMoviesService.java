@@ -79,7 +79,7 @@ public class FetchUpcomingMoviesService extends Service {
         if (NetworkUtils.isConnected(app, connType)) {
             final int pageNumber = 1;
             Completion<MovieAggregator> queryPages = queryPagesCallback(startId, app);
-            app.getApiFetcher().findUpcomingMoviesAsync(lang, queryPages, pageNumber);
+            //app.getApiFetcher().findUpcomingMoviesAsync(lang, queryPages, pageNumber);
         }
 
         return START_NOT_STICKY;

@@ -1,12 +1,9 @@
 package com.dev.moviedb.mvvm.repository.remote
 
-import com.dev.moviedb.model.dto.MovieAggregatorDTO
-import io.reactivex.Observable
 import petegabriel.com.yamda.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Query
 
 /**
  * This class wraps an implementation of the operations specified in the
@@ -30,11 +27,6 @@ class TmdbApiProvider {
     }
 
 
-    fun findMostPopularMovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
-                              @Query("language") lang: String = "en"): Observable<MovieAggregatorDTO>
-       = service.findMostPopularMovies(apiKey, lang)
-
-
-
+    fun getTmdbApiService(): TmdbApiService = service
 
 }

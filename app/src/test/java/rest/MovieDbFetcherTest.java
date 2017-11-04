@@ -5,16 +5,12 @@ import android.support.annotation.NonNull;
 import com.dev.moviedb.model.Movie;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
-import com.dev.moviedb.mvvm.data.source.remote.MovieApiProvider;
 
 import junit.framework.Assert;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -25,14 +21,7 @@ import java.util.List;
  */
 public class MovieDbFetcherTest {
 
-    private MovieApiProvider apiFetcher;
-    private List<Movie> helperList;
 
-    @Before
-    public void createResources(){
-        apiFetcher = new MovieApiProvider();
-        helperList = new ArrayList<>();
-    }
 /*
     @Test
     public void findPopularMoviesAsync() throws IOException, InterruptedException {

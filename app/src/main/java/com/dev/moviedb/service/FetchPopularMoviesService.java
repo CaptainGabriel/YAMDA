@@ -57,7 +57,7 @@ public class FetchPopularMoviesService extends Service {
 
         long connType = PreferencesUtils.getConnectionSpecifiedByUser(getResources(), app.getPrefs());
         if (NetworkUtils.isConnected(app, connType)) {
-            app.getApiFetcher().findMostPopularMoviesAsync(lang, handleResultsCallback(startId));
+           // app.getApiFetcher().findMostPopularMoviesAsync(lang, handleResultsCallback(startId));
         } else {
             stopSelf(startId);
         }

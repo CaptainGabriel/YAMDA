@@ -10,7 +10,7 @@ import com.dev.moviedb.model.MovieImages;
 import com.dev.moviedb.model.MovieTrailer;
 import com.dev.moviedb.model.Popularity;
 import com.dev.moviedb.model.PrimaryFact;
-import com.dev.moviedb.model.dto.MovieAggregatorDTO;
+import com.dev.moviedb.model.dto.MovieCollectionDto;
 import com.dev.moviedb.model.dto.MovieDTO;
 
 /**
@@ -22,13 +22,13 @@ import com.dev.moviedb.model.dto.MovieDTO;
 public class DataMapper {
 
     /**
-     * Converts the given {@link MovieAggregatorDTO} instance to the corresponding {@link MovieAggregator}
+     * Converts the given {@link MovieCollectionDto} instance to the corresponding {@link MovieAggregator}
      * instance.
-     * @param dto The {@link MovieAggregatorDTO} instance to be converted.
+     * @param dto The {@link MovieCollectionDto} instance to be converted.
      * @return The resulting {@link MovieAggregator} instance.
      */
     @NonNull
-    public MovieAggregator convertFrom(@NonNull MovieAggregatorDTO dto) {
+    public MovieAggregator convertFrom(@NonNull MovieCollectionDto dto) {
         return new MovieAggregator.AggregatorBuilder().setPage(dto.getPage())
                 .setResults(dto.getResults())
                 .setTotalPages(dto.getTotalPages())

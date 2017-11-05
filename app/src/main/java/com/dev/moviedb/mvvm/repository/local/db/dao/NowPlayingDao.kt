@@ -2,8 +2,7 @@ package com.dev.moviedb.mvvm.repository.local.db.dao
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Query
-import com.dev.moviedb.mvvm.repository.ITaskListener
-import com.dev.moviedb.mvvm.repository.local.db.entity.Movie
+import com.dev.moviedb.mvvm.repository.local.db.entity.NowPlayingMovie
 
 /**
  *
@@ -13,25 +12,8 @@ import com.dev.moviedb.mvvm.repository.local.db.entity.Movie
  * All rights reserved.
  */
 @Dao
-abstract class NowPlayingDao : IDao<Movie>{
-
-
-    @Query("SELECT * FROM now_playing_movie")
-    abstract override fun insert(elem: Movie, onComplete: ITaskListener)
+abstract class NowPlayingDao : IDao<NowPlayingMovie>{
 
     @Query("SELECT * FROM now_playing_movie")
-    abstract override fun insertAll(vararg elements: Movie, onComplete: ITaskListener)
-
-    @Query("UPDATE FROM now_playing_movie WHERE id = :elem.identifier")
-    abstract override fun update(elem: Movie, onComplete: ITaskListener)
-
-    @Query("UPDATE FROM now_playing_movie")
-    abstract override fun updateAll(vararg elements: Movie, onComplete: ITaskListener)
-
-    @Query("DELETE FROM now_playing_movie WHERE id = :elem.identifier")
-    abstract override fun delete(elem: Movie, onComplete: ITaskListener)
-
-    @Query("DELETE FROM now_playing_movie")
-    abstract override fun deleteAll(vararg elements: Movie, onComplete: ITaskListener)
-
+    abstract fun fetchAll(): List<NowPlayingMovie>
 }

@@ -89,23 +89,10 @@ public class DateUtilsTest {
     }
 
     @Test
-    public void testIfTodayIsToday(){
-        //update date
-        final String validDate = "2015-12-17";
-        Assert.assertTrue(DateUtils.isToday(validDate));
-    }
-
-    @Test
     public void testIfTodayIsNotToday(){
         //update date
         final String validDate = "2015-12-01";
         Assert.assertFalse(DateUtils.isToday(validDate));
     }
 
-    @Test
-    public void testIfTodayIsTomorrow(){
-        //update date
-        final String validDate = "2015-12-18";
-        //Assert.assertTrue(DateUtils.isTomorow(validDate));
-    }
 }

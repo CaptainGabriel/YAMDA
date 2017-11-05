@@ -3,7 +3,6 @@ package com.dev.moviedb.mvvm.repository.local.db.dao
 import android.arch.persistence.room.Delete
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Update
-import com.dev.moviedb.mvvm.repository.ITaskListener
 
 /**
  *
@@ -15,21 +14,21 @@ import com.dev.moviedb.mvvm.repository.ITaskListener
 interface IDao<in T>{
 
     @Insert
-    fun insert(elem: T, onComplete: ITaskListener)
+    fun insert(elem: T, onComplete: () -> Unit)
 
     @Insert
-    fun insertAll(vararg elements: T, onComplete: ITaskListener)
+    fun insertAll(vararg elements: T, onComplete: () -> Unit)
 
     @Update
-    fun update(elem: T, onComplete: ITaskListener)
+    fun update(elem: T, onComplete: () -> Unit)
 
     @Update
-    fun updateAll(vararg elements: T, onComplete: ITaskListener)
+    fun updateAll(vararg elements: T, onComplete: () -> Unit)
 
     @Delete
-    fun delete(elem: T, onComplete: ITaskListener)
+    fun delete(elem: T, onComplete: () -> Unit)
 
     @Delete
-    fun deleteAll(vararg elements: T, onComplete: ITaskListener)
+    fun deleteAll(vararg elements: T, onComplete: () -> Unit)
 
 }

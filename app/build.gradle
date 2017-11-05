@@ -14,8 +14,13 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField ("String", "TMDB_HOSTNAME", "\"https://api.themoviedb.org/3/\"")
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    testOptions {
+        execution 'ANDROID_TEST_ORCHESTRATOR'
+    }
 
     buildTypes {
         debug {
@@ -58,6 +63,10 @@ dependencies {
     annotationProcessor 'android.arch.persistence.room:compiler:1.0.0-rc1'
 
     implementation "android.arch.lifecycle:extensions:1.0.0-alpha9-1"
+
+    androidTestCompile 'com.android.support:support-annotations:26.0.0'
+    androidTestCompile 'com.android.support.test:runner:1.0.1'
+    androidTestCompile 'com.android.support.test:rules:1.0.1'
 }
 repositories {
     mavenCentral()

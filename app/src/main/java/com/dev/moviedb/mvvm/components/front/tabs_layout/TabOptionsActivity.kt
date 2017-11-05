@@ -12,8 +12,6 @@ import petegabriel.com.yamda.R
  */
 class TabOptionsActivity : AppCompatActivity() {
 
-    private var featuresAdapter: MainOptionsPagerAdapter? = null
-
     private val TAB_ONE = 0
     private val TAB_TWO = 1
     private val TAB_THREE = 2
@@ -33,10 +31,11 @@ class TabOptionsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         //setup the pager
-        featuresAdapter = MainOptionsPagerAdapter(supportFragmentManager)
-        pagerLayoutFrame.adapter = featuresAdapter
+        pagerLayoutFrame.adapter = MainOptionsPagerAdapter(supportFragmentManager)
 
         setupTabLayout()
+
+
     }
 
     private fun setupTabLayout() {

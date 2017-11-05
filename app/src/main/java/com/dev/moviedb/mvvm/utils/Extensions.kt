@@ -1,5 +1,11 @@
 package com.dev.moviedb.mvvm.utils
 
+import android.support.annotation.LayoutRes
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import com.squareup.picasso.Picasso
 import java.util.regex.Pattern
 
 
@@ -20,6 +26,21 @@ object Estatics {
     final val ANONYMOUS_CLASS = Pattern.compile("(\\$\\d+)+$")
 }
 
+/**
+ *
+ * Extension method to help inflate a certain view for a given parent view.
+ *
+ * Note that @LayoutRes denotes that an integer parameter,
+ * field or method return value is expected to be a layout resource reference.
+ */
+fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
+    return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
+}
+
+
+fun ImageView.loadUrl(url: String) {
+    Picasso.with(context).load(url).into(this)
+}
 
 /**
  * This function can be used as

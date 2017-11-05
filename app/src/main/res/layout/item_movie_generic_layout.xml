@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/itemImageFrame"
-        tools:src="@mipmap/ic_launcher"
-        android:layout_width="154dp"
-        android:layout_height="231dp" />
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="80dp"
+        android:layout_height="100dp" />
 
     <TextView
         android:id="@+id/movieTitleTxtView"

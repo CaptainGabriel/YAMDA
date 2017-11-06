@@ -1,6 +1,5 @@
 package com.dev.moviedb.mvvm.components.front.popular_tab
 
-
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
@@ -15,10 +14,6 @@ import com.dev.moviedb.utils.ToastUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import petegabriel.com.yamda.R
-
-
-
-
 
 
 /**
@@ -67,13 +62,10 @@ class PopularInfoFragment : Fragment() {
                         { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         service = TmdbApiProvider()
     }
 
 
-
-
-}// Required empty public constructor
+}

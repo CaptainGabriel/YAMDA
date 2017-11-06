@@ -41,7 +41,7 @@ fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false):
 
 
 fun ImageView.loadUrl(url: String) {
-    Picasso.with(context).load("${ApiConsts.IMG_URL_BASE}${ApiConsts.MEDIUM_IMG_SIZE}$url").into(this)
+    Picasso.with(context).load("${ApiConsts.IMG_URL_BASE}${ApiConsts.BIG_IMG_SIZE}$url").into(this)
 }
 
 /**

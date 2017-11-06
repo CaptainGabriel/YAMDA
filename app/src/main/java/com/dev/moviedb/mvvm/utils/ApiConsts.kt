@@ -9,11 +9,11 @@ object ApiConsts{
 
     const val IMG_URL_BASE = "http://image.tmdb.org/t/p/"
 
-    const val MICRO_IMG_SIZE = "w92"
+    const val MICRO_IMG_SIZE = "w92/"
 
-    const val SMALL_IMG_SIZE = "w154"
+    const val SMALL_IMG_SIZE = "w154/"
 
-    const val MEDIUM_IMG_SIZE = "w185"
+    const val MEDIUM_IMG_SIZE = "w185/"
 
-    const val BIG_IMG_SIZE = "w342"
+    const val BIG_IMG_SIZE = "w342/"
 }

@@ -22,8 +22,10 @@ import java.util.regex.Pattern
 
 object Estatics {
 
-    const final val CALL_STACK_INDEX = 1
-    final val ANONYMOUS_CLASS = Pattern.compile("(\\$\\d+)+$")
+    const val CALL_STACK_INDEX = 1
+
+    val ANONYMOUS_CLASS = Pattern.compile("(\\$\\d+)+$")
+
 }
 
 /**
@@ -39,7 +41,7 @@ fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false):
 
 
 fun ImageView.loadUrl(url: String) {
-    Picasso.with(context).load(url).into(this)
+    Picasso.with(context).load("${ApiConsts.IMG_URL_BASE}${ApiConsts.MEDIUM_IMG_SIZE}$url").into(this)
 }
 
 /**

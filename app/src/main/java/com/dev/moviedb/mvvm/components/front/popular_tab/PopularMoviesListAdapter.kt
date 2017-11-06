@@ -7,6 +7,7 @@ import com.dev.moviedb.model.Movie
 import com.dev.moviedb.model.dto.MovieCollectionDto
 import com.dev.moviedb.mvvm.components.front.popular_tab.PopularMoviesListAdapter.PopularMovieViewHolder
 import com.dev.moviedb.mvvm.utils.inflate
+import com.dev.moviedb.mvvm.utils.loadUrl
 import kotlinx.android.synthetic.main.item_movie_generic_layout.view.*
 import petegabriel.com.yamda.R
 
@@ -45,6 +46,7 @@ class PopularMoviesListAdapter : RecyclerView.Adapter<PopularMovieViewHolder>() 
 
         fun bind(item: Movie?) = with(itemView) {
             movieTitleTxtView.text = item?.primaryFacts?.originalTitle
+            itemImageFrame.loadUrl(item?.movieImages?.posterImagePath!!)
         }
 
 

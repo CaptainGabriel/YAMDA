@@ -64,9 +64,21 @@ fun String.prependCallLocation(): String{
     return ".($className.java:$lineNumber) - $this"
 }
 
+fun String.formatMovieCardName(): String{
+    val maxCharsInMovieName = 17
+    if (this.length <= maxCharsInMovieName) return this
+
+    val subVersion = this.substring(0..maxCharsInMovieName)
+    if (subVersion[maxCharsInMovieName] ==  ' ' || subVersion.length == maxCharsInMovieName){
+        return subVersion
+    }else{
+        return subVersion.removeRange(maxCharsInMovieName-3, maxCharsInMovieName+1).plus("...")
+    }
+}
+
 
 private fun StackTraceElement.extractClassName(): String {
-    var tag = this.getClassName()
+    var tag = this.className
     val m = Estatics.ANONYMOUS_CLASS.matcher(tag)
     if (m.find()) {
         tag = m.replaceAll("")

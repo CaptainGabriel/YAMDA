@@ -17,30 +17,50 @@ import petegabriel.com.yamda.R
 
 
 /**
- * A simple [Fragment] subclass.
+ *
+ *
+ * Yamda 1.0.0.
  */
 class PopularInfoFragment : Fragment() {
 
     private var service: TmdbApiProvider? = null
 
-    private var mAdapter: PopularMoviesListAdapter? = null
+    private var popularMoviesListAdapter: PopularMoviesListAdapter? = null
+    private var topRatedMoviesListAdapter: TopRatedMoviesListAdapter? = null
 
-    var mRView: RecyclerView? = null
+    var popularRecyclerView: RecyclerView? = null
+    var topRatedRecyclerView: RecyclerView? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         var view = inflater!!.inflate(R.layout.fragment_popular_info, container, false)
 
-        mAdapter = PopularMoviesListAdapter()
+        popularMoviesListAdapter = PopularMoviesListAdapter()
+        topRatedMoviesListAdapter = TopRatedMoviesListAdapter()
 
-        mRView = view.findViewById(R.id.popularRecyclerView)
-        mRView?.setHasFixedSize(true)
-        mRView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        mRView?.adapter = mAdapter
-        mRView?.itemAnimator = DefaultItemAnimator()
+        popularRecyclerView = view.findViewById(R.id.popularRecyclerView)
+        topRatedRecyclerView = view.findViewById(R.id.topRatedRecyclerView)
+
+        configPopularRecViewAdapter()
+        configTopRatedRecViewAdapter()
+
 
         return view
+    }
+
+    private fun configPopularRecViewAdapter() {
+        popularRecyclerView?.setHasFixedSize(true)
+        popularRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        popularRecyclerView?.adapter = popularMoviesListAdapter
+        popularRecyclerView?.itemAnimator = DefaultItemAnimator()
+    }
+
+    private fun configTopRatedRecViewAdapter() {
+        topRatedRecyclerView?.setHasFixedSize(true)
+        topRatedRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        topRatedRecyclerView?.adapter = topRatedMoviesListAdapter
+        topRatedRecyclerView?.itemAnimator = DefaultItemAnimator()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -52,12 +72,19 @@ class PopularInfoFragment : Fragment() {
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(
                         { col: MovieCollectionDto ->
+                            (popularRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
+                            (popularRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
+                        },
+                        { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
 
-                            ToastUtils.showShortMessage("OK", context)
-
-                            (mRView?.adapter as PopularMoviesListAdapter).adNewData(col)
-                            (mRView?.adapter as PopularMoviesListAdapter).notifyDataSetChanged()
-
+        service?.getTmdbApiService()
+                ?.findTopRatedmovies()
+                ?.subscribeOn(Schedulers.newThread())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(
+                        { col: MovieCollectionDto ->
+                            (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
+                            (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
                         },
                         { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
     }

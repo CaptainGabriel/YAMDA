@@ -23,6 +23,11 @@ interface TmdbApiService {
     fun findNowPlayingMovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
                              @Query("language") lang: String = "en"): Observable<MovieCollectionDto>
 
+    @GET("/3/movie/top_rated")
+    fun findTopRatedmovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
+                           @Query("language") lang: String = "en"): Observable<MovieCollectionDto>
+
+
     @GET("/3/movie/upcoming")
     fun findUpcomingMovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
                            @Query("language") lang: String = "en",

@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.dev.moviedb.model.Movie
-import com.dev.moviedb.mvvm.components.front.popular_tab.PopularMoviesListAdapter.PopularMovieViewHolder
 import com.dev.moviedb.mvvm.utils.formatMovieCardName
 import com.dev.moviedb.mvvm.utils.inflate
 import com.dev.moviedb.mvvm.utils.loadUrl
@@ -12,27 +11,27 @@ import kotlinx.android.synthetic.main.item_movie_generic_layout.view.*
 import petegabriel.com.yamda.R
 
 /**
- * The adapter to show the list of the most popular movies.
+ * The adapter to show the list of the most top rated movies.
  *
  * Yamda 1.0.0.
  */
-class PopularMoviesListAdapter : AbstractMovieItemAdapter<PopularMovieViewHolder>() {
+class TopRatedMoviesListAdapter: AbstractMovieItemAdapter<TopRatedMoviesListAdapter.TopRatedMovieViewHolder>(){
 
-    override fun onBindViewHolder(holder: PopularMovieViewHolder?, position: Int) {
+
+    override fun onBindViewHolder(holder: TopRatedMovieViewHolder?, position: Int) {
         holder?.bind(movies?.results?.get(position))
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PopularMovieViewHolder =
-            PopularMovieViewHolder(parent?.inflate(R.layout.item_movie_generic_layout)!!)
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): TopRatedMovieViewHolder =
+            TopRatedMovieViewHolder(parent?.inflate(R.layout.item_movie_generic_layout)!!)
 
 
-    class PopularMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class TopRatedMovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        fun bind(item: Movie?) = with(itemView) {
-            var maxCharsInName = 15
+        fun bind(item: Movie?) = with(itemView){
             movieTitleTxtView.text = item?.primaryFacts?.originalTitle?.formatMovieCardName()
             itemImageFrame.loadUrl(item?.movieImages?.posterImagePath!!)
         }
-    }
 
+    }
 }

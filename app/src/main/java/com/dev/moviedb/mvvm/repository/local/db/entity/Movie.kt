@@ -3,6 +3,9 @@ package com.dev.moviedb.mvvm.repository.local.db.entity
 import android.arch.persistence.room.Embedded
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import com.dev.moviedb.mvvm.repository.local.model.NowPlayingModel
+import com.dev.moviedb.mvvm.repository.local.model.PopularModel
+import com.dev.moviedb.mvvm.repository.local.model.TopRatedModel
 
 /**
  *
@@ -50,19 +53,19 @@ data class SpokenLanguages(val name: String)
 
 @Entity(tableName = "now_playing_movie")
 //TODO might be need a converter here
-data class NowPlayingMovie(
-    @Embedded(prefix = "nplay")
-    var movie: Movie)
+data class NowPlayingMovie(@Embedded(prefix = "nplay") var movie: Movie) : NowPlayingModel {
+    override fun getId(): Long = movie.id
+}
 
 @Entity(tableName = "top_rated_movie")
 //TODO might be need a converter here
-data class TopRatedMovie(
-        @Embedded(prefix = "topr")
-        var movie: Movie)
+data class TopRatedMovie(@Embedded(prefix = "topr") var movie: Movie) : TopRatedModel {
+    override fun getId(): Long = movie.id
+}
 
 @Entity(tableName = "popular_movie")
 //TODO might be need a converter here
-data class PopularMovie(
-        @Embedded(prefix = "popular")
-        var movie: Movie)
+data class PopularMovie(@Embedded(prefix = "popular") var movie: Movie): PopularModel{
+    override fun getId(): Long = movie.id
+}
 

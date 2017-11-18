@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.utils
+package com.dev.moviedb.mvvm.repository.remote
 
 /**
  *
@@ -7,7 +7,7 @@ package com.dev.moviedb.mvvm.utils
  */
 object ApiConsts{
 
-    const val IMG_URL_BASE = "http://image.tmdb.org/t/p/"
+    const val IMG_BASE_URL = "http://image.tmdb.org/t/p/"
 
     const val MICRO_IMG_SIZE = "w92/"
 

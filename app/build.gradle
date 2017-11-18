@@ -25,11 +25,11 @@ android {
 
     buildTypes {
         debug {
-
+            buildConfigField ("Boolean", "SHOW_PICASSO_INDICATORS", "true")
         }
 
         release{
-
+            buildConfigField ("Boolean", "SHOW_PICASSO_INDICATORS", "false")
         }
     }
 }

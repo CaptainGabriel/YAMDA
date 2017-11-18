@@ -2,7 +2,7 @@ package com.dev.moviedb.mvvm.repository.local.db.dao
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Query
-import com.dev.moviedb.mvvm.repository.local.db.entity.TopRatedMovie
+import com.dev.moviedb.mvvm.repository.local.model.TopRatedModel
 
 /**
  *
@@ -12,8 +12,8 @@ import com.dev.moviedb.mvvm.repository.local.db.entity.TopRatedMovie
  * All rights reserved.
  */
 @Dao
-abstract class TopRatedDao : IDao<TopRatedMovie>{
+abstract class TopRatedDao : IDao<TopRatedModel>{
 
     @Query("SELECT * FROM top_rated_movie")
-    abstract fun fetchAll(): List<TopRatedMovie>
+    abstract fun fetchAll(): List<TopRatedModel>
 }

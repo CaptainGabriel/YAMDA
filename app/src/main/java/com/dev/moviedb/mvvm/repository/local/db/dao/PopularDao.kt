@@ -2,7 +2,7 @@ package com.dev.moviedb.mvvm.repository.local.db.dao
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Query
-import com.dev.moviedb.mvvm.repository.local.db.entity.PopularMovie
+import com.dev.moviedb.mvvm.repository.local.model.PopularModel
 
 /**
  *
@@ -12,10 +12,10 @@ import com.dev.moviedb.mvvm.repository.local.db.entity.PopularMovie
  * All rights reserved.
  */
 @Dao
-abstract class PopularDao : IDao<PopularMovie>{
+abstract class PopularDao : IDao<PopularModel>{
 
     @Query("SELECT * FROM popular_movie")
-    abstract fun fetchAll(): List<PopularMovie>
+    abstract fun fetchAll(): List<PopularModel>
 
     //TODO add fetch by ID
 

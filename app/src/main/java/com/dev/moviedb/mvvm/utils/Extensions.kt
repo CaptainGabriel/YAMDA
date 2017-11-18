@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.dev.moviedb.mvvm.repository.remote.ApiConsts
 import com.squareup.picasso.Picasso
 import java.util.regex.Pattern
 
@@ -41,7 +42,9 @@ fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false):
 
 
 fun ImageView.loadUrl(url: String) {
-    Picasso.with(context).load("${ApiConsts.IMG_URL_BASE}${ApiConsts.BIG_IMG_SIZE}$url").into(this)
+    Picasso.with(context)
+            .load("${ApiConsts.IMG_BASE_URL}${ApiConsts.BIG_IMG_SIZE}$url")
+            .into(this)
 }
 
 /**

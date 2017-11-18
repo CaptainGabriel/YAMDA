@@ -17,6 +17,7 @@ import com.dev.moviedb.utils.NetworkUtils;
 import com.dev.moviedb.utils.PreferencesUtils;
 import com.dev.moviedb.utils.ToastUtils;
 import com.dev.moviedb.utils.Utils;
+import com.squareup.picasso.Picasso;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
@@ -64,6 +65,10 @@ public class YamdaApplication extends Application{
     public void onCreate() {
         super.onCreate();
         JodaTimeAndroid.init(this);
+
+        Picasso.with(this)
+                .setIndicatorsEnabled(petegabriel.com.yamda.BuildConfig.SHOW_PICASSO_INDICATORS);
+
 
         mCurrentAppLanguage = getResources().getConfiguration().locale;
 

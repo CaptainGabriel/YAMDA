@@ -2,18 +2,19 @@ package com.dev.moviedb.mvvm.repository.local.db.dao
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Query
-import com.dev.moviedb.mvvm.repository.local.db.entity.NowPlayingMovie
+import com.dev.moviedb.mvvm.repository.local.model.NowPlayingModel
 
 /**
  *
  *
- * @author PeteGabriel on 23/10/2017
- * Copyright (c) 2017
- * All rights reserved.
+ * Yamda 1.0.0
  */
 @Dao
-abstract class NowPlayingDao : IDao<NowPlayingMovie>{
+abstract class NowPlayingDao : IDao<NowPlayingModel>{
 
     @Query("SELECT * FROM now_playing_movie")
-    abstract fun fetchAll(): List<NowPlayingMovie>
+    abstract fun fetchAll(): List<NowPlayingModel>
+
+    @Query("SELECT * FROM now_playing_movie WHERE id=:id")
+    abstract fun fetchMovieById(id: Int): NowPlayingModel
 }

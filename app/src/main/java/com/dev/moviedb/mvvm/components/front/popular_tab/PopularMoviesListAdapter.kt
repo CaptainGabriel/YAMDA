@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.dev.moviedb.model.Movie
 import com.dev.moviedb.mvvm.components.front.popular_tab.PopularMoviesListAdapter.PopularMovieViewHolder
-import com.dev.moviedb.mvvm.utils.formatMovieCardName
-import com.dev.moviedb.mvvm.utils.inflate
-import com.dev.moviedb.mvvm.utils.loadUrl
+import com.dev.moviedb.mvvm.extensions.formatMovieCardName
+import com.dev.moviedb.mvvm.extensions.inflate
+import com.dev.moviedb.mvvm.extensions.loadUrl
 import kotlinx.android.synthetic.main.item_movie_generic_layout.view.*
 import petegabriel.com.yamda.R
 

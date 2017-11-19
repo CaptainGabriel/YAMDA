@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.components.front.series_tab
+package com.dev.moviedb.mvvm.fragments
 
 
 import android.os.Bundle
@@ -12,7 +12,7 @@ import petegabriel.com.yamda.R
 /**
  * A simple [Fragment] subclass.
  */
-class SeriesTvInfoFragment : Fragment() {
+class TvSeriesTabFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,

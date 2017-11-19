@@ -1,12 +1,12 @@
-package com.dev.moviedb.mvvm.components.front.tabs_layout
+package com.dev.moviedb.mvvm.adapters
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.dev.moviedb.mvvm.components.front.movies_tab.MoviesInfoFragment
-import com.dev.moviedb.mvvm.components.front.popular_tab.PopularInfoFragment
-import com.dev.moviedb.mvvm.components.front.series_tab.SeriesTvInfoFragment
-import com.dev.moviedb.mvvm.components.front.user_acount_tab.UserAccountInfoFragment
+import com.dev.moviedb.mvvm.fragments.MoviesInfoFragment
+import com.dev.moviedb.mvvm.fragments.MoviesTabFragment
+import com.dev.moviedb.mvvm.fragments.TvSeriesTabFragment
+import com.dev.moviedb.mvvm.fragments.UserAccountInfoFragment
 
 /**
  * The adapter used to resolve the fragments that
@@ -26,9 +26,9 @@ class MainOptionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment =
             when(position){
-                0 -> PopularInfoFragment()
+                0 -> MoviesTabFragment()
                 1 -> MoviesInfoFragment()
-                2 -> SeriesTvInfoFragment()
+                2 -> TvSeriesTabFragment()
                 3 -> UserAccountInfoFragment()
                 else -> MoviesInfoFragment()
             }

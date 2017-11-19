@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.components.front.popular_tab
+package com.dev.moviedb.mvvm.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder

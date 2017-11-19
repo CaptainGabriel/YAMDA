@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.components.front.popular_tab
+package com.dev.moviedb.mvvm.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,7 +8,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.dev.moviedb.model.dto.MovieCollectionDto
+import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
+import com.dev.moviedb.mvvm.adapters.PopularMoviesListAdapter
+import com.dev.moviedb.mvvm.adapters.TopRatedMoviesListAdapter
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider
 import com.dev.moviedb.utils.ToastUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,11 +21,11 @@ import petegabriel.com.yamda.R
 
 
 /**
- *
+ * Tab fragment that shows the different information for movies inside the application.
  *
  * Yamda 1.0.0.
  */
-class PopularInfoFragment : Fragment() {
+class MoviesTabFragment : Fragment() {
 
     private var service: TmdbApiProvider? = null
 
@@ -31,37 +35,27 @@ class PopularInfoFragment : Fragment() {
     var popularRecyclerView: RecyclerView? = null
     var topRatedRecyclerView: RecyclerView? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        service = TmdbApiProvider()
+    }
+
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        var view = inflater!!.inflate(R.layout.fragment_popular_info, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_popular_info, container, false)
 
         popularMoviesListAdapter = PopularMoviesListAdapter()
         topRatedMoviesListAdapter = TopRatedMoviesListAdapter()
 
-        popularRecyclerView = view.findViewById(R.id.popularRecyclerView)
-        topRatedRecyclerView = view.findViewById(R.id.topRatedRecyclerView)
-
-        configPopularRecViewAdapter()
-        configTopRatedRecViewAdapter()
+        configPopularRecViewAdapter(view)
+        configTopRatedRecViewAdapter(view)
 
 
         return view
     }
 
-    private fun configPopularRecViewAdapter() {
-        popularRecyclerView?.setHasFixedSize(true)
-        popularRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        popularRecyclerView?.adapter = popularMoviesListAdapter
-        popularRecyclerView?.itemAnimator = DefaultItemAnimator()
-    }
-
-    private fun configTopRatedRecViewAdapter() {
-        topRatedRecyclerView?.setHasFixedSize(true)
-        topRatedRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        topRatedRecyclerView?.adapter = topRatedMoviesListAdapter
-        topRatedRecyclerView?.itemAnimator = DefaultItemAnimator()
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -89,10 +83,29 @@ class PopularInfoFragment : Fragment() {
                         { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        service = TmdbApiProvider()
+
+
+    private fun configPopularRecViewAdapter(view: View) {
+
+        val tempView: View = view.findViewById(R.id.popularCardView)
+        tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getString(R.string.popular_card_title)
+        popularRecyclerView = tempView.findViewById(R.id.movieListRecyclerView)
+
+        popularRecyclerView?.setHasFixedSize(true)
+        popularRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        popularRecyclerView?.adapter = popularMoviesListAdapter
+        popularRecyclerView?.itemAnimator = DefaultItemAnimator()
     }
 
+    private fun configTopRatedRecViewAdapter(view: View) {
+        val tempView = view.findViewById<View>(R.id.topRatedCardView)
+        tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getString(R.string.top100_card_title)
+        topRatedRecyclerView = tempView.findViewById(R.id.movieListRecyclerView)
+
+        topRatedRecyclerView?.setHasFixedSize(true)
+        topRatedRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        topRatedRecyclerView?.adapter = topRatedMoviesListAdapter
+        topRatedRecyclerView?.itemAnimator = DefaultItemAnimator()
+    }
 
 }

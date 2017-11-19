@@ -20,7 +20,7 @@
 
         <!-- Splash Activity -->
         <activity
-            android:name="com.dev.moviedb.mvvm.components.splash.SplashActivity"
+            android:name="com.dev.moviedb.mvvm.activities.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -131,7 +131,7 @@
             android:exported="true"/>
 
         <activity
-            android:name="com.dev.moviedb.mvvm.components.front.tabs_layout.TabOptionsActivity"
+            android:name="com.dev.moviedb.mvvm.activities.TabOptionsActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

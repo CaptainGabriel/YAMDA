@@ -1,10 +1,9 @@
-package com.dev.moviedb.mvvm.components.front.popular_tab
+package com.dev.moviedb.mvvm.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.dev.moviedb.model.Movie
-import com.dev.moviedb.mvvm.components.front.popular_tab.PopularMoviesListAdapter.PopularMovieViewHolder
 import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.inflate
 import com.dev.moviedb.mvvm.extensions.loadUrl
@@ -16,7 +15,7 @@ import petegabriel.com.yamda.R
  *
  * Yamda 1.0.0.
  */
-class PopularMoviesListAdapter : AbstractMovieItemAdapter<PopularMovieViewHolder>() {
+class PopularMoviesListAdapter : AbstractMovieItemAdapter<PopularMoviesListAdapter.PopularMovieViewHolder>() {
 
     override fun onBindViewHolder(holder: PopularMovieViewHolder?, position: Int) {
         holder?.bind(movies?.results?.get(position))
@@ -32,6 +31,7 @@ class PopularMoviesListAdapter : AbstractMovieItemAdapter<PopularMovieViewHolder
             var maxCharsInName = 15
             movieTitleTxtView.text = item?.primaryFacts?.originalTitle?.formatMovieCardName()
             itemImageFrame.loadUrl(item?.movieImages?.posterImagePath!!)
+            movieRatingValueTextView.text = "%.1f".format(item.popularity.voteAverage)
         }
     }
 

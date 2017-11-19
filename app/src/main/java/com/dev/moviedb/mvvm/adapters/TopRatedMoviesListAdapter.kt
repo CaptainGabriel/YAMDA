@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.components.front.popular_tab
+package com.dev.moviedb.mvvm.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -31,6 +31,7 @@ class TopRatedMoviesListAdapter: AbstractMovieItemAdapter<TopRatedMoviesListAdap
         fun bind(item: Movie?) = with(itemView){
             movieTitleTxtView.text = item?.primaryFacts?.originalTitle?.formatMovieCardName()
             itemImageFrame.loadUrl(item?.movieImages?.posterImagePath!!)
+            movieRatingValueTextView.text = "%.1f".format(item.popularity.voteAverage)
         }
 
     }

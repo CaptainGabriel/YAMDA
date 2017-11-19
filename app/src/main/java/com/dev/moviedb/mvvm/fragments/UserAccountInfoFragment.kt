@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.components.front.user_acount_tab
+package com.dev.moviedb.mvvm.fragments
 
 
 import android.os.Bundle

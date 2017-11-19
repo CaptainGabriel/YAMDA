@@ -1,9 +1,8 @@
-package com.dev.moviedb.mvvm.components.splash
+package com.dev.moviedb.mvvm.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.dev.moviedb.mvvm.components.front.tabs_layout.TabOptionsActivity
 
 /**
  * Presents the splash screen with the app logo.

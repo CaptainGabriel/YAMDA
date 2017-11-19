@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.components.front.movies_tab
+package com.dev.moviedb.mvvm.fragments
 
 
 import android.os.Bundle

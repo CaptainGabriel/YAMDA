@@ -1,7 +1,8 @@
-package com.dev.moviedb.mvvm.components.front.tabs_layout
+package com.dev.moviedb.mvvm.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.dev.moviedb.mvvm.adapters.MainOptionsPagerAdapter
 import kotlinx.android.synthetic.main.activity_tab_options.*
 import kotlinx.android.synthetic.main.toolbar_center_text.*
 import petegabriel.com.yamda.R

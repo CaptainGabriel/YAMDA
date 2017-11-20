@@ -13,10 +13,12 @@ import com.dev.moviedb.model.dto.MovieCollectionDto
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.adapters.PopularMoviesListAdapter
 import com.dev.moviedb.mvvm.adapters.TopRatedMoviesListAdapter
+import com.dev.moviedb.mvvm.extensions.loadUrl
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider
 import com.dev.moviedb.utils.ToastUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_popular_info.*
 import petegabriel.com.yamda.R
 
 
@@ -60,6 +62,18 @@ class MoviesTabFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        /*service?.getTmdbApiService()
+                ?.findLatestMovie()
+                ?.subscribeOn(Schedulers.newThread())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(
+                        { col: MovieDTO ->
+                            spotlight_movie_image?.loadUrl(col.imageBackdropPath)
+                            spotlight_movie_description?.text = col.overview
+                        },
+                        { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
+        */
+
         service?.getTmdbApiService()
                 ?.findMostPopularMovies()
                 ?.subscribeOn(Schedulers.newThread())
@@ -68,6 +82,9 @@ class MoviesTabFragment : Fragment() {
                         { col: MovieCollectionDto ->
                             (popularRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
                             (popularRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
+
+                            spotlight_movie_image?.loadUrl(col.results[0].movieImages.backdropImagePath)
+                            spotlight_movie_description?.text = col.results[0].primaryFacts.overview
                         },
                         { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
 

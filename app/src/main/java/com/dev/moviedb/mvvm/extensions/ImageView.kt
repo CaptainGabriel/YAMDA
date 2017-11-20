@@ -14,7 +14,13 @@ import com.squareup.picasso.Picasso
 
 
 fun ImageView.loadUrl(url: String) {
+    var loadUrl = ""
+    if (url.isEmpty()){
+        loadUrl = "https://screenshotlayer.com/images/assets/placeholder.png"
+    }else{
+        loadUrl = "${ApiConsts.IMG_BASE_URL}${ApiConsts.BIG_IMG_SIZE}$url"
+    }
     Picasso.with(context)
-            .load("${ApiConsts.IMG_BASE_URL}${ApiConsts.BIG_IMG_SIZE}$url")
+            .load(loadUrl)
             .into(this)
 }

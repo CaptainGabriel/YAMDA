@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.fragments
+package com.dev.moviedb.mvvm.movies_tab
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -11,8 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.dev.moviedb.model.dto.MovieCollectionDto
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
-import com.dev.moviedb.mvvm.adapters.PopularMoviesListAdapter
-import com.dev.moviedb.mvvm.adapters.TopRatedMoviesListAdapter
+import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.loadUrl
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider
 import com.dev.moviedb.utils.ToastUtils
@@ -84,7 +83,8 @@ class MoviesTabFragment : Fragment() {
                             (popularRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
 
                             spotlight_movie_image?.loadUrl(col.results[0].movieImages.backdropImagePath)
-                            spotlight_movie_description?.text = col.results[0].primaryFacts.overview
+                            spotlight_movie_description?.text = col.results[0].primaryFacts.overview.formatMovieCardName(100)
+                            spotlight_movie_rating?.text = "%.1f".format(col.results[0].popularity.voteAverage)
                         },
                         { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
 

@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.dev.moviedb.mvvm.fragments.MoviesInfoFragment
-import com.dev.moviedb.mvvm.fragments.MoviesTabFragment
+import com.dev.moviedb.mvvm.movies_tab.MoviesTabFragment
 import com.dev.moviedb.mvvm.fragments.TvSeriesTabFragment
 import com.dev.moviedb.mvvm.fragments.UserAccountInfoFragment
 

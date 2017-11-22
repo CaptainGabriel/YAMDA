@@ -35,8 +35,6 @@ class TabOptionsActivity : AppCompatActivity() {
         pagerLayoutFrame.adapter = MainOptionsPagerAdapter(supportFragmentManager)
 
         setupTabLayout()
-
-
     }
 
     private fun setupTabLayout() {

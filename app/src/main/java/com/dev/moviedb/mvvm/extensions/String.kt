@@ -29,8 +29,7 @@ fun String.prependCallLocation(): String{
 /**
  * Use this method to format movie names when showing them in cardviews or something.
  */
-fun String.formatMovieCardName(): String{
-    val maxCharsInMovieName = 17
+fun String.formatMovieCardName(maxCharsInMovieName : Int = 17): String{
     if (this.length <= maxCharsInMovieName) return this
 
     val subVersion = this.substring(0..maxCharsInMovieName)
@@ -40,6 +39,9 @@ fun String.formatMovieCardName(): String{
         return subVersion.removeRange(maxCharsInMovieName-3, maxCharsInMovieName+1).plus("...")
     }
 }
+
+
+
 
 private fun StackTraceElement.extractClassName(): String {
     var tag = this.className

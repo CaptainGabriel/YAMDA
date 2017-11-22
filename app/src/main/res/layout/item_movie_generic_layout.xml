@@ -20,6 +20,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/itemImageFrame"
         android:autoSizeTextType="uniform"
+        android:paddingStart="8dp"
         android:textColor="@color/donJuan"
         tools:text="The Secret Life of ..." />
 
@@ -27,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:paddingStart="8dp"
         android:layout_below="@id/movieTitleTxtView">
         <TextView
             android:id="@+id/movieRatingLabel"

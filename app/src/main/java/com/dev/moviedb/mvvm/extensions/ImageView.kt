@@ -22,5 +22,6 @@ fun ImageView.loadUrl(url: String) {
     }
     Picasso.with(context)
             .load(loadUrl)
+            .transform(RoundedTransformation(7, 4))
             .into(this)
 }

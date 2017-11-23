@@ -47,18 +47,23 @@
                         android:textAlignment="textEnd"
                         tools:text = "7.3"
                         android:textSize="@dimen/text_size_medium"
+                        android:drawableEnd="@drawable/ic_star_rate"
+                        android:drawableTint="@color/dairyCream"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
                         android:id="@+id/spotlight_movie_description"
                         android:textColor="@color/medium_grey"
                         android:background="@color/aliceBlue"
+                        android:textStyle="italic"
                         android:paddingStart="2dp"
+                        android:paddingEnd="2dp"
                         android:paddingTop="2dp"
                         tools:text = "Overview goes here"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:autoSizeTextType="uniform" />
 
                 </LinearLayout>
 

@@ -28,13 +28,23 @@ import petegabriel.com.yamda.R
  */
 class MoviesTabFragment : Fragment() {
 
+    /**
+     * A reference to the view model class
+     */
     private var viewModel: MoviesTabViewModel? = null
 
-    private var popularMoviesListAdapter: PopularMoviesListAdapter? = null
-    private var topRatedMoviesListAdapter: TopRatedMoviesListAdapter? = null
+    /**
+     * A reference to the RecyclerView widget used to display the most
+     * popular movies.
+     */
+    private var popularRecyclerView: RecyclerView? = null
 
-    var popularRecyclerView: RecyclerView? = null
-    var topRatedRecyclerView: RecyclerView? = null
+    /**
+     * A reference to the RecyclerView widget used to display the most
+     * top rated movies.
+     */
+    private var topRatedRecyclerView: RecyclerView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +57,8 @@ class MoviesTabFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_popular_info, container, false)
 
-        popularMoviesListAdapter = PopularMoviesListAdapter()
-        topRatedMoviesListAdapter = TopRatedMoviesListAdapter()
-
         configPopularRecViewAdapter(view)
         configTopRatedRecViewAdapter(view)
-
 
         return view
     }
@@ -61,41 +67,44 @@ class MoviesTabFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        /*service?.getTmdbApiService()
-                ?.findLatestMovie()
+        viewModel?.findNowPlayingMoviesList()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe(
-                        { col: MovieDTO ->
-                            spotlight_movie_image?.loadUrl(col.imageBackdropPath)
-                            spotlight_movie_description?.text = col.overview
-                        },
-                        { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
+                ?.subscribe({ col ->
+                    //TODO save List for when the user navigates to the NowPlayingMovies
+                    spotlight_movie_image?.loadUrl(col.results[0].movieImages.backdropImagePath)
+                    spotlight_movie_description?.text = col.results[0].primaryFacts.overview.formatMovieCardName(90)
+                    spotlight_movie_rating?.text = "%.1f".format(col.results[0].popularity.voteAverage)
+                    spotlight_movie_name?.text = col.results[0].primaryFacts.title
+                },{
+                    throwable -> handleError(throwable)
+                })
 
-                        */
-
-        viewModel?.getMostPopularMovieList()
+        viewModel?.findMostPopularMovieList()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe(
-                        { col: MovieCollectionDto ->
-                            (popularRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
-                            (popularRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
+                ?.subscribe(addNewDataToPopularMoviesAdapter(), { throwable -> handleError(throwable) })
 
-                            spotlight_movie_image?.loadUrl(col.results[0].movieImages.backdropImagePath)
-                            spotlight_movie_description?.text = col.results[0].primaryFacts.overview.formatMovieCardName(100)
-                            spotlight_movie_rating?.text = "%.1f".format(col.results[0].popularity.voteAverage)
-                            spotlight_movie_name?.text = col.results[0].primaryFacts.title
-                        },
-                        { throwable -> handleError(throwable) })
-
-        viewModel?.TopRatedMoviesList()
+        viewModel?.findTopRatedMoviesList()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(addNewDataToAdapter(), { throwable -> handleError(throwable) })
 
     }
 
+    /**
+     * Send data to the adapter
+     */
+    private fun addNewDataToPopularMoviesAdapter(): (MovieCollectionDto) -> Unit {
+        return { col: MovieCollectionDto ->
+            (popularRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
+            (popularRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
+        }
+    }
+
+    /**
+     * Send data to the adapter
+     */
     private fun addNewDataToAdapter(): (MovieCollectionDto) -> Unit {
         return { col: MovieCollectionDto ->
             (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
@@ -103,12 +112,17 @@ class MoviesTabFragment : Fragment() {
         }
     }
 
+    /**
+     * Handle error after requesting data from ViewModel
+     */
     private fun handleError(throwable: Throwable) {
         //TODO change in future version
         ToastUtils.showShortMessage(throwable.message!!.toString(), context)
     }
 
-
+    /**
+     * Configuration of the recyclerview's adapter
+     */
     private fun configPopularRecViewAdapter(view: View) {
 
         val tempView: View = view.findViewById(R.id.popularCardView)
@@ -117,10 +131,13 @@ class MoviesTabFragment : Fragment() {
 
         popularRecyclerView?.setHasFixedSize(true)
         popularRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        popularRecyclerView?.adapter = popularMoviesListAdapter
+        popularRecyclerView?.adapter = PopularMoviesListAdapter()
         popularRecyclerView?.itemAnimator = DefaultItemAnimator()
     }
 
+    /**
+     * Configuration of the recyclerview's adapter
+     */
     private fun configTopRatedRecViewAdapter(view: View) {
         val tempView = view.findViewById<View>(R.id.topRatedCardView)
         tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getString(R.string.top100_card_title)
@@ -128,7 +145,7 @@ class MoviesTabFragment : Fragment() {
 
         topRatedRecyclerView?.setHasFixedSize(true)
         topRatedRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        topRatedRecyclerView?.adapter = topRatedMoviesListAdapter
+        topRatedRecyclerView?.adapter = TopRatedMoviesListAdapter()
         topRatedRecyclerView?.itemAnimator = DefaultItemAnimator()
     }
 

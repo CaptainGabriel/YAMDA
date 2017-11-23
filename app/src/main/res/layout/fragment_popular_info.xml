@@ -43,8 +43,10 @@
                         android:layout_alignParentTop="true"
                         android:textColor="@color/aliceBlue"
                         tools:textColor="#000"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_size_large"
                         android:layout_marginTop="10dp"
-                        android:layout_marginStart="30dp"
+                        android:layout_marginStart="20dp"
                         tools:text="Movie Name"/>
 
                 </RelativeLayout>
@@ -79,6 +81,7 @@
                         android:paddingStart="2dp"
                         android:paddingEnd="2dp"
                         android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
                         tools:text = "Overview goes here"
                         android:autoSizeTextType="uniform" />
 

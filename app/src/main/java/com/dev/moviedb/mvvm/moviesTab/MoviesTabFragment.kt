@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.movies_tab
+package com.dev.moviedb.mvvm.moviesTab
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -28,7 +28,7 @@ import petegabriel.com.yamda.R
  */
 class MoviesTabFragment : Fragment() {
 
-    private var service: TmdbApiProvider? = null
+    private var viewModel: MoviesTabViewModel? = null
 
     private var popularMoviesListAdapter: PopularMoviesListAdapter? = null
     private var topRatedMoviesListAdapter: TopRatedMoviesListAdapter? = null
@@ -38,7 +38,7 @@ class MoviesTabFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        service = TmdbApiProvider()
+        viewModel =  MoviesTabViewModel(TmdbApiProvider().getTmdbApiService())
     }
 
 
@@ -71,10 +71,10 @@ class MoviesTabFragment : Fragment() {
                             spotlight_movie_description?.text = col.overview
                         },
                         { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
-        */
 
-        service?.getTmdbApiService()
-                ?.findMostPopularMovies()
+                        */
+
+        viewModel?.getMostPopularMovieList()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(
@@ -85,21 +85,28 @@ class MoviesTabFragment : Fragment() {
                             spotlight_movie_image?.loadUrl(col.results[0].movieImages.backdropImagePath)
                             spotlight_movie_description?.text = col.results[0].primaryFacts.overview.formatMovieCardName(100)
                             spotlight_movie_rating?.text = "%.1f".format(col.results[0].popularity.voteAverage)
+                            spotlight_movie_name?.text = col.results[0].primaryFacts.title
                         },
-                        { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
+                        { throwable -> handleError(throwable) })
 
-        service?.getTmdbApiService()
-                ?.findTopRatedmovies()
+        viewModel?.TopRatedMoviesList()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe(
-                        { col: MovieCollectionDto ->
-                            (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
-                            (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
-                        },
-                        { trowable -> ToastUtils.showShortMessage(trowable.message!!.toString(), context)})
+                ?.subscribe(addNewDataToAdapter(), { throwable -> handleError(throwable) })
+
     }
 
+    private fun addNewDataToAdapter(): (MovieCollectionDto) -> Unit {
+        return { col: MovieCollectionDto ->
+            (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
+            (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
+        }
+    }
+
+    private fun handleError(throwable: Throwable) {
+        //TODO change in future version
+        ToastUtils.showShortMessage(throwable.message!!.toString(), context)
+    }
 
 
     private fun configPopularRecViewAdapter(view: View) {

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:background="@color/pattensBlue"
-    tools:context="com.dev.moviedb.mvvm.movies_tab.MoviesTabFragment">
+    tools:context="com.dev.moviedb.mvvm.moviesTab.MoviesTabFragment">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -24,13 +24,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/spotlight_movie_image"
-                    android:layout_width="0dp"
+                <RelativeLayout
                     android:layout_weight="0.7"
-                    android:layout_height="match_parent"
-                    android:background="@color/aliceBlue"
-                    tools:src="@android:drawable/ic_menu_always_landscape_portrait"/>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/spotlight_movie_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/aliceBlue"
+                        tools:src="@android:drawable/ic_menu_always_landscape_portrait"/>
+
+                    <TextView
+                        android:id="@+id/spotlight_movie_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textColor="@color/aliceBlue"
+                        tools:textColor="#000"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="30dp"
+                        tools:text="Movie Name"/>
+
+                </RelativeLayout>
 
                 <LinearLayout
                     android:orientation="vertical"
@@ -48,7 +65,7 @@
                         tools:text = "7.3"
                         android:textSize="@dimen/text_size_medium"
                         android:drawableEnd="@drawable/ic_star_rate"
-                        android:drawableTint="@color/dairyCream"
+                        android:drawableTint="@color/tumbleweed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 

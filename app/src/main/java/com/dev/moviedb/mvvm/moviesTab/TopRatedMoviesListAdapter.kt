@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.movies_tab
+package com.dev.moviedb.mvvm.moviesTab
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

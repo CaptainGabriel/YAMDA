@@ -33,7 +33,9 @@ fun String.formatMovieCardName(maxCharsInMovieName : Int = 17): String{
     if (this.length <= maxCharsInMovieName) return this
 
     val subVersion = this.substring(0..maxCharsInMovieName)
-    if (subVersion[maxCharsInMovieName] ==  ' ' || subVersion.length == maxCharsInMovieName){
+    if (subVersion[maxCharsInMovieName] ==  ' ') {
+        return subVersion.removeSuffix(" ").plus("...")
+    }else if (subVersion.length == maxCharsInMovieName){
         return subVersion
     }else{
         return subVersion.removeRange(maxCharsInMovieName-3, maxCharsInMovieName+1).plus("...")

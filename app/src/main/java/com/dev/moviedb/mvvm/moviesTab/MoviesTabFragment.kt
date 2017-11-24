@@ -72,8 +72,8 @@ class MoviesTabFragment : Fragment() {
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe({ col ->
                     //TODO save List for when the user navigates to the NowPlayingMovies
-                    spotlight_movie_image?.loadUrl(col.results[0].movieImages.backdropImagePath)
-                    spotlight_movie_description?.text = col.results[0].primaryFacts.overview.formatMovieCardName(90)
+                    spotlight_movie_image?.loadUrl(col.results[0].movieImages.backdropImagePath, false)
+                    spotlight_movie_description?.text = col.results[0].primaryFacts.overview.formatMovieCardName(100)
                     spotlight_movie_rating?.text = "%.1f".format(col.results[0].popularity.voteAverage)
                     spotlight_movie_name?.text = col.results[0].primaryFacts.title
                 },{

@@ -13,15 +13,21 @@ import com.squareup.picasso.Picasso
 
 
 
-fun ImageView.loadUrl(url: String) {
+fun ImageView.loadUrl(url: String, transform: Boolean = true) {
     var loadUrl = ""
     if (url.isEmpty()){
         loadUrl = "https://screenshotlayer.com/images/assets/placeholder.png"
     }else{
         loadUrl = "${ApiConsts.IMG_BASE_URL}${ApiConsts.BIG_IMG_SIZE}$url"
     }
-    Picasso.with(context)
-            .load(loadUrl)
-            .transform(RoundedTransformation(7, 4))
-            .into(this)
+    if (transform){
+        Picasso.with(context)
+                .load(loadUrl)
+                .transform(RoundedTransformation(7, 4))
+                .into(this)
+    }else{
+        Picasso.with(context)
+                .load(loadUrl)
+                .into(this)
+    }
 }

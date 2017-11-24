@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +14,8 @@ import com.dev.moviedb.model.dto.MovieCollectionDto
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.loadUrl
+import com.dev.moviedb.mvvm.extensions.prependCallLocation
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider
-import com.dev.moviedb.utils.ToastUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_popular_info.*
@@ -27,6 +28,8 @@ import petegabriel.com.yamda.R
  * Yamda 1.0.0.
  */
 class MoviesTabFragment : Fragment() {
+
+    private val TAG = this.javaClass.canonicalName
 
     /**
      * A reference to the view model class
@@ -115,10 +118,8 @@ class MoviesTabFragment : Fragment() {
     /**
      * Handle error after requesting data from ViewModel
      */
-    private fun handleError(throwable: Throwable) {
-        //TODO change in future version
-        ToastUtils.showShortMessage(throwable.message!!.toString(), context)
-    }
+    private fun handleError(throwable: Throwable) = Log.d(TAG, throwable.message!!.toString().prependCallLocation())
+
 
     /**
      * Configuration of the recyclerview's adapter

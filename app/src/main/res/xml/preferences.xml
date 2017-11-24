@@ -1,40 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <PreferenceCategory
         android:title="@string/network_services_config">
 
-        <ListPreference
-            android:key="@string/type_connection_list_preference"
-            android:title="@string/type_of_connection"
-            android:summary="@string/summary_list_preference"
-            android:entries="@array/entries_list_preference"
-            android:entryValues="@array/entry_values_list_preference"
-            android:dialogTitle="@string/dialog_title_list_preference" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="wifi_switch_preference"
+            android:summary="Use WiFi connection to sync"
+            android:title="WiFi"
+            android:clickable="false"
+            android:visibility="visible" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:clickable="false"
+            android:key="data_switch_preference"
+            android:summary="Use simcard connection to sync"
+            android:title="Simcard" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/update_interval_category">
-
-        <EditTextPreference
-            android:key="@string/update_interval_preference"
-            android:inputType="number"
-            android:title="@string/update_interval"
-            android:summary="@string/summary_data_update_interval_preference"
-            android:dialogTitle="@string/dialog_title_data_update_interval_preference" />
-
+        android:title="Erase Data">
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/erase_obsolete_data_preferences">
-
-        <CheckBoxPreference
-            android:key="@string/obsolete_data_preference"
-            android:title="@string/title_obsolete_data_preference"
-            android:summary="@string/summary_obsolete_data_preference" />
-
+        android:title="About">
     </PreferenceCategory>
-
 
 </PreferenceScreen>

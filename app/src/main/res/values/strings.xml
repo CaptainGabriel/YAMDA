@@ -70,7 +70,7 @@
     <string name="snackmsg_marked_favorite">Marked as Favorite</string>
 
     <!-- User Preferences -->
-    <string name="network_services_config">Network Connections</string>
+    <string name="network_services_config">Network</string>
     <string name="type_of_connection">Type of network</string>
     <string name="summary_list_preference">
         Specify the type of network you want to use when updating data from web.

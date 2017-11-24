@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.dev.moviedb.mvvm.fragments.MoviesInfoFragment
-import com.dev.moviedb.mvvm.moviesTab.MoviesTabFragment
 import com.dev.moviedb.mvvm.fragments.TvSeriesTabFragment
-import com.dev.moviedb.mvvm.fragments.UserAccountInfoFragment
+import com.dev.moviedb.mvvm.moviesTab.MoviesTabFragment
+import com.dev.moviedb.mvvm.userPreferences.UserPreferencesFragment
 
 /**
  * The adapter used to resolve the fragments that
@@ -29,7 +29,7 @@ class MainOptionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
                 0 -> MoviesTabFragment()
                 1 -> MoviesInfoFragment()
                 2 -> TvSeriesTabFragment()
-                3 -> UserAccountInfoFragment()
+                3 -> UserPreferencesFragment()
                 else -> MoviesInfoFragment()
             }
 

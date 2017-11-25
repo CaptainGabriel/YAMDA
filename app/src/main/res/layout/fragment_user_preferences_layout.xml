@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Network"
+            android:textColor="@color/venus"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_large"
+            android:layout_marginStart="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Switch
+            android:id="@+id/wifi_preference_switch"
+            android:drawableStart="@drawable/ic_action_wifi"
+            android:text="Wi-Fi"
+            android:textColor="@color/donJuan"
+            android:checked="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:drawablePadding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <Switch
+            android:id="@+id/simcard_preference_switch"
+            android:drawableStart="@drawable/ic_sim_card"
+            android:text="Simcard"
+            android:drawableTint="@color/tumbleweed"
+            android:drawablePadding="10dp"
+            android:textColor="@color/donJuan"
+            android:checked="false"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

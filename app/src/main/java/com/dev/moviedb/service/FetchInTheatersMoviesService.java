@@ -11,7 +11,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.model.MovieAggregator;
+import com.dev.moviedb.mvvm.model.movies.MovieAggregator;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
 import com.dev.moviedb.storage.repo.messenger.FetchInTheatersMoviesResultsReceiver;

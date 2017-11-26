@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.dev.moviedb.mvvm.fragments.MoviesInfoFragment
 import com.dev.moviedb.mvvm.fragments.TvSeriesTabFragment
 import com.dev.moviedb.mvvm.moviesTab.MoviesTabFragment
+import com.dev.moviedb.mvvm.series_tab.SeriesTabFragment
 import com.dev.moviedb.mvvm.userPreferences.UserPreferencesFragment
 
 /**
@@ -27,7 +28,7 @@ class MainOptionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment =
             when(position){
                 0 -> MoviesTabFragment()
-                1 -> MoviesInfoFragment()
+                1 -> SeriesTabFragment()
                 2 -> TvSeriesTabFragment()
                 3 -> UserPreferencesFragment()
                 else -> MoviesInfoFragment()

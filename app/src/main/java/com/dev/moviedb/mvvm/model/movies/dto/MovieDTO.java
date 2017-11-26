@@ -1,4 +1,4 @@
-package com.dev.moviedb.model.dto;
+package com.dev.moviedb.mvvm.model.movies.dto;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -1,4 +1,4 @@
-package com.dev.moviedb.model.dto;
+package com.dev.moviedb.mvvm.model.movies.dto;
 
 
 import android.os.Parcel;

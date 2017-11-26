@@ -1,7 +1,7 @@
-package com.dev.moviedb.model.dto;
+package com.dev.moviedb.mvvm.model.movies.dto;
 
-import com.dev.moviedb.model.Movie;
-import com.dev.moviedb.model.mapper.DataMapper;
+import com.dev.moviedb.mvvm.model.movies.Movie;
+import com.dev.moviedb.mvvm.model.movies.mapper.DataMapper;
 
 import java.util.ArrayList;
 import java.util.List;

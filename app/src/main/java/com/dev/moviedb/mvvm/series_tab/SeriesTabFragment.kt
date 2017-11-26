@@ -1,4 +1,5 @@
-package com.dev.moviedb.mvvm.moviesTab
+package com.dev.moviedb.mvvm.series_tab
+
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,29 +13,28 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDto
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
-import com.dev.moviedb.mvvm.extensions.formatMovieCardName
-import com.dev.moviedb.mvvm.extensions.loadUrl
 import com.dev.moviedb.mvvm.extensions.prependCallLocation
+import com.dev.moviedb.mvvm.moviesTab.PopularMoviesListAdapter
+import com.dev.moviedb.mvvm.moviesTab.TopRatedMoviesListAdapter
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.include_item_spotlight.*
 import petegabriel.com.yamda.R
 
 
 /**
- * Tab fragment that shows the different information for movies inside the application.
+ * The ViewModel for the tab related with movie information
  *
- * Yamda 1.0.0.
+ * Yamda 1.0.0
  */
-class MoviesTabFragment : Fragment() {
+class SeriesTabFragment : Fragment() {
 
     private val TAG = this.javaClass.canonicalName
 
     /**
      * A reference to the view model class
      */
-    private var viewModel: MoviesTabViewModel? = null
+    private var viewModel: SeriesTabViewModel? = null
 
     /**
      * A reference to the RecyclerView widget used to display the most
@@ -48,17 +48,16 @@ class MoviesTabFragment : Fragment() {
      */
     private var topRatedRecyclerView: RecyclerView? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel =  MoviesTabViewModel(TmdbApiProvider().getTmdbApiService())
+        viewModel =  SeriesTabViewModel(TmdbApiProvider().getTmdbApiService())
     }
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater!!.inflate(R.layout.fragment_movies_tab_layout, container, false)
+        var view = inflater!!.inflate(R.layout.fragment_series_tab_layout, container, false)
 
         configPopularRecViewAdapter(view)
         configTopRatedRecViewAdapter(view)
@@ -67,29 +66,18 @@ class MoviesTabFragment : Fragment() {
     }
 
 
+
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel?.findNowPlayingMoviesList()
-                ?.subscribeOn(Schedulers.newThread())
-                ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe({ col ->
-                    //TODO save List for when the user navigates to the NowPlayingMovies
-                    spotlight_movie_image?.loadUrl(col.results[0].movieImages.backdropImagePath, false)
-                    spotlight_movie_description?.text = col.results[0].primaryFacts.overview.formatMovieCardName(100)
-                    spotlight_movie_rating?.text = "%.1f".format(col.results[0].popularity.voteAverage)
-                    spotlight_movie_name?.text = col.results[0].primaryFacts.title
 
-                },{
-                    throwable -> handleError(throwable)
-                })
-
-        viewModel?.findMostPopularMovieList()
+        viewModel?.findPopularTvSeries()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(addNewDataToPopularMoviesAdapter(), { throwable -> handleError(throwable) })
 
-        viewModel?.findTopRatedMoviesList()
+        viewModel?.findTopRatedTvSeries()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(addNewDataToAdapter(), { throwable -> handleError(throwable) })

@@ -5,7 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 
-import com.dev.moviedb.model.Movie;
+import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.model.async.Completion;
 import com.dev.moviedb.storage.repo.db.DataRecord;
 

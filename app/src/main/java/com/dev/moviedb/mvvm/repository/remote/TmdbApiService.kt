@@ -1,7 +1,7 @@
 package com.dev.moviedb.mvvm.repository.remote
 
-import com.dev.moviedb.model.dto.MovieCollectionDto
-import com.dev.moviedb.model.dto.MovieDTO
+import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDto
+import com.dev.moviedb.mvvm.model.movies.dto.MovieDTO
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.GET
@@ -51,10 +51,10 @@ interface TmdbApiService {
 
     @GET("/3/tv/popular")
     fun findPopularTvSeries(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
-                            @Query("language") lang: String = "en")
+                            @Query("language") lang: String = "en"):  Observable<MovieCollectionDto>
 
 
     @GET("/3/tv/top_rated")
     fun findTopRatedTvSeries(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
-                             @Query("language") lang: String = "en")
+                             @Query("language") lang: String = "en"):  Observable<MovieCollectionDto>
 }

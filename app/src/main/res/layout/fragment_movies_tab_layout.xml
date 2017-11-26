@@ -1,0 +1,34 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:background="@color/pattensBlue"
+    tools:context="com.dev.moviedb.mvvm.moviesTab.MoviesTabFragment">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/pattensBlue">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/include_item_spotlight"/>
+
+
+            <include layout="@layout/include_movie_item_cardview"
+                android:id="@+id/popularCardView"/>
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/include_movie_item_cardview"
+                android:layout_marginTop="10dp"
+                android:id="@+id/topRatedCardView"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -39,6 +39,10 @@ dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
     fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation 'org.mapstruct:mapstruct:1.2.0.Final'
+    implementation 'org.mapstruct:mapstruct-processor:1.2.0.Final'
+
+
     testCompile 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'

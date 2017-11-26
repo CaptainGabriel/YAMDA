@@ -2,7 +2,7 @@ package com.dev.moviedb.mvvm.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder
-import com.dev.moviedb.model.dto.MovieCollectionDto
+import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDto
 
 /**
  * An abstract class that helps reusing behavior between adapters.

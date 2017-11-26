@@ -2,7 +2,7 @@ package rest;
 
 import android.support.annotation.NonNull;
 
-import com.dev.moviedb.model.Movie;
+import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
 

@@ -7,7 +7,7 @@ import android.net.Uri;
 
 import com.dev.moviedb.YamdaApplication;
 import com.dev.moviedb.fragment.options.AbstractSearchOptionsListFragment;
-import com.dev.moviedb.model.Movie;
+import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.storage.repo.Repository;
 import com.dev.moviedb.storage.repo.db.DataProvider;
 import com.dev.moviedb.utils.ServicesUtils;

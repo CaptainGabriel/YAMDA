@@ -1,24 +1,24 @@
-package com.dev.moviedb.model.mapper;
+package com.dev.moviedb.mvvm.model.movies.mapper;
 
 import android.support.annotation.NonNull;
 
-import com.dev.moviedb.model.AdvancedFact;
-import com.dev.moviedb.model.Genres;
-import com.dev.moviedb.model.Movie;
-import com.dev.moviedb.model.MovieAggregator;
-import com.dev.moviedb.model.MovieImages;
-import com.dev.moviedb.model.MovieTrailer;
-import com.dev.moviedb.model.Popularity;
-import com.dev.moviedb.model.PrimaryFact;
-import com.dev.moviedb.model.dto.MovieCollectionDto;
-import com.dev.moviedb.model.dto.MovieDTO;
+import com.dev.moviedb.mvvm.model.movies.AdvancedFact;
+import com.dev.moviedb.mvvm.model.movies.Genres;
+import com.dev.moviedb.mvvm.model.movies.Movie;
+import com.dev.moviedb.mvvm.model.movies.MovieAggregator;
+import com.dev.moviedb.mvvm.model.movies.MovieImages;
+import com.dev.moviedb.mvvm.model.movies.MovieTrailer;
+import com.dev.moviedb.mvvm.model.movies.Popularity;
+import com.dev.moviedb.mvvm.model.movies.PrimaryFact;
+import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDto;
+import com.dev.moviedb.mvvm.model.movies.dto.MovieDTO;
 
 /**
- * Class whose instances are used to map between instances of simple classes and instances of
- * DTO classes present inside the package {@link com.dev.moviedb.model.dto}.
  *
- * @author Paulo Pereira
+ *
+ * Yamda 1.0.0
  */
+
 public class DataMapper {
 
     /**

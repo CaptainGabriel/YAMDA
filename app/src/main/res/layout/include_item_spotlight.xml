@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/aliceBlue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:minHeight="154dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7">
+
+            <ImageView
+                android:id="@+id/spotlight_movie_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/aliceBlue"
+                tools:src="@android:drawable/ic_menu_always_landscape_portrait" />
+
+            <TextView
+                android:id="@+id/spotlight_movie_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/aliceBlue"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold"
+                tools:text="Movie Name"
+                tools:textColor="#000" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/spotlight_movie_rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/aliceBlue"
+                android:drawableEnd="@drawable/ic_star_rate"
+                android:drawableTint="@color/tumbleweed"
+                android:paddingEnd="15dp"
+                android:paddingTop="10dp"
+                android:textAlignment="textEnd"
+                android:textColor="@color/tumbleweed"
+                android:textSize="@dimen/text_size_medium"
+                tools:text="7.3" />
+
+            <TextView
+                android:id="@+id/spotlight_movie_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeTextType="uniform"
+                android:background="@color/aliceBlue"
+                android:paddingBottom="1dp"
+                android:paddingEnd="2dp"
+                android:paddingStart="2dp"
+                android:paddingTop="3dp"
+                android:textColor="@color/medium_grey"
+                android:textStyle="italic"
+                tools:text="Overview goes here" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

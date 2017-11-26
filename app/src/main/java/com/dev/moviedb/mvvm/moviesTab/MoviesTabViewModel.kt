@@ -1,6 +1,6 @@
 package com.dev.moviedb.mvvm.moviesTab
 
-import com.dev.moviedb.model.dto.MovieCollectionDto
+import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDto
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiService
 import io.reactivex.Observable
 

@@ -3,7 +3,7 @@ package com.dev.moviedb.mvvm.moviesTab
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.dev.moviedb.model.Movie
+import com.dev.moviedb.mvvm.model.movies.Movie
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.inflate
@@ -29,7 +29,6 @@ class PopularMoviesListAdapter : AbstractMovieItemAdapter<PopularMoviesListAdapt
     class PopularMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Movie?) = with(itemView) {
-            var maxCharsInName = 15
             movieTitleTxtView.text = item?.primaryFacts?.originalTitle?.formatMovieCardName()
             itemImageFrame.loadUrl(item?.movieImages?.posterImagePath!!)
             movieRatingValueTextView.text = "%.1f".format(item.popularity.voteAverage)

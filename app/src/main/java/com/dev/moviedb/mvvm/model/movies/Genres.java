@@ -1,9 +1,9 @@
-package com.dev.moviedb.model;
+package com.dev.moviedb.mvvm.model.movies;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.dev.moviedb.model.dto.GenreDto;
+import com.dev.moviedb.mvvm.model.movies.dto.GenreDto;
 
 import java.util.List;
 

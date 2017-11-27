@@ -8,7 +8,7 @@ The "visual part" of the app was not intended to be as good but this is somethin
 
 # Features roadmap
 
-- [ ] Discover Popular, Now Playing and Top Rated movies.
+- [x] Discover Popular, Now Playing and Top Rated movies.
 - [ ] Get detailed information about Movies, Cast and Crew.
 - [ ] Find similar movies and movies related to a certain actor.
 - [ ] Watch movie trailers inline.

@@ -40,7 +40,7 @@ dependencies {
     fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'org.mapstruct:mapstruct:1.2.0.Final'
-    implementation 'org.mapstruct:mapstruct-processor:1.2.0.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.2.0.Final'
 
 
     testCompile 'junit:junit:4.12'

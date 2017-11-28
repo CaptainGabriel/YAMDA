@@ -9,7 +9,7 @@ import com.dev.moviedb.mvvm.model.movies.dto.MovieDTO
  *
  * Yamda 1.0.0.
  */
-abstract class MovieMapperDecorator(val delegate : MovieMapper) : MovieMapper{
+abstract class MovieMapperDecorator(private val delegate : MovieMapper) : MovieMapper{
 
 
     override fun toMovie(movieDto : MovieDTO): Movie {

@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.series_tab
+package com.dev.moviedb.mvvm.seriesTab
 
 import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDto
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiService

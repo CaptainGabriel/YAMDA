@@ -13,6 +13,7 @@ import java.util.List;
  *
  * @version 0.0.1
  */
+@Deprecated
 public class MovieCollectionDto {
 
     private int page;

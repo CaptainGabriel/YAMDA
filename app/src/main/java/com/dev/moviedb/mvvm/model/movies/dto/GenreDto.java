@@ -4,7 +4,7 @@ package com.dev.moviedb.mvvm.model.movies.dto;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-
+@Deprecated
 public class GenreDto implements Parcelable {
     private Integer id;
     private String name;

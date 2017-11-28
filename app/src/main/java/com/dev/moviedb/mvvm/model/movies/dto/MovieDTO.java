@@ -1,10 +1,10 @@
 package com.dev.moviedb.mvvm.model.movies.dto;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ import java.util.List;
  *
  * @version 0.0.1
  */
+@Deprecated
 public class MovieDTO implements Parcelable {
 
     /**

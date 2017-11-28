@@ -12,6 +12,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @version 1.0.0
  */
+@Deprecated
 public class YoutubeDto implements Parcelable {
 
     @SerializedName("name")

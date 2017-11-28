@@ -13,6 +13,7 @@ import petegabriel.com.yamda.R;
 /**
  * This class represents data that describes a certain movie in a more detailed way.
  */
+@Deprecated
 public class AdvancedFact implements Parcelable {
 
     private String mImdbID;
@@ -25,8 +26,8 @@ public class AdvancedFact implements Parcelable {
     private DateTime currentDate;
     private String releaseDate;
 
-    public AdvancedFact(String mImdbID, int mRuntime, String mTagLine, String releaseDate, String mHomepage,
-                        Genres mGenres) {
+    public AdvancedFact(String mImdbID, int mRuntime, String mTagLine, String releaseDate,
+                        String mHomepage, Genres mGenres) {
         this.mImdbID = mImdbID;
         this.mRuntime = mRuntime;
         this.mTagLine = mTagLine;

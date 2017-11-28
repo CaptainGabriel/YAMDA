@@ -11,6 +11,7 @@ import java.util.List;
  *
  * @version 1.0.0
  */
+@Deprecated
 public class TrailersDto implements Parcelable {
 
     private List<YoutubeDto> youtube = new ArrayList<YoutubeDto>();

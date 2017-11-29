@@ -8,7 +8,6 @@ import android.util.Log;
 import com.dev.moviedb.YamdaApplication;
 import com.dev.moviedb.fragment.options.OnItemSelectedListener;
 import com.dev.moviedb.fragment.options.SearchQueryOptionFragment;
-import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
 import com.dev.moviedb.utils.ToastUtils;

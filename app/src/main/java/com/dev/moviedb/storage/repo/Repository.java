@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
 import com.dev.moviedb.service.FetchInTheatersMoviesService;

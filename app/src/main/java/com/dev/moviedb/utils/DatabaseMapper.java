@@ -1,6 +1,5 @@
 package com.dev.moviedb.utils;
 
-import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.storage.repo.db.DataRecord;
 
 /**

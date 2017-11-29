@@ -11,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.mvvm.model.movies.MovieAggregator;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
 import com.dev.moviedb.storage.repo.messenger.FetchInTheatersMoviesResultsReceiver;
@@ -81,7 +80,7 @@ public class FetchInTheatersMoviesService extends Service {
                 try {
                     Intent broadcast = new Intent(FetchInTheatersMoviesResultsReceiver.IN_THEATERS_M_DATA_ACTION);
                     broadcast.putParcelableArrayListExtra(FetchInTheatersMoviesResultsReceiver.IN_THEATERS_LIST_DATA_KEY,
-                            (ArrayList<? extends Parcelable>) result.getResult().getmResults());
+                            (ArrayList<? extends Parcelable>) result.getResult().getResults());
                     sendBroadcast(broadcast);
 
                     Log.d(TAG, "Broadcast with result sent !");

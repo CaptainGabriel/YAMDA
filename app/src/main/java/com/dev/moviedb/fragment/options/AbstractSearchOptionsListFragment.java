@@ -10,7 +10,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.dev.moviedb.fragment.LifecycleLogListFragment;
-import com.dev.moviedb.mvvm.model.movies.Identifiable;
+import com.dev.moviedb.mvvm.model.movies.content.Identifiable;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
 import com.dev.moviedb.utils.ToastUtils;

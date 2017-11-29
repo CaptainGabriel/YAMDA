@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.service.UpdateItemDetailsService;
 
 import java.util.Random;

@@ -1,11 +1,8 @@
 package com.dev.moviedb.mvvm.model.movies.mapper
 
-import com.dev.moviedb.mvvm.model.movies.Movie
-import com.dev.moviedb.mvvm.model.movies.MovieAggregator
-import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDto
+import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDTO
 import com.dev.moviedb.mvvm.model.movies.dto.MovieDTO
 import org.mapstruct.*
-import org.mapstruct.factory.Mappers
 
 /**
  *
@@ -19,10 +16,6 @@ import org.mapstruct.factory.Mappers
 @DecoratedWith(MovieMapperDecorator::class)
 interface MovieMapper{
 
-    val INSTANCE: MovieMapper
-        get() = Mappers.getMapper(MovieMapper::class.java)
-
-
     @Mappings(
             Mapping(source = "majorVersion", target = "major"),
             Mapping(source = "minorVersion", target = "minor"),
@@ -30,11 +23,11 @@ interface MovieMapper{
             Mapping(source = "normalVersion", target = "normal"),
             Mapping(source = "preReleaseVersion", target = "preRelease")
     )
-    fun toMovieCollectionDto(movieAggregator: MovieAggregator): MovieCollectionDto
+    fun toMovieCollectionDto(movieAggregator: MovieAggregator): MovieCollectionDTO
 
 
     @InheritInverseConfiguration
-    fun toMovieAggregator(collection : MovieCollectionDto): MovieAggregator
+    fun toMovieAggregator(collection : MovieCollectionDTO): MovieAggregator
 
 
     @Mappings(

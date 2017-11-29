@@ -2,7 +2,6 @@ package rest;
 
 import android.support.annotation.NonNull;
 
-import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
 
@@ -68,7 +67,7 @@ public class MovieDbFetcherTest {
             public void onResponse(Response<MovieAggregator> response, Retrofit retrofit) {
                 Assert.assertNotNull(response.body());
                 helperList.clear();
-                for (Movie m : response.body().getmResults())
+                for (Movie m : response.body().getResults())
                     helperList.add(m);
 
                 Assert.assertFalse(helperList.isEmpty());

@@ -1,6 +1,6 @@
 package com.dev.moviedb.mvvm.seriesTab
 
-import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDto
+import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDTO
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiService
 import io.reactivex.Observable
 
@@ -13,7 +13,7 @@ class SeriesTabViewModel constructor(dataService: TmdbApiService){
     private val service = dataService
 
 
-    fun findPopularTvSeries(): Observable<MovieCollectionDto> = service.findPopularTvSeries()
+    fun findPopularTvSeries(): Observable<MovieCollectionDTO> = service.findPopularTvSeries()
 
     fun findTopRatedTvSeries() = service.findTopRatedTvSeries()
 

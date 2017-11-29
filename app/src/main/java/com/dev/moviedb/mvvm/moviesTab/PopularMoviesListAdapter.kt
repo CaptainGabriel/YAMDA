@@ -3,9 +3,7 @@ package com.dev.moviedb.mvvm.moviesTab
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.dev.moviedb.mvvm.model.movies.Movie
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
-import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.inflate
 import com.dev.moviedb.mvvm.extensions.loadUrl
 import kotlinx.android.synthetic.main.item_movie_generic_layout.view.*

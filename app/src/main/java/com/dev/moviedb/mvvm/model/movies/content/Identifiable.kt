@@ -1,16 +1,16 @@
-package com.dev.moviedb.mvvm.model.movies;
+package com.dev.moviedb.mvvm.model.movies.content;
 
 /**
  * An {@link Identifiable} type must be able to give an
  * id that identifies itself;
  *
- * @version 1.0.0
+ * Yamda 1.0.0
  */
-public interface Identifiable {
+interface Identifiable {
 
     /**
      * Return an id that uniquely identifies the instance.
      * @return
      */
-    long resolveID();
+    fun resolveID(): Long
 }

@@ -11,8 +11,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.mvvm.model.movies.Movie;
-import com.dev.moviedb.mvvm.model.movies.MovieAggregator;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
 import com.dev.moviedb.storage.repo.messenger.FetchUpcomingMoviesResultsReceiver;
@@ -102,7 +100,7 @@ public class FetchUpcomingMoviesService extends Service {
             @Override
             public void onResult(@NonNull CallResult<MovieAggregator> result) {
                 try {
-                    List<Movie> list = result.getResult().getmResults();
+                    List<Movie> list = result.getResult().getResults();
                     Intent broadcast = new Intent(FetchUpcomingMoviesResultsReceiver.UPCOMING_M_DATA_ACTION);
                     broadcast.putParcelableArrayListExtra(FetchUpcomingMoviesResultsReceiver.UPCOMING_LIST_DATA_KEY,
                             (ArrayList<? extends Parcelable>) list);

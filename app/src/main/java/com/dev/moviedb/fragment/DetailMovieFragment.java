@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.utils.DtoUtils;
 
 import petegabriel.com.yamda.R;

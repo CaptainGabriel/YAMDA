@@ -4,8 +4,6 @@ import android.app.Application;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.dev.moviedb.mvvm.model.movies.AdvancedFact;
-import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.storage.repo.db.DataProvider;
 import com.dev.moviedb.storage.repo.db.DataRecord;
 import com.dev.moviedb.storage.repo.db.DataUnit;

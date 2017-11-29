@@ -1,7 +1,5 @@
 package com.dev.moviedb.utils;
 
-import com.dev.moviedb.mvvm.model.movies.Movie;
-
 import java.util.Comparator;
 
 /**

@@ -3,8 +3,6 @@ package com.dev.moviedb.mvvm.model.movies;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.dev.moviedb.mvvm.model.movies.dto.GenreDto;
-
 import java.util.List;
 
 /**

@@ -10,11 +10,8 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.mvvm.model.movies.Movie;
-import com.dev.moviedb.mvvm.model.movies.MovieAggregator;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
-import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDto;
 import com.dev.moviedb.views.adapters.QueryListAdapter;
 
 import java.util.ArrayList;
@@ -108,7 +105,7 @@ public class SearchQueryOptionFragment extends AbstractSearchOptionsListFragment
             @Override
             public void onResult(@NonNull CallResult<MovieAggregator> result) {
                 try {
-                    List<Movie> aggregator = result.getResult().getmResults();
+                    List<Movie> aggregator = result.getResult().getResults();
                     updateAdapterFromLocalStorage(aggregator);
                 } catch (Exception e) {
                     Log.d(TAG, "PopulateListCallback Method: " + e.getMessage());

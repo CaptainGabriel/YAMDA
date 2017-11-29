@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.mvvm.model.movies.Movie;
 import com.dev.moviedb.storage.repo.IRepository;
 import com.dev.moviedb.utils.Utils;
 

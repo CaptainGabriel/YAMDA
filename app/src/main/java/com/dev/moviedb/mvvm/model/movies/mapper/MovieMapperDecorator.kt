@@ -1,7 +1,5 @@
 package com.dev.moviedb.mvvm.model.movies.mapper
 
-import com.dev.moviedb.mvvm.model.movies.Movie
-import com.dev.moviedb.mvvm.model.movies.MovieTrailer
 import com.dev.moviedb.mvvm.model.movies.dto.MovieDTO
 
 /**
@@ -18,16 +16,15 @@ abstract class MovieMapperDecorator(private val delegate : MovieMapper) : MovieM
 
         //TODO add custom logic here
 
-        //TODO Read about _with_ operator
-        with(movieDto.trailers){
-            if (this.youtube.size > 0){
+        movieDto.trailers?.run{
+            if (this.youtube.isNotEmpty()){
                 val trailer = MovieTrailer()
                 trailer.addTrailer(this.youtube[0].source)
                 mov.setMovieTrailers(trailer)
             }
         }
 
-        mov.advancedFacts.
+        //mov.advancedFacts.
 
         return mov
     }

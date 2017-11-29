@@ -9,8 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.dev.moviedb.YamdaApplication;
-import com.dev.moviedb.mvvm.model.movies.Movie;
-import com.dev.moviedb.mvvm.model.movies.MovieAggregator;
 import com.dev.moviedb.model.async.CallResult;
 import com.dev.moviedb.model.async.Completion;
 import com.dev.moviedb.storage.repo.messenger.FetchPopularMoviesResultsReceiver;
@@ -70,7 +68,7 @@ public class FetchPopularMoviesService extends Service {
             @Override
             public void onResult(@NonNull CallResult<MovieAggregator> result) {
                 try {
-                    List<Movie> popularList = result.getResult().getmResults();
+                    List<Movie> popularList = result.getResult().getResults();
 
                     Intent broadcast = new Intent(FetchPopularMoviesResultsReceiver.MOST_POPULAR_M_DATA_ACTION);
                     broadcast.putParcelableArrayListExtra(FetchPopularMoviesResultsReceiver.MOST_POPULAR_LIST_DATA_KEY,

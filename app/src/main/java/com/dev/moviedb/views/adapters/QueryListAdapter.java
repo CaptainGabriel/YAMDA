@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dev.moviedb.mvvm.model.movies.Movie;
-
 import java.util.List;
 
 import petegabriel.com.yamda.R;

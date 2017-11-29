@@ -1,6 +1,7 @@
 package com.dev.moviedb.mvvm.moviesTab
 
-import com.dev.moviedb.mvvm.model.movies.mapper.MovieMapper
+import com.dev.moviedb.mvvm.modelstate.movies.content.MovieCollection
+import com.dev.moviedb.mvvm.modelstate.movies.mapper.MovieMapper
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiService
 import io.reactivex.Observable
 import org.mapstruct.factory.Mappers
@@ -21,17 +22,17 @@ class MoviesTabViewModel constructor(dataService: TmdbApiService){
     /**
      * Ask for the most popular movies
      */
-    fun findMostPopularMovieList(): Observable<MovieAggregator> = service.findMostPopularMovies().map { t -> converter.toMovieAggregator(t) }
+    fun findMostPopularMovieList(): Observable<MovieCollection> = service.findMostPopularMovies().map { t -> converter.toMovieCollection(t) }
 
     /**
      * Ask for the most top rated movies
      */
-    fun findTopRatedMoviesList(): Observable<MovieAggregator> = service.findTopRatedmovies().map { t -> converter.toMovieAggregator(t) }
+    fun findTopRatedMoviesList(): Observable<MovieCollection> = service.findTopRatedmovies().map { t -> converter.toMovieCollection(t) }
 
     /**
      * Ask for the list of now playing movies
      */
-    fun findNowPlayingMoviesList(): Observable<MovieAggregator> = service.findNowPlayingMovies().map { t -> converter.toMovieAggregator(t) }
+    fun findNowPlayingMoviesList(): Observable<MovieCollection> = service.findNowPlayingMovies().map { t -> converter.toMovieCollection(t) }
 
 
 }

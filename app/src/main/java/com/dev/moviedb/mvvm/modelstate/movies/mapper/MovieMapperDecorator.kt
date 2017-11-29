@@ -1,6 +1,7 @@
-package com.dev.moviedb.mvvm.model.movies.mapper
+package com.dev.moviedb.mvvm.modelstate.movies.mapper
 
-import com.dev.moviedb.mvvm.model.movies.dto.MovieDTO
+import com.dev.moviedb.mvvm.modelstate.movies.content.Movie
+import com.dev.moviedb.mvvm.modelstate.movies.dto.MovieDTO
 
 /**
  * Decorator class that implements advanced aspects of the mapping
@@ -18,9 +19,7 @@ abstract class MovieMapperDecorator(private val delegate : MovieMapper) : MovieM
 
         movieDto.trailers?.run{
             if (this.youtube.isNotEmpty()){
-                val trailer = MovieTrailer()
-                trailer.addTrailer(this.youtube[0].source)
-                mov.setMovieTrailers(trailer)
+                mov.movieTrailer.addTrailer(this.youtube[0].source)
             }
         }
 

@@ -1,8 +1,7 @@
-package com.dev.moviedb.mvvm.model.movies.content
+package com.dev.moviedb.mvvm.modelstate.movies.content
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.dev.moviedb.mvvm.model.movies.Genres
 
 /**
  * Represents data that describes a certain movie in a more detailed way.
@@ -14,7 +13,7 @@ data class AdvancedData(
         var runtime: Int,
         var tagLine: String,
         var homepage: String,
-        var genres: Genres,
+        var genres: Genre,
         var releaseDate: String
 ): Parcelable{
     constructor(parcel: Parcel) : this(
@@ -22,7 +21,7 @@ data class AdvancedData(
             parcel.readInt(),
             parcel.readString(),
             parcel.readString(),
-            parcel.readParcelable(Genres::class.java.classLoader),
+            parcel.readParcelable(Genre::class.java.classLoader),
             parcel.readString())
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

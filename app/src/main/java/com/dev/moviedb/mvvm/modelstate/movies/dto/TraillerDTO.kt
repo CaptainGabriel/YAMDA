@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.model.movies.dto
+package com.dev.moviedb.mvvm.modelstate.movies.dto
 
 import android.os.Parcel
 import android.os.Parcelable

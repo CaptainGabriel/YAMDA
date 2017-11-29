@@ -3,7 +3,7 @@ package com.dev.moviedb.storage.repo.db;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.dev.moviedb.mvvm.model.movies.content.Identifiable;
+import com.dev.moviedb.mvvm.modelstate.movies.content.Identifiable;
 
 import org.joda.time.DateTime;
 

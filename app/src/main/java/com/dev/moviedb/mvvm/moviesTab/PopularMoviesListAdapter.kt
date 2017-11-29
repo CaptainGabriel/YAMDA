@@ -4,8 +4,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
+import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.inflate
 import com.dev.moviedb.mvvm.extensions.loadUrl
+import com.dev.moviedb.mvvm.modelstate.movies.content.Movie
 import kotlinx.android.synthetic.main.item_movie_generic_layout.view.*
 import petegabriel.com.yamda.R
 
@@ -27,7 +29,7 @@ class PopularMoviesListAdapter : AbstractMovieItemAdapter<PopularMoviesListAdapt
     class PopularMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Movie?) = with(itemView) {
-            movieTitleTxtView.text = item?.primaryFacts?.originalTitle?.formatMovieCardName()
+            movieTitleTxtView.text = item?.primaryFact?.originalTitle?.formatMovieCardName()
             itemImageFrame.loadUrl(item?.movieImages?.posterImagePath!!)
             movieRatingValueTextView.text = "%.1f".format(item.popularity.voteAverage)
         }

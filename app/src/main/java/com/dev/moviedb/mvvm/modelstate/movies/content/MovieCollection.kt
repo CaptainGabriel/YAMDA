@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.model.movies.content
+package com.dev.moviedb.mvvm.modelstate.movies.content
 
 /**
  * POJO that represents the concept of a type of response from the API in the client side.
@@ -7,5 +7,5 @@ package com.dev.moviedb.mvvm.model.movies.content
  *
  * Yamda 1.0.0.
  */
-data class MovieAggregator (var page: Int, var results: List<Movie>, var totalPages: Int, var totalResults: Int)
+data class MovieCollection (var page: Int, var results: List<Movie>, var totalPages: Int, var totalResults: Int)
 

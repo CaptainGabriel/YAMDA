@@ -1,7 +1,9 @@
-package com.dev.moviedb.mvvm.model.movies.mapper
+package com.dev.moviedb.mvvm.modelstate.movies.mapper
 
-import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDTO
-import com.dev.moviedb.mvvm.model.movies.dto.MovieDTO
+import com.dev.moviedb.mvvm.modelstate.movies.content.Movie
+import com.dev.moviedb.mvvm.modelstate.movies.content.MovieCollection
+import com.dev.moviedb.mvvm.modelstate.movies.dto.MovieCollectionDTO
+import com.dev.moviedb.mvvm.modelstate.movies.dto.MovieDTO
 import org.mapstruct.*
 
 /**
@@ -23,11 +25,11 @@ interface MovieMapper{
             Mapping(source = "normalVersion", target = "normal"),
             Mapping(source = "preReleaseVersion", target = "preRelease")
     )
-    fun toMovieCollectionDto(movieAggregator: MovieAggregator): MovieCollectionDTO
+    fun toMovieCollectionDto(movieAggregator: MovieCollection): MovieCollectionDTO
 
 
     @InheritInverseConfiguration
-    fun toMovieAggregator(collection : MovieCollectionDTO): MovieAggregator
+    fun toMovieCollection(collection : MovieCollectionDTO): MovieCollection
 
 
     @Mappings(

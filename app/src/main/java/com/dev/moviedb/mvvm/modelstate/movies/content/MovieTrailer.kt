@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.model.movies.content
+package com.dev.moviedb.mvvm.modelstate.movies.content
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -8,7 +8,7 @@ import android.os.Parcelable
  *
  * Yamda 1.0.0.
  */
-class MovieTrailler():Parcelable {
+class MovieTrailer():Parcelable {
 
     private val YOUTUBE_HOST = "https://www.youtube.com/watch?v=%s&amp;feature=youtube_gdata";
 
@@ -32,12 +32,12 @@ class MovieTrailler():Parcelable {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<MovieTrailler> {
-        override fun createFromParcel(parcel: Parcel): MovieTrailler {
-            return MovieTrailler(parcel)
+    companion object CREATOR : Parcelable.Creator<MovieTrailer> {
+        override fun createFromParcel(parcel: Parcel): MovieTrailer {
+            return MovieTrailer(parcel)
         }
 
-        override fun newArray(size: Int): Array<MovieTrailler?> {
+        override fun newArray(size: Int): Array<MovieTrailer?> {
             return arrayOfNulls(size)
         }
     }

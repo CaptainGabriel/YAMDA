@@ -1,8 +1,10 @@
 package com.dev.moviedb.mvvm.seriesTab
 
-import com.dev.moviedb.mvvm.model.movies.dto.MovieCollectionDTO
+import com.dev.moviedb.mvvm.modelstate.movies.content.MovieCollection
+import com.dev.moviedb.mvvm.modelstate.movies.mapper.MovieMapper
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiService
 import io.reactivex.Observable
+import org.mapstruct.factory.Mappers
 
 /**
  *
@@ -12,9 +14,10 @@ class SeriesTabViewModel constructor(dataService: TmdbApiService){
 
     private val service = dataService
 
+    private val converse = Mappers.getMapper(MovieMapper::class.java)
 
-    fun findPopularTvSeries(): Observable<MovieCollectionDTO> = service.findPopularTvSeries()
+    fun findPopularTvSeries(): Observable<MovieCollection> = service.findPopularTvSeries().map { t ->  converse.toMovieCollection(t)}
 
-    fun findTopRatedTvSeries() = service.findTopRatedTvSeries()
+    fun findTopRatedTvSeries(): Observable<MovieCollection> = service.findTopRatedTvSeries().map { t ->  converse.toMovieCollection(t)}
 
 }

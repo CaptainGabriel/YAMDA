@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.model.movies.content;
+package com.dev.moviedb.mvvm.modelstate.movies.content;
 
 /**
  * An {@link Identifiable} type must be able to give an

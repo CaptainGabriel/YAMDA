@@ -1,4 +1,4 @@
-package com.dev.moviedb.mvvm.model.movies.content
+package com.dev.moviedb.mvvm.modelstate.movies.content
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -7,14 +7,14 @@ import android.os.Parcelable
  * Represents the concept in the client side of the movie concept held by the Api.
  * Yamda 1.0.0.
  */
-data class Movie(var primaryFact: PrimaryFact,
-                 var movieImages: MovieImages,
+data class Movie(var primaryFact: PrimaryData,
+                 var movieImages: MovieImage,
                  var popularity: Popularity,
                  var advancedData: AdvancedData,
                  var movieTrailer: MovieTrailer): Parcelable {
     constructor(parcel: Parcel) : this(
-            parcel.readParcelable(PrimaryFact::class.java.classLoader),
-            parcel.readParcelable(MovieImages::class.java.classLoader),
+            parcel.readParcelable(PrimaryData::class.java.classLoader),
+            parcel.readParcelable(MovieImage::class.java.classLoader),
             parcel.readParcelable(Popularity::class.java.classLoader),
             parcel.readParcelable(AdvancedData::class.java.classLoader),
             parcel.readParcelable(MovieTrailer::class.java.classLoader)) {

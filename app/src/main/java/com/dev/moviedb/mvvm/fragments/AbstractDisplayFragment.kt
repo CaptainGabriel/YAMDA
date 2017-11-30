@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.extensions.prependCallLocation
-import com.dev.moviedb.mvvm.modelstate.movies.content.MovieCollection
+import com.dev.moviedb.mvvm.repository.local.db.entity.content.MovieCollection
 import com.dev.moviedb.mvvm.moviesTab.PopularMoviesListAdapter
 import com.dev.moviedb.mvvm.moviesTab.TopRatedMoviesListAdapter
 import petegabriel.com.yamda.R

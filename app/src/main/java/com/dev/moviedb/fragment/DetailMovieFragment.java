@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dev.moviedb.mvvm.repository.local.db.entity.content.Movie;
 import com.dev.moviedb.utils.DtoUtils;
 
 import petegabriel.com.yamda.R;
@@ -57,17 +58,17 @@ public class DetailMovieFragment extends AbstractDetailDataFragment<Movie> {
         }
 
         //label of action bar. Might not be the right place to do this..
-        getActivity().setTitle("\"" + mToDetail.getPrimaryFacts().getTitle() + "\"");
+        getActivity().setTitle("\"" + mToDetail.getPrimaryFact().getTitle() + "\"");
 
         StringBuilder buffer = new StringBuilder();
 
-        buffer.append("Title: " + mToDetail.getPrimaryFacts().getOriginalTitle());
-        ((TextView) view.findViewById(R.id.details_main_title)).setText(mToDetail.getPrimaryFacts().getOriginalTitle());
+        buffer.append("Title: " + mToDetail.getPrimaryFact().getOriginalTitle());
+        ((TextView) view.findViewById(R.id.details_main_title)).setText(mToDetail.getPrimaryFact().getOriginalTitle());
 
-        ((TextView) view.findViewById(R.id.details_description)).setText(mToDetail.getPrimaryFacts().getOverview());
+        ((TextView) view.findViewById(R.id.details_description)).setText(mToDetail.getPrimaryFact().getOverview());
 
-        buffer.append("Release Date: " + mToDetail.getReleaseDateFacade());
-        ((TextView) view.findViewById(R.id.details_release_date)).setText(mToDetail.getReleaseDateFacade());
+        buffer.append("Release Date: " + mToDetail);
+        ((TextView) view.findViewById(R.id.details_release_date)).setText(mToDetail.toString());
 
         buffer.append("Vote Average: " + mToDetail.getPopularity().getVoteAverage());
         ((TextView) view.findViewById(R.id.details_classification)).setText(
@@ -77,22 +78,18 @@ public class DetailMovieFragment extends AbstractDetailDataFragment<Movie> {
         ImageView imgView = (ImageView) view.findViewById(R.id.details_main_picture);
 
 
-        String humanReadableRuntime = DtoUtils.transformRuntime(mToDetail.getAdvancedFacts().getRuntime());
+        String humanReadableRuntime = DtoUtils.transformRuntime(mToDetail.getAdvancedData().getRuntime());
         setupElement(view, R.id.details_runtime, R.id.details_runtime_icon, humanReadableRuntime);
 
 
-        setupElement(view, R.id.details_status, R.id.details_status_icon,
-                mToDetail.getAdvancedFacts().getReadableStatus(getActivity().getApplication()));
+        setupElement(view, R.id.details_main_genre, NO_ICON, mToDetail.getAdvancedData().getGenres().toString());
 
-        Log.d("GENRES", mToDetail.getAdvancedFacts().getGenres().representation());
-        setupElement(view, R.id.details_main_genre, NO_ICON, mToDetail.getAdvancedFacts().getGenres().representation());
-
-        setupElement(view, R.id.tagline, NO_ICON, "\"" + mToDetail.getAdvancedFacts().getTagLine() + "\"");
+        setupElement(view, R.id.tagline, NO_ICON, "\"" + mToDetail.getAdvancedData().getTagLine() + "\"");
 
 
-        setupElement(view, R.id.imdb_textview, NO_ICON, mToDetail.getAdvancedFacts().getImdbID());
+        setupElement(view, R.id.imdb_textview, NO_ICON, mToDetail.getAdvancedData().getImdbId());
 
-        startTrailer(view, mToDetail.getTrailer());
+        startTrailer(view, mToDetail.getMovieTrailer().toString());
         Log.d(TAG, buffer.toString());
         return view;
     }

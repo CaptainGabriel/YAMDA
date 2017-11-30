@@ -11,8 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.dev.moviedb.utils.ToastUtils;
-
 import petegabriel.com.yamda.R;
 
 /**
@@ -129,7 +127,6 @@ public abstract class AbstractDetailDataFragment<T extends Parcelable> extends L
                     startActivity(videoClient);
                 } else {
                     Log.d(TAG, "No trailer to display");
-                    ToastUtils.showError("No Trailer to display", getActivity());
                 }
             }
         });

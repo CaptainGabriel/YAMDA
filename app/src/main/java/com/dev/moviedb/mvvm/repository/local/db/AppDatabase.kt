@@ -5,17 +5,20 @@ import android.arch.persistence.room.RoomDatabase
 import com.dev.moviedb.mvvm.repository.local.db.dao.NowPlayingDao
 import com.dev.moviedb.mvvm.repository.local.db.dao.PopularDao
 import com.dev.moviedb.mvvm.repository.local.db.dao.TopRatedDao
-import com.dev.moviedb.mvvm.repository.local.db.entity.Movie
+import com.dev.moviedb.mvvm.repository.local.db.entity.NowPlayingMovieWrapper
+import com.dev.moviedb.mvvm.repository.local.db.entity.PopularMovieWrapper
+import com.dev.moviedb.mvvm.repository.local.db.entity.TopRatedMovieWrapper
 
 
 /**
  *
  *
- * @author PeteGabriel on 24/10/2017
- * Copyright (c) 2017
- * All rights reserved.
+ * Yamda 1.0.0
  */
-@Database(entities = arrayOf(Movie::class), version = 1)
+@Database(entities =
+arrayOf(TopRatedMovieWrapper::class,
+        PopularMovieWrapper::class,
+        NowPlayingMovieWrapper::class), version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun popularDao(): PopularDao

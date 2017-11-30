@@ -2,21 +2,20 @@ package com.dev.moviedb.mvvm.repository.local.db.dao
 
 import android.arch.persistence.room.Delete
 import android.arch.persistence.room.Insert
+import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Update
 
 /**
  *
  *
- * @author PeteGabriel on 23/10/2017
- * Copyright (c) 2017
- * All rights reserved.
+ *Yamda 1.0.0
  */
 interface IDao<in T>{
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(elem: T, onComplete: () -> Unit)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg elements: T, onComplete: () -> Unit)
 
     @Update

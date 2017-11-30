@@ -1,17 +1,5 @@
 package rest;
 
-import android.support.annotation.NonNull;
-
-import com.dev.moviedb.model.async.CallResult;
-import com.dev.moviedb.model.async.Completion;
-
-import junit.framework.Assert;
-
-import org.junit.Test;
-
-import java.io.IOException;
-
-
 /**
  * Unit tests for the MovieApiFetcher class.
  *
@@ -67,7 +55,7 @@ public class MovieDbFetcherTest {
             public void onResponse(Response<MovieAggregator> response, Retrofit retrofit) {
                 Assert.assertNotNull(response.body());
                 helperList.clear();
-                for (Movie m : response.body().getResults())
+                for (MovieEntity m : response.body().getResults())
                     helperList.add(m);
 
                 Assert.assertFalse(helperList.isEmpty());
@@ -77,7 +65,7 @@ public class MovieDbFetcherTest {
             public void onFailure(Throwable t) {}
         };
     }
-*/
+
 
 
     @Test
@@ -105,6 +93,6 @@ public class MovieDbFetcherTest {
             }
         };
     }
-
+*/
 
 }

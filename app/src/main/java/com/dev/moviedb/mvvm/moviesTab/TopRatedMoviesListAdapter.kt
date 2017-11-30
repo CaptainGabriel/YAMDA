@@ -7,7 +7,7 @@ import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.inflate
 import com.dev.moviedb.mvvm.extensions.loadUrl
-import com.dev.moviedb.mvvm.modelstate.movies.content.Movie
+import com.dev.moviedb.mvvm.repository.local.db.entity.content.Movie
 import kotlinx.android.synthetic.main.item_movie_generic_layout.view.*
 import petegabriel.com.yamda.R
 

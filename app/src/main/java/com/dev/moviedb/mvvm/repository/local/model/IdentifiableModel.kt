@@ -10,6 +10,6 @@ package com.dev.moviedb.mvvm.repository.local.model
 interface IdentifiableModel {
 
 
-    fun getId(): Long
+    fun getIdentifier(): Long
 
 }

@@ -1,7 +1,7 @@
 package com.dev.moviedb.mvvm.repository.remote
 
-import com.dev.moviedb.mvvm.modelstate.movies.dto.MovieCollectionDTO
-import com.dev.moviedb.mvvm.modelstate.movies.dto.MovieDTO
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.GET

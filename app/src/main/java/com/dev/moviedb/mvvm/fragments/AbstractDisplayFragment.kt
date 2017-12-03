@@ -12,8 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.extensions.prependCallLocation
-import com.dev.moviedb.mvvm.moviesTab.PopularMoviesListAdapter
-import com.dev.moviedb.mvvm.moviesTab.TopRatedMoviesListAdapter
+import com.dev.moviedb.mvvm.moviesTab.MovieDisplayAdapter
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import petegabriel.com.yamda.R
 
@@ -38,6 +37,8 @@ abstract class AbstractDisplayFragment : Fragment() {
      */
     private var topRatedRecyclerView: RecyclerView? = null
 
+    private var nowPlayingRecyclerView: RecyclerView? = null
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,13 +47,14 @@ abstract class AbstractDisplayFragment : Fragment() {
 
         configPopularRecViewAdapter(view)
         configTopRatedRecViewAdapter(view)
+        configNowPlayingRecViewAdapter(view)
 
         return view
     }
 
 
     /**
-     * Send data to the adapter
+     * Send data to the popular movies adapter
      */
     protected fun addNewDataToPopularMoviesAdapter(): (List<MovieDTO>?) -> Unit {
         return { col: List<MovieDTO>? ->
@@ -62,12 +64,19 @@ abstract class AbstractDisplayFragment : Fragment() {
     }
 
     /**
-     * Send data to the adapter
+     * Send data to the Top Rated movies adapter
      */
-    protected fun addNewDataToAdapter(): (List<MovieDTO>?) -> Unit {
+    protected fun addNewDataToTopRatedMoviesAdapter(): (List<MovieDTO>?) -> Unit {
         return { col: List<MovieDTO>? ->
             (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
             (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
+        }
+    }
+
+    protected fun addNewDataNowPlayingMoviesAdapter(): (List<MovieDTO>?) -> Unit {
+        return { col: List<MovieDTO>? ->
+            (nowPlayingRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
+            (nowPlayingRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
         }
     }
 
@@ -80,7 +89,7 @@ abstract class AbstractDisplayFragment : Fragment() {
     abstract fun getLoggingTag(): String
 
     /**
-     * Configuration of the recyclerview's adapter
+     * Configuration of the recycler view's adapter
      */
     private fun configPopularRecViewAdapter(view: View) {
 
@@ -90,12 +99,12 @@ abstract class AbstractDisplayFragment : Fragment() {
 
         popularRecyclerView?.setHasFixedSize(true)
         popularRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        popularRecyclerView?.adapter = PopularMoviesListAdapter()
+        popularRecyclerView?.adapter = MovieDisplayAdapter()
         popularRecyclerView?.itemAnimator = DefaultItemAnimator()
     }
 
     /**
-     * Configuration of the recyclerview's adapter
+     * Configuration of the recycler view's adapter
      */
     private fun configTopRatedRecViewAdapter(view: View) {
         val tempView = view.findViewById<View>(R.id.topRatedCardView)
@@ -104,7 +113,21 @@ abstract class AbstractDisplayFragment : Fragment() {
 
         topRatedRecyclerView?.setHasFixedSize(true)
         topRatedRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        topRatedRecyclerView?.adapter = TopRatedMoviesListAdapter()
+        topRatedRecyclerView?.adapter = MovieDisplayAdapter()
         topRatedRecyclerView?.itemAnimator = DefaultItemAnimator()
+    }
+
+    /**
+     * Configuration of the recycler view's adapter
+     */
+    private fun configNowPlayingRecViewAdapter(view: View) {
+        val tempView = view.findViewById<View>(R.id.nowPlayingCardView)
+        tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getString(R.string.incinemas_card_title)
+        nowPlayingRecyclerView = tempView.findViewById(R.id.movieListRecyclerView)
+
+        nowPlayingRecyclerView?.setHasFixedSize(true)
+        nowPlayingRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        nowPlayingRecyclerView?.adapter = MovieDisplayAdapter()
+        nowPlayingRecyclerView?.itemAnimator = DefaultItemAnimator()
     }
 }

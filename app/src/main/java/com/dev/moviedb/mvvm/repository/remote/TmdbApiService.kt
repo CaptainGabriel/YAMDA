@@ -3,6 +3,7 @@ package com.dev.moviedb.mvvm.repository.remote
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -29,12 +30,12 @@ interface TmdbApiService {
 
     @GET("/3/movie/latest")
     fun findLatestMovie(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
-                           @Query("language") lang: String = "en"): Observable<MovieDTO>
+                           @Query("language") lang: String = "en"): Single<MovieDTO>
 
     @GET("/3/movie/upcoming")
     fun findUpcomingMovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
                            @Query("language") lang: String = "en",
-                           @Query("page") page: Int): Observable<MovieCollectionDTO>
+                           @Query("page") page: Int = 1): Observable<MovieCollectionDTO>
 
     @GET("/3/movie/{id}")
     fun findMovieById(@Path("id") id: Long,

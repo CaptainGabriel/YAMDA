@@ -122,6 +122,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="popular_card_title">Popular</string>
     <string name="top100_card_title">Top 100</string>
+    <string name="incinemas_card_title">In Theathers</string>
 
 
 </resources>

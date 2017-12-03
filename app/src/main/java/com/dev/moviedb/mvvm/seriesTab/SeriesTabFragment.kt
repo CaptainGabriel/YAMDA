@@ -39,7 +39,7 @@ class SeriesTabFragment : AbstractDisplayFragment() {
         viewModel?.findTopRatedTvSeries()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe(addNewDataToAdapter(), { throwable -> handleError(throwable) })
+                ?.subscribe(addNewDataToTopRatedMoviesAdapter(), { throwable -> handleError(throwable) })
 */
     }
 

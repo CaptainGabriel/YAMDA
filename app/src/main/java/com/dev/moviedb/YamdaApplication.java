@@ -8,6 +8,8 @@ import android.content.res.Configuration;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider;
+import com.dev.moviedb.mvvm.repository.remote.TmdbApiService;
 import com.squareup.picasso.Picasso;
 
 import net.danlew.android.joda.JodaTimeAndroid;
@@ -39,6 +41,8 @@ public class YamdaApplication extends Application{
 
     private AlarmManager alarmManager;
 
+    private TmdbApiProvider apiprovider;
+
     /** {@inheritDoc} */
     @Override
     public void onCreate() {
@@ -50,8 +54,7 @@ public class YamdaApplication extends Application{
 
 
         mCurrentAppLanguage = getResources().getConfiguration().locale;
-
-
+        apiprovider = new TmdbApiProvider();
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         //read preferences in order to get the update interval setup by the user
@@ -59,13 +62,9 @@ public class YamdaApplication extends Application{
         long defaultInterval = 1;//PreferencesUtils.getUpdateInterval(prefs);
         Log.d(TAG, "Default Time Interval: " + defaultInterval);
 
-        //database = DatabaseCreator.getInstance(this).getDatabase();
+
 
     }
-
-    /*public AppDatabase getDatabase() {
-        return database;
-    }*/
 
     /** {@inheritDoc} */
     @Override
@@ -79,10 +78,13 @@ public class YamdaApplication extends Application{
             /*
             TODO Check what user has to say about new language configuration erasure.
              */
-
         }
     }
 
+
+    public TmdbApiService getApiService(){
+        return apiprovider.getTmdbApiService();
+    }
 
     /**
      * Getter of the most updated language configuration.

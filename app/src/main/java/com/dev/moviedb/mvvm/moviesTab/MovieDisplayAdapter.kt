@@ -12,21 +12,22 @@ import kotlinx.android.synthetic.main.item_movie_generic_layout.view.*
 import petegabriel.com.yamda.R
 
 /**
- * The adapter to show the list of the most popular movies.
+ *
+ * Generic adapter used to display a movie item
  *
  * Yamda 1.0.0.
  */
-class PopularMoviesListAdapter : AbstractMovieItemAdapter<PopularMoviesListAdapter.PopularMovieViewHolder>() {
+class MovieDisplayAdapter : AbstractMovieItemAdapter<MovieDisplayAdapter.MovieViewHolder>() {
 
-    override fun onBindViewHolder(holder: PopularMovieViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
         holder?.bind(movies?.get(position))
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PopularMovieViewHolder =
-            PopularMovieViewHolder(parent?.inflate(R.layout.item_movie_generic_layout)!!)
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MovieViewHolder =
+            MovieViewHolder(parent?.inflate(R.layout.item_movie_generic_layout)!!)
 
 
-    class PopularMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: MovieDTO?) = with(itemView) {
             movieTitleTxtView.text = item?.title?.formatMovieCardName()

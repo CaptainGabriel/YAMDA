@@ -1,9 +1,8 @@
-package com.dev.moviedb.mvvm.moviesTab
+package com.dev.moviedb.mvvm.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.inflate
 import com.dev.moviedb.mvvm.extensions.loadUrl
@@ -30,7 +29,13 @@ class MovieDisplayAdapter : AbstractMovieItemAdapter<MovieDisplayAdapter.MovieVi
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: MovieDTO?) = with(itemView) {
-            movieTitleTxtView.text = item?.title?.formatMovieCardName()
+            //dto from tv shows and movies use different props for the name
+            if (item?.title != null){
+                movieTitleTxtView.text = item.title?.formatMovieCardName()
+            }else if (item?.name != null){
+                movieTitleTxtView.text = item.name?.formatMovieCardName()
+            }
+
             itemImageFrame.loadUrl(item?.posterPath!!)
             movieRatingValueTextView.text = "%.1f".format(item.voteAverage)
         }

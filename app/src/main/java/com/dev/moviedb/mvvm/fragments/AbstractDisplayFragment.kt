@@ -5,16 +5,16 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
+import com.dev.moviedb.mvvm.adapters.MovieDisplayAdapter
 import com.dev.moviedb.mvvm.extensions.prependCallLocation
-import com.dev.moviedb.mvvm.moviesTab.MovieDisplayAdapter
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import petegabriel.com.yamda.R
+import timber.log.Timber
 
 /**
  * This class contains common behavior used to display
@@ -37,6 +37,9 @@ abstract class AbstractDisplayFragment : Fragment() {
      */
     private var topRatedRecyclerView: RecyclerView? = null
 
+    /**
+     * A reference to the RecyclerView widget used to display a list of movies in theaters.
+     */
     private var nowPlayingRecyclerView: RecyclerView? = null
 
 
@@ -83,7 +86,7 @@ abstract class AbstractDisplayFragment : Fragment() {
     /**
      * Handle error after requesting data from ViewModel
      */
-    protected fun handleError(throwable: Throwable) = Log.d(getLoggingTag(), throwable.message!!.toString().prependCallLocation())
+    protected fun handleError(throwable: Throwable) = Timber.d(getLoggingTag(), throwable.message!!.toString().prependCallLocation())
 
 
     abstract fun getLoggingTag(): String

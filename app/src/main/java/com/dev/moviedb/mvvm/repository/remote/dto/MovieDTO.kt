@@ -47,7 +47,12 @@ class MovieDTO() : Parcelable {
     /**
      * The movie title
      */
-    var title: String = ""
+    var title: String? = null
+
+    /**
+     * The tv show's name
+     */
+    var name: String? = null
 
     /**
      * If has video or not

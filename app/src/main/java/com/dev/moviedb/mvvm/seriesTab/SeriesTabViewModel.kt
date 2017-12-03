@@ -1,18 +1,28 @@
 package com.dev.moviedb.mvvm.seriesTab
 
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiService
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
+import io.reactivex.Observable
 
 /**
- *
+ * The ViewModel for the tab related with tv show's information
  * Yamda 1.0.0.
  */
-class SeriesTabViewModel constructor(dataService: TmdbApiService){
+class SeriesTabViewModel constructor(private var dataService: TmdbApiService){
 
-    private val service = dataService
+    /**
+     * Ask for the most popular tv shows
+     */
+    fun findPopularTvSeries(): Observable<MovieCollectionDTO> = dataService.findPopularTvSeries()
 
+    /**
+     * Ask for the top rated tv shows
+     */
+    fun findTopRatedTvSeries(): Observable<MovieCollectionDTO> = dataService.findTopRatedTvSeries()
 
-    //fun findPopularTvSeries(): Observable<MovieCollection> = service.findPopularTvSeries().map { t ->  converse.toMovieCollection(t)}
-
-    //fun findTopRatedTvSeries(): Observable<MovieCollection> = service.findTopRatedTvSeries().map { t ->  converse.toMovieCollection(t)}
+    /**
+     * Ask for the tv shows airing today
+     */
+    fun findAiringTodayTvSeries(): Observable<MovieCollectionDTO> = dataService.findAiringTodayTvSeries()
 
 }

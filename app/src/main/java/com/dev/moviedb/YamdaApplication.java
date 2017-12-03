@@ -33,6 +33,7 @@ public class YamdaApplication extends Application{
      */
     private Locale mCurrentAppLanguage;
 
+    //private AppDatabase database;
 
     private SharedPreferences prefs;
 
@@ -58,7 +59,13 @@ public class YamdaApplication extends Application{
         long defaultInterval = 1;//PreferencesUtils.getUpdateInterval(prefs);
         Log.d(TAG, "Default Time Interval: " + defaultInterval);
 
+        //database = DatabaseCreator.getInstance(this).getDatabase();
+
     }
+
+    /*public AppDatabase getDatabase() {
+        return database;
+    }*/
 
     /** {@inheritDoc} */
     @Override

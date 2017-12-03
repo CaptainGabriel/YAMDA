@@ -4,8 +4,6 @@ package com.dev.moviedb.mvvm.seriesTab
 import android.os.Bundle
 import com.dev.moviedb.mvvm.fragments.AbstractDisplayFragment
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 
 /**
@@ -32,7 +30,7 @@ class SeriesTabFragment : AbstractDisplayFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
+/*
         viewModel?.findPopularTvSeries()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
@@ -42,7 +40,7 @@ class SeriesTabFragment : AbstractDisplayFragment() {
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(addNewDataToAdapter(), { throwable -> handleError(throwable) })
-
+*/
     }
 
 }

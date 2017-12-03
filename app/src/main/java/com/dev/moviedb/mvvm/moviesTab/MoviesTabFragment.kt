@@ -1,13 +1,12 @@
 package com.dev.moviedb.mvvm.moviesTab
 
 import android.os.Bundle
-import com.dev.moviedb.mvvm.extensions.formatMovieCardName
-import com.dev.moviedb.mvvm.extensions.loadUrl
 import com.dev.moviedb.mvvm.fragments.AbstractDisplayFragment
+import com.dev.moviedb.mvvm.repository.PopularMovieRepository
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.include_item_spotlight.*
 
 
 /**
@@ -27,13 +26,14 @@ class MoviesTabFragment : AbstractDisplayFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel =  MoviesTabViewModel(TmdbApiProvider().getTmdbApiService())
+        var repo = PopularMovieRepository(TmdbApiProvider().getTmdbApiService())
+        viewModel =  MoviesTabViewModel(repo)
     }
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+/*
         viewModel?.findNowPlayingMoviesList()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
@@ -46,17 +46,22 @@ class MoviesTabFragment : AbstractDisplayFragment() {
                 },{
                     throwable -> handleError(throwable)
                 })
-
+*/
         viewModel?.findMostPopularMovieList()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe(addNewDataToPopularMoviesAdapter(), { throwable -> handleError(throwable) })
-
+                ?.subscribe({
+                    t: MovieCollectionDTO ->
+                        addNewDataToPopularMoviesAdapter()(t.results)
+                }, {
+                    t: Throwable? -> handleError(t!!)
+                })
+/*
         viewModel?.findTopRatedMoviesList()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe(addNewDataToAdapter(), { throwable -> handleError(throwable) })
-
+*/
     }
 
 }

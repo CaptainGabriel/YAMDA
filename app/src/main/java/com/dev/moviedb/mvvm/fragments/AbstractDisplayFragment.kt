@@ -12,9 +12,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.extensions.prependCallLocation
-import com.dev.moviedb.mvvm.repository.local.db.entity.content.MovieCollection
 import com.dev.moviedb.mvvm.moviesTab.PopularMoviesListAdapter
 import com.dev.moviedb.mvvm.moviesTab.TopRatedMoviesListAdapter
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import petegabriel.com.yamda.R
 
 /**
@@ -54,8 +54,8 @@ abstract class AbstractDisplayFragment : Fragment() {
     /**
      * Send data to the adapter
      */
-    protected fun addNewDataToPopularMoviesAdapter(): (MovieCollection) -> Unit {
-        return { col: MovieCollection ->
+    protected fun addNewDataToPopularMoviesAdapter(): (List<MovieDTO>?) -> Unit {
+        return { col: List<MovieDTO>? ->
             (popularRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
             (popularRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
         }
@@ -64,8 +64,8 @@ abstract class AbstractDisplayFragment : Fragment() {
     /**
      * Send data to the adapter
      */
-    protected fun addNewDataToAdapter(): (MovieCollection) -> Unit {
-        return { col: MovieCollection ->
+    protected fun addNewDataToAdapter(): (List<MovieDTO>?) -> Unit {
+        return { col: List<MovieDTO>? ->
             (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
             (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
         }

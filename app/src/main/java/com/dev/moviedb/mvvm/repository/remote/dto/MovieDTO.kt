@@ -16,7 +16,7 @@ class MovieDTO() : Parcelable {
 
     @SerializedName("backdrop_path")
     @Expose
-    private var backdropPath: String = ""
+    var backdropPath: String = ""
         get() = field.substring(1)
 
     var id: Int = 0
@@ -36,7 +36,7 @@ class MovieDTO() : Parcelable {
     /** The poster path */
     @SerializedName("poster_path")
     @Expose
-    private var posterPath: String = ""
+    var posterPath: String = ""
         get() = field.substring(1)
 
     /**

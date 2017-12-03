@@ -2,7 +2,7 @@ package com.dev.moviedb.mvvm.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder
-import com.dev.moviedb.mvvm.repository.local.db.entity.content.MovieCollection
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 
 /**
  * An abstract class that helps reusing behavior between adapters.
@@ -11,12 +11,12 @@ import com.dev.moviedb.mvvm.repository.local.db.entity.content.MovieCollection
  */
 abstract class AbstractMovieItemAdapter<T : ViewHolder?>: RecyclerView.Adapter<T>(){
 
-    protected var movies: MovieCollection? = null
+    protected var movies: List<MovieDTO>? = null
 
-    fun adNewData(movies: MovieCollection){
+    fun adNewData(movies: List<MovieDTO>?){
         this.movies = movies
     }
 
-    override fun getItemCount(): Int = if (movies == null) 0 else movies?.results?.size!!
+    override fun getItemCount(): Int = if (movies == null) 0 else movies?.size!!
 
 }

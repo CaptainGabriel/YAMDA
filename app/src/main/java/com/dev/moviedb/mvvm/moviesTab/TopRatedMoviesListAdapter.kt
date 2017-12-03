@@ -7,7 +7,7 @@ import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.inflate
 import com.dev.moviedb.mvvm.extensions.loadUrl
-import com.dev.moviedb.mvvm.repository.local.db.entity.content.Movie
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import kotlinx.android.synthetic.main.item_movie_generic_layout.view.*
 import petegabriel.com.yamda.R
 
@@ -20,7 +20,7 @@ class TopRatedMoviesListAdapter: AbstractMovieItemAdapter<TopRatedMoviesListAdap
 
 
     override fun onBindViewHolder(holder: TopRatedMovieViewHolder?, position: Int) {
-        holder?.bind(movies?.results?.get(position))
+        holder?.bind(movies?.get(position))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): TopRatedMovieViewHolder =
@@ -29,10 +29,10 @@ class TopRatedMoviesListAdapter: AbstractMovieItemAdapter<TopRatedMoviesListAdap
 
     class TopRatedMovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        fun bind(item: Movie?) = with(itemView){
-            movieTitleTxtView.text = item?.primaryFact?.originalTitle?.formatMovieCardName()
-            itemImageFrame.loadUrl(item?.movieImages?.posterImagePath!!)
-            movieRatingValueTextView.text = "%.1f".format(item.popularity.voteAverage)
+        fun bind(item: MovieDTO?) = with(itemView){
+            movieTitleTxtView.text = item?.title?.formatMovieCardName()
+            itemImageFrame.loadUrl(item?.posterPath!!)
+            movieRatingValueTextView.text = "%.1f".format(item.voteAverage)
         }
 
     }

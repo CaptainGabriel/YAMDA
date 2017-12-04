@@ -1,8 +1,6 @@
 package utils;
 
 
-import com.dev.moviedb.utils.DateUtils;
-
 import junit.framework.Assert;
 
 import org.joda.time.DateTime;

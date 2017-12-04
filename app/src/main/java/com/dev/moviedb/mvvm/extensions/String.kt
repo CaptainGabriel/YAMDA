@@ -1,5 +1,6 @@
 package com.dev.moviedb.mvvm.extensions
 
+import org.joda.time.DateTime
 import java.util.regex.Pattern
 
 /**
@@ -43,6 +44,98 @@ fun String.formatMovieCardName(maxCharsInMovieName : Int = 17): String{
 }
 
 
+/**
+ * Helper method that based upon a string that represents
+ * a valid date in the format "yyyy-mm-dd" returns the year or
+ * the acronym "TBA" if the parameter is invalid.
+ *
+ * "Low level" implementation because we cannot call buildDate or will overflow the call stack.
+ *
+ * @param dateStr valid date in the format "yyyy-mm-dd"
+ * @return the year
+ */
+fun String.getYear(): String {
+    return if (this.isEmpty() || !hasValidFormat(this))
+        EnvVars.TO_BE_ANNOUNCED
+    else
+        this.substring(0, this.indexOf('-'))
+}
+
+fun String.getMonth(): String {
+    return if (this.isEmpty() || !hasValidFormat(this)) "0" else this.substring(5, 7)
+}
+
+
+fun String.getDay(): String {
+    return if (this.isEmpty() || !hasValidFormat(this)) "0" else this.substring(8)
+}
+
+/**
+ * Helper method that based upon a string that represents
+ * a valid date in the format "yyyy-mm-dd" returns the month/day or
+ * the acronym "TBA" if the parameter is invalid.
+ *
+ *
+ */
+fun String.getMonthAndDay(): String {
+    return if (this.isEmpty() || !hasValidFormat(this))
+        EnvVars.TO_BE_ANNOUNCED
+    else
+        this.getMonth() + "/" + this.getDay()
+}
+
+
+/**
+ * Builds an instance of DateTime from the given string if one follows the
+ * pattern "yyyy-mm-dd". Otherwise return null;
+ *
+ */
+fun String.toDatetime(): DateTime? {
+    return try {
+        val year = Integer.valueOf(this.getYear())
+        val m = Integer.valueOf(this.getMonth())
+        val d = Integer.valueOf(this.getDay())
+        DateTime(year, m, d, 0, 0)
+    } catch (ex: NumberFormatException) {
+        null
+    }
+}
+
+
+/**
+ * Checks if a given date is of today's day.
+ * @return True if date is equal to today's date, false otherwise.
+ */
+fun String.isToday(): Boolean {
+    val release = this.toDatetime() ?: return false
+    return release.compareToDate(DateTime.now())
+}
+
+/**
+ * Checks if a given date is of tomorrow's day.
+ * @return True if date is equal to tomorrow's date, false otherwise.
+ */
+fun String.isTomorrow(): Boolean {
+    val release = this.toDatetime() ?: return false
+    return release.compareToDate(DateTime.now().plusDays(1))
+}
+
+/**
+ * For a given movie runtime, format it in the style xxhyy where 'xx' is hours
+ * and 'yy' is minutes.
+ */
+fun String.transformMovieRuntime(rawRuntime: Int): String {
+    return if (rawRuntime > 0) String.format("%dh%d", rawRuntime / 60, rawRuntime % 60) else "0h0"
+}
+
+/**
+ * Checks if the given date follows the pattern "yyyy-mm-dd".
+ */
+private fun hasValidFormat(dateStr: String?): Boolean {
+    if (dateStr == null) return false
+    val matcher = Pattern.compile("\\d{4}\\-\\d{2}\\-\\d{2}").matcher(dateStr)
+    return matcher.matches()
+}
 
 
 private fun StackTraceElement.extractClassName(): String {
@@ -57,6 +150,8 @@ private fun StackTraceElement.extractClassName(): String {
 object EnvVars {
     const val CALL_STACK_INDEX = 1
 
-    val ANONYMOUS_CLASS = Pattern.compile("(\\$\\d+)+$")
+    val ANONYMOUS_CLASS = Pattern.compile("(\\$\\d+)+$")!!
+
+    val TO_BE_ANNOUNCED = "TBA"
 
 }

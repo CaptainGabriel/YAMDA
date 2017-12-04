@@ -13,7 +13,7 @@ import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.adapters.MovieDisplayAdapter
 import com.dev.moviedb.mvvm.extensions.prependCallLocation
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
-import kotlinx.android.synthetic.main.include_item_spotlight.*
+import kotlinx.android.synthetic.main.fragment_movies_tab_layout.*
 import petegabriel.com.yamda.R
 import timber.log.Timber
 
@@ -61,7 +61,7 @@ abstract class AbstractDisplayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (!showSpotlightWidget()){
-            item_spotlight_widget_frame.visibility = View.GONE
+            header.visibility = View.GONE
         }
     }
 

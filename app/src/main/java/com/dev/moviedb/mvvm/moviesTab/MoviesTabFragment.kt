@@ -1,6 +1,7 @@
 package com.dev.moviedb.mvvm.moviesTab
 
 import android.os.Bundle
+import android.view.View
 import com.dev.moviedb.YamdaApplication
 import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.loadUrl
@@ -11,6 +12,7 @@ import com.dev.moviedb.mvvm.repository.TopRatedMovieRepository
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_movies_tab_layout.*
 import kotlinx.android.synthetic.main.include_item_spotlight.*
 
 
@@ -35,16 +37,19 @@ class MoviesTabFragment : AbstractDisplayFragment() {
         val popularRepo = PopularMovieRepository(app.apiService)
         val topRatedRepo = TopRatedMovieRepository(app.apiService)
         val nowPlayingRepo = NowPlayingMovieRepository(app.apiService)
-        viewModel =  MoviesTabViewModel(app.apiService, popularRepo, topRatedRepo, nowPlayingRepo)
+        viewModel =  MoviesTabViewModel(app.apiService, popularRepo, topRatedRepo)
     }
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        thirdCardView.visibility = View.GONE
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         subscribeToTheMostRecentMovie()
-
-        subscribeToNowPlayingMovies()
 
         subscribeToMostPopularMovies()
 
@@ -90,13 +95,5 @@ class MoviesTabFragment : AbstractDisplayFragment() {
                 })
     }
 
-    private fun subscribeToNowPlayingMovies() {
-        viewModel?.findNowPlayingMoviesList()
-         ?.subscribeOn(Schedulers.newThread())
-         ?.observeOn(AndroidSchedulers.mainThread())
-         ?.subscribe({ t: MovieCollectionDTO ->
-             addNewDataToThirdAdapter()(t.results)
-         }, { throwable -> handleError(throwable) })
-    }
 
 }

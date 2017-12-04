@@ -1,6 +1,5 @@
 package com.dev.moviedb.mvvm.moviesTab
 
-import com.dev.moviedb.mvvm.repository.NowPlayingMovieRepository
 import com.dev.moviedb.mvvm.repository.PopularMovieRepository
 import com.dev.moviedb.mvvm.repository.TopRatedMovieRepository
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiService
@@ -16,8 +15,7 @@ import io.reactivex.Single
  */
 class MoviesTabViewModel constructor(private var apiService: TmdbApiService,
         private var popularMovieRepository: PopularMovieRepository,
-        private var topRatedMovieRepository: TopRatedMovieRepository,
-        private var nowPlayingMovieRepository: NowPlayingMovieRepository){
+        private var topRatedMovieRepository: TopRatedMovieRepository){
 
 
     fun getMostRecentMovie(): Single<MovieDTO> {
@@ -32,13 +30,11 @@ class MoviesTabViewModel constructor(private var apiService: TmdbApiService,
         return popularMovieRepository.findAll()
     }
 
+
     fun findTopRatedMoviesList(): Observable<MovieCollectionDTO> {
         return topRatedMovieRepository.findAll()
     }
 
-    fun findNowPlayingMoviesList(): Observable<MovieCollectionDTO> {
-        return nowPlayingMovieRepository.findAll()
-    }
 
 
 }

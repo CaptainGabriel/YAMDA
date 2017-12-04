@@ -42,20 +42,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel?.getMostRecentMovie()
-                ?.subscribeOn(Schedulers.newThread())
-                ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe({
-                    t ->
-                    run {
-                        t.backdropPath?.let { spotlight_movie_image?.loadUrl(it, false) }
-                        spotlight_movie_description?.text = t.overview.formatMovieCardName(100)
-                        spotlight_movie_rating?.text = "%.1f".format(t.voteAverage)
-                        spotlight_movie_name?.text = t.title
-                    }
-                }, { throwable ->
-                    handleError(throwable)
-                })
+        subscribeToTheMostRecentMovie()
 
         subscribeToNowPlayingMovies()
 
@@ -65,12 +52,28 @@ class MoviesTabFragment : AbstractDisplayFragment() {
 
     }
 
+    private fun subscribeToTheMostRecentMovie() {
+        viewModel?.getMostRecentMovie()
+                ?.subscribeOn(Schedulers.newThread())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe({ t ->
+                    run {
+                        t.backdropPath?.let { spotlight_movie_image?.loadUrl(it, false) }
+                        spotlight_movie_description?.text = t.overview.formatMovieCardName(100)
+                        spotlight_movie_rating?.text = "%.1f".format(t.voteAverage)
+                        spotlight_movie_name?.text = t.title
+                    }
+                }, { throwable ->
+                    handleError(throwable)
+                })
+    }
+
     private fun subscribeToTopRatedMovies() {
-        viewModel?.findNowPlayingMoviesList()
+        viewModel?.findTopRatedMoviesList()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe({ col ->
-                    addNewDataToTopRatedMoviesAdapter()(col.results)
+                    addNewDataToSecondAdapter()(col.results)
                 }, { throwable ->
                     handleError(throwable)
                 })
@@ -81,7 +84,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe({ t: MovieCollectionDTO ->
-                    addNewDataToPopularMoviesAdapter()(t.results)
+                    addNewDataToFirstAdapter()(t.results)
                 }, { t: Throwable? ->
                     handleError(t!!)
                 })
@@ -92,7 +95,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
          ?.subscribeOn(Schedulers.newThread())
          ?.observeOn(AndroidSchedulers.mainThread())
          ?.subscribe({ t: MovieCollectionDTO ->
-             addNewDataNowPlayingMoviesAdapter()(t.results)
+             addNewDataToThirdAdapter()(t.results)
          }, { throwable -> handleError(throwable) })
     }
 

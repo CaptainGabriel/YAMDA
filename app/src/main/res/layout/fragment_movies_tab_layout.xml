@@ -18,25 +18,25 @@
 
             <include layout="@layout/include_item_spotlight"/>
 
-            <!-- Most popular Movies-->
+            <!-- FIrst list of items-->
             <include layout="@layout/include_movie_item_cardview"
-                android:id="@+id/popularCardView"/>
+                android:id="@+id/firstCardView"/>
 
-            <!-- Top Rated movies-->
+            <!-- Second list of items-->
             <include
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 layout="@layout/include_movie_item_cardview"
                 android:layout_marginTop="10dp"
-                android:id="@+id/topRatedCardView"/>
+                android:id="@+id/secondCardView"/>
 
-            <!-- Now Playing movies-->
+            <!-- Third list of items -->
             <include
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 layout="@layout/include_movie_item_cardview"
                 android:layout_marginTop="10dp"
-                android:id="@+id/nowPlayingCardView"/>
+                android:id="@+id/thirdCardView"/>
 
         </LinearLayout>
     </ScrollView>

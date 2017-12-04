@@ -29,18 +29,18 @@ abstract class AbstractDisplayFragment : Fragment() {
      * A reference to the RecyclerView widget used to display the most
      * popular movies.
      */
-    private var popularRecyclerView: RecyclerView? = null
+    protected var popularRecyclerView: RecyclerView? = null
 
     /**
      * A reference to the RecyclerView widget used to display the most
      * top rated movies.
      */
-    private var topRatedRecyclerView: RecyclerView? = null
+    protected var topRatedRecyclerView: RecyclerView? = null
 
     /**
      * A reference to the RecyclerView widget used to display a list of movies in theaters.
      */
-    private var nowPlayingRecyclerView: RecyclerView? = null
+    protected var nowPlayingRecyclerView: RecyclerView? = null
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -48,9 +48,9 @@ abstract class AbstractDisplayFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_movies_tab_layout, container, false)
 
-        configPopularRecViewAdapter(view)
-        configTopRatedRecViewAdapter(view)
-        configNowPlayingRecViewAdapter(view)
+        configFirstRecViewAdapter(view)
+        configSecondRecViewAdapter(view)
+        configThirdRecViewAdapter(view)
 
         return view
     }
@@ -59,7 +59,7 @@ abstract class AbstractDisplayFragment : Fragment() {
     /**
      * Send data to the popular movies adapter
      */
-    protected fun addNewDataToPopularMoviesAdapter(): (List<MovieDTO>?) -> Unit {
+    protected fun addNewDataToFirstAdapter(): (List<MovieDTO>?) -> Unit {
         return { col: List<MovieDTO>? ->
             (popularRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
             (popularRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
@@ -69,14 +69,14 @@ abstract class AbstractDisplayFragment : Fragment() {
     /**
      * Send data to the Top Rated movies adapter
      */
-    protected fun addNewDataToTopRatedMoviesAdapter(): (List<MovieDTO>?) -> Unit {
+    protected fun addNewDataToSecondAdapter(): (List<MovieDTO>?) -> Unit {
         return { col: List<MovieDTO>? ->
             (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
             (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
         }
     }
 
-    protected fun addNewDataNowPlayingMoviesAdapter(): (List<MovieDTO>?) -> Unit {
+    protected fun addNewDataToThirdAdapter(): (List<MovieDTO>?) -> Unit {
         return { col: List<MovieDTO>? ->
             (nowPlayingRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
             (nowPlayingRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
@@ -91,13 +91,17 @@ abstract class AbstractDisplayFragment : Fragment() {
 
     abstract fun getLoggingTag(): String
 
+    open fun getFirstCardTitle(): String =  getString(R.string.popular_card_title)
+    open fun getSecondCardTitle(): String =  getString(R.string.toprated_card_title)
+    open fun getThirdCardTitle(): String =  getString(R.string.incinemas_card_title)
+
+
     /**
      * Configuration of the recycler view's adapter
      */
-    private fun configPopularRecViewAdapter(view: View) {
-
-        val tempView: View = view.findViewById(R.id.popularCardView)
-        tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getString(R.string.popular_card_title)
+    protected open fun configFirstRecViewAdapter(view: View) {
+        val tempView: View = view.findViewById(R.id.firstCardView)
+        tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getFirstCardTitle()
         popularRecyclerView = tempView.findViewById(R.id.movieListRecyclerView)
 
         popularRecyclerView?.setHasFixedSize(true)
@@ -105,13 +109,12 @@ abstract class AbstractDisplayFragment : Fragment() {
         popularRecyclerView?.adapter = MovieDisplayAdapter()
         popularRecyclerView?.itemAnimator = DefaultItemAnimator()
     }
-
     /**
      * Configuration of the recycler view's adapter
      */
-    private fun configTopRatedRecViewAdapter(view: View) {
-        val tempView = view.findViewById<View>(R.id.topRatedCardView)
-        tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getString(R.string.top100_card_title)
+    protected open fun configSecondRecViewAdapter(view: View) {
+        val tempView = view.findViewById<View>(R.id.secondCardView)
+        tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getSecondCardTitle()
         topRatedRecyclerView = tempView.findViewById(R.id.movieListRecyclerView)
 
         topRatedRecyclerView?.setHasFixedSize(true)
@@ -123,9 +126,9 @@ abstract class AbstractDisplayFragment : Fragment() {
     /**
      * Configuration of the recycler view's adapter
      */
-    private fun configNowPlayingRecViewAdapter(view: View) {
-        val tempView = view.findViewById<View>(R.id.nowPlayingCardView)
-        tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getString(R.string.incinemas_card_title)
+    protected open fun configThirdRecViewAdapter(view: View) {
+        val tempView = view.findViewById<View>(R.id.thirdCardView)
+        tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getThirdCardTitle()
         nowPlayingRecyclerView = tempView.findViewById(R.id.movieListRecyclerView)
 
         nowPlayingRecyclerView?.setHasFixedSize(true)

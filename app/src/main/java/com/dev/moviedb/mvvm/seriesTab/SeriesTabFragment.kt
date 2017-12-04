@@ -6,6 +6,7 @@ import com.dev.moviedb.mvvm.fragments.AbstractDisplayFragment
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import petegabriel.com.yamda.R
 
 
 /**
@@ -32,21 +33,35 @@ class SeriesTabFragment : AbstractDisplayFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //airing today tv shows
+        //airing today tv shows in first adapter
+        viewModel?.findAiringTodayTvSeries()
+                ?.subscribeOn(Schedulers.newThread())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe( { t -> addNewDataToFirstAdapter()(t.results) },
+                        { throwable -> handleError(throwable) })
 
         //most popular tv shows
         viewModel?.findPopularTvSeries()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe( { t -> addNewDataToPopularMoviesAdapter()(t.results) },
+                ?.subscribe( { t -> addNewDataToSecondAdapter()(t.results) },
                              { throwable -> handleError(throwable) })
 
         //top rated tv shows
         viewModel?.findTopRatedTvSeries()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe({ t -> addNewDataToTopRatedMoviesAdapter()(t.results) }, { throwable -> handleError(throwable) })
+                ?.subscribe({ t -> addNewDataToThirdAdapter()(t.results) },
+                        { throwable -> handleError(throwable) })
 
     }
+
+
+    override fun getFirstCardTitle(): String = "Airing Today"
+
+    override fun getSecondCardTitle(): String = getString(R.string.popular_card_title)
+
+    override fun getThirdCardTitle(): String = getString(R.string.toprated_card_title)
+
 
 }

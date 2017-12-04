@@ -63,5 +63,6 @@ class SeriesTabFragment : AbstractDisplayFragment() {
 
     override fun getThirdCardTitle(): String = getString(R.string.toprated_card_title)
 
+    override fun showSpotlightWidget(): Boolean = false
 
 }

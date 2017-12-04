@@ -32,9 +32,9 @@ class MoviesTabFragment : AbstractDisplayFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val app = activity.applicationContext as YamdaApplication
-        var popularRepo = PopularMovieRepository(app.apiService)
-        var topRatedRepo = TopRatedMovieRepository(app.apiService)
-        var nowPlayingRepo = NowPlayingMovieRepository(app.apiService)
+        val popularRepo = PopularMovieRepository(app.apiService)
+        val topRatedRepo = TopRatedMovieRepository(app.apiService)
+        val nowPlayingRepo = NowPlayingMovieRepository(app.apiService)
         viewModel =  MoviesTabViewModel(app.apiService, popularRepo, topRatedRepo, nowPlayingRepo)
     }
 

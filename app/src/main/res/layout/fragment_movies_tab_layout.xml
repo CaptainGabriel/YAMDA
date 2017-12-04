@@ -6,38 +6,56 @@
     android:background="@color/pattensBlue"
     tools:context="com.dev.moviedb.mvvm.moviesTab.MoviesTabFragment">
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@color/pattensBlue">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="154dp"
+        tools:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/pattensBlue"
+        android:gravity="center"
+        android:layout_gravity="center">
 
-            <include layout="@layout/include_item_spotlight"/>
+        <include
+            layout="@layout/include_item_spotlight"/>
 
-            <!-- FIrst list of items-->
-            <include layout="@layout/include_movie_item_cardview"
-                android:id="@+id/firstCardView"/>
+    </RelativeLayout>
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/header"
+            android:background="@color/pattensBlue">
 
-            <!-- Second list of items-->
-            <include
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/include_movie_item_cardview"
-                android:layout_marginTop="10dp"
-                android:id="@+id/secondCardView"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <!-- Third list of items -->
-            <include
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/include_movie_item_cardview"
-                android:layout_marginTop="10dp"
-                android:id="@+id/thirdCardView"/>
+                <!-- First list of items-->
+                <include layout="@layout/include_movie_item_cardview"
+                    android:id="@+id/firstCardView"/>
 
-        </LinearLayout>
-    </ScrollView>
+                <!-- Second list of items-->
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/include_movie_item_cardview"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/secondCardView"/>
+
+                <!-- Third list of items -->
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/include_movie_item_cardview"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/thirdCardView"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
 </FrameLayout>

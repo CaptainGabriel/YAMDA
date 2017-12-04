@@ -2,6 +2,7 @@ package com.dev.moviedb.mvvm.seriesTab
 
 import com.dev.moviedb.mvvm.repository.remote.TmdbApiService
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import io.reactivex.Observable
 
 /**
@@ -24,5 +25,7 @@ class SeriesTabViewModel constructor(private var dataService: TmdbApiService){
      * Ask for the tv shows airing today
      */
     fun findAiringTodayTvSeries(): Observable<MovieCollectionDTO> = dataService.findAiringTodayTvSeries()
+
+    fun getLatestTvShow(): Observable<MovieDTO> = dataService.findLatestTvShow()
 
 }

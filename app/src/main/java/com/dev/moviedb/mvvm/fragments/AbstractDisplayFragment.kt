@@ -13,6 +13,7 @@ import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.adapters.MovieDisplayAdapter
 import com.dev.moviedb.mvvm.extensions.prependCallLocation
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
+import kotlinx.android.synthetic.main.include_item_spotlight.*
 import petegabriel.com.yamda.R
 import timber.log.Timber
 
@@ -56,6 +57,15 @@ abstract class AbstractDisplayFragment : Fragment() {
     }
 
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (!showSpotlightWidget()){
+            item_spotlight_widget_frame.visibility = View.GONE
+        }
+    }
+
+
     /**
      * Send data to the popular movies adapter
      */
@@ -95,6 +105,8 @@ abstract class AbstractDisplayFragment : Fragment() {
     open fun getSecondCardTitle(): String =  getString(R.string.toprated_card_title)
     open fun getThirdCardTitle(): String =  getString(R.string.incinemas_card_title)
 
+
+    open fun showSpotlightWidget() = true
 
     /**
      * Configuration of the recycler view's adapter

@@ -19,6 +19,9 @@ The "visual part" of the app was not intended to be as good but this is somethin
 - [x] Fully supports the TMDb 3.0 API.
 - [ ] Get an account at themoviedb.org or from within the app.
 
+#
+<img src="https://i.imgur.com/B8iNlj6.png" width="250">
+
 # Licence
 
 GNU GENERAL PUBLIC LICENSE

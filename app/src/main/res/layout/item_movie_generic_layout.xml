@@ -1,11 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_marginEnd="3dp"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <ImageView
+        android:id="@+id/itemImageFrame"
+        android:src="@mipmap/ic_launcher"
+        android:layout_margin="0dp"
+        android:layout_width="160dp"
+        android:layout_height="278dp" />
+
+    <TextView
+        android:id="@+id/movieTitleTxtView"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_small"
+        android:autoSizeMaxTextSize="@dimen/text_size_large"
+        android:autoSizeMinTextSize="@dimen/text_size_micro"
+        android:autoSizeStepGranularity="1sp"
+        android:autoSizeTextType="uniform"
+        android:paddingEnd="0dp"
+        android:paddingStart="5dp"
+        android:textColor="@color/donJuan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemImageFrame"
+        tools:text="The Secret Life of ..." />
+
+    <TextView
+        android:id="@+id/movieRatingLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movieTitleTxtView"
+        android:layout_marginStart="5dp"
+        android:text="Ratings:"
+        android:textColor="@color/medium_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movieTitleTxtView" />
+
+    <TextView
+        android:id="@+id/movieRatingValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/movieRatingLabel"
+        android:textColor="@color/tumbleweed"
+        app:layout_constraintStart_toEndOf="@+id/movieRatingLabel"
+        app:layout_constraintTop_toBottomOf="@+id/movieTitleTxtView"
+        tools:text="8.0" />
+
+<!--
     <ImageView
         android:id="@+id/itemImageFrame"
         android:src="@mipmap/ic_launcher"
@@ -48,7 +94,7 @@
             android:textColor="@color/tumbleweed"
             tools:text="8.0"/>
     </LinearLayout>
+-->
 
 
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

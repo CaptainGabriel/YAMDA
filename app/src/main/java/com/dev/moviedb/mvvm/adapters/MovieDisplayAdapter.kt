@@ -3,7 +3,6 @@ package com.dev.moviedb.mvvm.adapters
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.dev.moviedb.mvvm.extensions.formatMovieCardName
 import com.dev.moviedb.mvvm.extensions.inflate
 import com.dev.moviedb.mvvm.extensions.loadUrl
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
@@ -31,9 +30,9 @@ class MovieDisplayAdapter : AbstractMovieItemAdapter<MovieDisplayAdapter.MovieVi
         fun bind(item: MovieDTO?) = with(itemView) {
             //dto from tv shows and movies use different props for the name
             if (item?.title != null){
-                movieTitleTxtView.text = item.title?.formatMovieCardName()
+                movieTitleTxtView.text = item.title
             }else if (item?.name != null){
-                movieTitleTxtView.text = item.name?.formatMovieCardName()
+                movieTitleTxtView.text = item.name
             }
 
             itemImageFrame.loadUrl(item?.posterPath!!)

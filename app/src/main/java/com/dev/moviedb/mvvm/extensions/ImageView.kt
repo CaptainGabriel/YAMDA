@@ -18,7 +18,7 @@ fun ImageView.loadUrl(url: String, transform: Boolean = true) {
     if (url.isEmpty()){
         loadUrl = "https://screenshotlayer.com/images/assets/placeholder.png"
     }else{
-        loadUrl = "${ApiConsts.IMG_BASE_URL}${ApiConsts.BIG_IMG_SIZE}$url"
+        loadUrl = "${ApiConsts.IMG_BASE_URL}${ApiConsts.MEDIUM_IMG_SIZE}$url"
     }
     if (transform){
         Picasso.with(context)

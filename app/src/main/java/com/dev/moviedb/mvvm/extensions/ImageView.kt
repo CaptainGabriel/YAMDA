@@ -16,7 +16,7 @@ import petegabriel.com.yamda.R
 
 fun ImageView.loadUrl(url: String, transform: Boolean = true) {
     var loadUrl = ""
-    loadUrl = if (url.isEmpty()) loadUrl else "${ApiConsts.IMG_BASE_URL}${ApiConsts.MEDIUM_IMG_SIZE}$url"
+    loadUrl = if (url.isEmpty()) loadUrl else "${ApiConsts.IMG_BASE_URL}${ApiConsts.POSTER_XXBIG_IMG_SIZE}$url"
 
     if (transform){
         Picasso.with(context)

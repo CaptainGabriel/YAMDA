@@ -3,28 +3,32 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_marginEnd="3dp"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
         android:id="@+id/itemImageFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
         android:src="@mipmap/ic_launcher"
-        android:layout_margin="0dp"
-        android:layout_width="160dp"
-        android:layout_height="278dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/movieTitleTxtView"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_small"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
         android:autoSizeMaxTextSize="@dimen/text_size_large"
         android:autoSizeMinTextSize="@dimen/text_size_micro"
         android:autoSizeStepGranularity="1sp"
         android:autoSizeTextType="uniform"
         android:paddingEnd="0dp"
-        android:paddingStart="5dp"
         android:textColor="@color/donJuan"
+        android:textSize="@dimen/text_size_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemImageFrame"
@@ -35,9 +39,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/movieTitleTxtView"
-        android:layout_marginStart="5dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:text="Ratings:"
         android:textColor="@color/medium_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/movieTitleTxtView" />
 
@@ -50,51 +56,5 @@
         app:layout_constraintStart_toEndOf="@+id/movieRatingLabel"
         app:layout_constraintTop_toBottomOf="@+id/movieTitleTxtView"
         tools:text="8.0" />
-
-<!--
-    <ImageView
-        android:id="@+id/itemImageFrame"
-        android:src="@mipmap/ic_launcher"
-        android:layout_margin="0dp"
-        android:layout_width="160dp"
-        android:layout_height="260dp" />
-
-    <TextView
-        android:id="@+id/movieTitleTxtView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/itemImageFrame"
-        android:autoSizeTextType="uniform"
-        android:paddingStart="8dp"
-        android:textColor="@color/donJuan"
-        tools:text="The Secret Life of ..." />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:paddingStart="8dp"
-        android:layout_below="@id/movieTitleTxtView">
-        <TextView
-            android:id="@+id/movieRatingLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/movieTitleTxtView"
-            android:textColor="@color/medium_grey"
-            android:layout_marginEnd="5dp"
-            android:text="Ratings:"/>
-
-
-        <TextView
-            android:id="@+id/movieRatingValueTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/movieRatingLabel"
-            android:textColor="@color/tumbleweed"
-            tools:text="8.0"/>
-    </LinearLayout>
--->
-
 
 </android.support.constraint.ConstraintLayout>

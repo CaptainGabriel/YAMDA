@@ -36,7 +36,7 @@
           <option name="apiVersion" value="1.1" />
           <option name="pluginOptions">
             <array>
-              <option value="plugin:org.jetbrains.kotlin.android:experimental=false" />
+              <option value="plugin:org.jetbrains.kotlin.android:experimental=true" />
               <option value="plugin:org.jetbrains.kotlin.android:enabled=true" />
               <option value="plugin:org.jetbrains.kotlin.android:defaultCacheImplementation=hashMap" />
             </array>
@@ -169,11 +169,13 @@
     <orderEntry type="library" name="android.arch.persistence:db-framework-1.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="net.sf.kxml:kxml2:2.3.0@jar" level="project" />
     <orderEntry type="library" name="com.squareup.picasso:picasso:2.5.2@jar" level="project" />
-    <orderEntry type="library" name="com.android.support:design-26.1.0" level="project" />
     <orderEntry type="library" name="com.android.support:transition-26.1.0" level="project" />
+    <orderEntry type="library" name="com.android.support:design-26.1.0" level="project" />
+    <orderEntry type="library" name="com.github.PierfrancescoSoffritti:AndroidYouTubePlayer-3.0.2" level="project" />
     <orderEntry type="library" name="android.arch.core:runtime-1.0.0" level="project" />
     <orderEntry type="library" name="com.android.support:preference-v7-26.1.0" level="project" />
     <orderEntry type="library" name="net.danlew:android.joda-2.9.1" level="project" />
+    <orderEntry type="library" name="org.jetbrains.kotlin:kotlin-android-extensions-runtime:1.1.51@jar" level="project" />
     <orderEntry type="library" name="org.jetbrains.kotlin:kotlin-stdlib-jre7:1.1.51@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="net.bytebuddy:byte-buddy:1.7.9@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="junit:junit:4.12@jar" level="project" />

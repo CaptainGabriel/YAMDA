@@ -2,6 +2,7 @@ package com.dev.moviedb.mvvm.repository.remote
 
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
+import com.dev.moviedb.mvvm.repository.remote.dto.VideoDetails
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Call
@@ -23,6 +24,12 @@ interface TmdbApiService {
     @GET("/3/movie/now_playing")
     fun findNowPlayingMovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
                              @Query("language") lang: String = "en"): Observable<MovieCollectionDTO>
+
+    @GET("/3/movie/{movie_id}/videos")
+    fun findVideoDetailsForId(@Path("movie_id") movieId: Int,
+                              @Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
+                              @Query("language") lang: String = "en"): Single<VideoDetails>
+
 
     @GET("/3/movie/top_rated")
     fun findTopRatedmovies(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,

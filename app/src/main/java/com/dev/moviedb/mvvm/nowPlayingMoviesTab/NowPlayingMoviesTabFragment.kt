@@ -5,19 +5,19 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dev.moviedb.YamdaApplication
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
-import com.dev.moviedb.mvvm.adapters.MovieDisplayAdapter
 import com.dev.moviedb.mvvm.extensions.prependCallLocation
 import com.dev.moviedb.mvvm.repository.NowPlayingMovieRepository
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import petegabriel.com.yamda.R
-import timber.log.Timber
 
 /**
  * This fragment displays the movies currently in theaters in a grid layout.
@@ -45,15 +45,27 @@ class NowPlayingMoviesTabFragment : Fragment()  {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_grid_nowplaying_movies_layout, container, false)
 
-        val tempView: View = view.findViewById(R.id.cardviewGridLayout)
-        recyclerView = tempView.findViewById<RecyclerView>(R.id.listRecyclerView)
+        recyclerView = view.findViewById(R.id.listRecyclerView)
 
         recyclerView?.setHasFixedSize(true)
         recyclerView?.layoutManager = GridLayoutManager(activity, 2)
-        recyclerView?.adapter = MovieDisplayAdapter()
+        recyclerView?.adapter = StaggeredMovieDisplayAdapter(handleItemClick())
         recyclerView?.itemAnimator = DefaultItemAnimator()
 
         return view
+    }
+
+    private fun handleItemClick(): (MovieDTO) -> Unit = {
+        it -> viewModel?.findVideoDetailsForId(it.id)
+            ?.subscribeOn(Schedulers.newThread())
+            ?.observeOn(AndroidSchedulers.mainThread())
+            ?.subscribe({ t ->
+                run {
+                    val manager = fragmentManager
+                    val videoPlayerFragDialog = VideoPlayerFragment.newInstance(t?.results?.get(0)?.key!!)
+                    videoPlayerFragDialog.show(manager, "VideoPlayerFragDialog")
+                }
+            }, { throwable -> handleError(throwable) })
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -78,7 +90,7 @@ class NowPlayingMoviesTabFragment : Fragment()  {
     /**
      * Handle error after requesting data from ViewModel
      */
-    private fun handleError(throwable: Throwable) = Timber.d(this.javaClass.canonicalName, throwable.message!!.toString().prependCallLocation())
+    private fun handleError(throwable: Throwable) = Log.d("NowPlayingTab", throwable.message!!.toString().prependCallLocation())
 
 
 }

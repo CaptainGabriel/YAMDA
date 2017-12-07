@@ -3,21 +3,10 @@ package com.dev.moviedb.mvvm.repository.remote
 /**
  *
  *
- * @author PeteGabriel on 13/10/2017
- * Copyright (c) 2017
- * All rights reserved.
+ * Yamda 1.0.0
  */
 object RemoteCom{
 
-    /**
-     * Size of thumbnail images.
-     */
-    const val DEFAULT_IMG_SIZE = "w154/"
-
-    /**
-     * Size of images inside the details page.
-     */
-    const val DETAILS_IMG_SIZE = "w500/"
 
     /**
      * The api key used to communicate with the api.

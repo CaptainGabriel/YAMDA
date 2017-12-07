@@ -87,7 +87,7 @@ class MovieDTO() : Parcelable {
     @Expose
     var voteCount: Int = 0
 
-    var trailers: TraillerDTO? = null
+    var videos: Videos? = null
 
     var genres: List<GenreDTO>? = null
 
@@ -107,7 +107,7 @@ class MovieDTO() : Parcelable {
         imdbId = parcel.readString()
         homepage = parcel.readString()
         voteCount = parcel.readInt()
-        trailers = parcel.readParcelable(TraillerDTO::class.java.classLoader)
+        //trailers = parcel.createTypedArrayList(Results.CREATOR)
         genres = parcel.createTypedArrayList(GenreDTO.CREATOR)
     }
 
@@ -128,7 +128,7 @@ class MovieDTO() : Parcelable {
         parcel.writeString(this.imdbId)
         parcel.writeString(this.homepage)
         parcel.writeInt(this.voteCount)
-        parcel.writeParcelable(this.trailers, 0)
+        //parcel.writeParcelable(this.trailers, 0)
     }
 
     override fun describeContents(): Int {

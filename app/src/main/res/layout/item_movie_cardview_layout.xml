@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nowplaying_movie_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <ImageView
+        android:id="@+id/itemImageFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:minHeight="200dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/imagePlayIcon"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_play_circle_outline" />
+</RelativeLayout>
+
+
+<!--
+<android.support.v7.widget.CardView
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_margin="5dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+<ImageView android:id="@+id/itemImageFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="200dp"
+    android:src="@mipmap/ic_launcher"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
+            <TextView
+                android:id="@+id/movieTitleTxtView"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:autoSizeMaxTextSize="@dimen/text_size_large"
+                android:autoSizeMinTextSize="@dimen/text_size_micro"
+                android:autoSizeStepGranularity="1sp"
+                android:autoSizeTextType="uniform"
+                android:paddingEnd="0dp"
+                android:textColor="@color/donJuan"
+                android:textSize="@dimen/text_sizell"
+                tools:text="The Secret Life of ..."
+                android:layout_below="@id/itemImageFrame"/>
+
+            <TextView
+                android:id="@+id/movieRatingLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:text="Ratings:"
+                android:layout_below="@id/movieTitleTxtView"
+                android:textColor="@color/medium_grey" />
+
+            <TextView
+                android:id="@+id/movieRatingValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/movieRatingLabel"
+                android:textColor="@color/tumbleweed"
+                android:layout_below="@+id/movieTitleTxtView"
+                tools:text="8.0" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView> -->

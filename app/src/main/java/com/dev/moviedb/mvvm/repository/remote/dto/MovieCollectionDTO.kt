@@ -2,15 +2,17 @@ package com.dev.moviedb.mvvm.repository.remote.dto
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 
 /**
  *
  * Yamda 1.0.0.
  */
-data class MovieCollectionDTO(var page: Int,
-                              var results:  List<MovieDTO>,
-                              var totalPages: Int,
-                              var totalResults: Int): Parcelable {
+data class MovieCollectionDTO(
+        @SerializedName("page") var page: Int,
+        var results:  List<MovieDTO>,
+        @SerializedName("total_pages") var totalPages: Int,
+        @SerializedName("total_results") var totalResults: Int): Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.createTypedArrayList(MovieDTO.CREATOR),

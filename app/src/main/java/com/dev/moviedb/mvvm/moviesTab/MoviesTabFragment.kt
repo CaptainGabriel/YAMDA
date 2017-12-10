@@ -10,6 +10,7 @@ import com.dev.moviedb.mvvm.repository.NowPlayingMovieRepository
 import com.dev.moviedb.mvvm.repository.PopularMovieRepository
 import com.dev.moviedb.mvvm.repository.TopRatedMovieRepository
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_movies_tab_layout.*
@@ -63,14 +64,24 @@ class MoviesTabFragment : AbstractDisplayFragment() {
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe({ t ->
                     run {
-                        t.backdropPath?.let { spotlight_movie_image?.loadUrl(it, false) }
-                        spotlight_movie_description?.text = t.overview.formatMovieCardName(100)
-                        spotlight_movie_rating?.text = "%.1f".format(t.voteAverage)
-                        spotlight_movie_name?.text = t.title
+                        handleMostRecentMovieDetails(t)
                     }
                 }, { throwable ->
                     handleError(throwable)
                 })
+    }
+
+    private fun handleMostRecentMovieDetails(t: MovieDTO) {
+        //if
+        if (t.backdropPath == null){
+            header.visibility = View.GONE
+            return
+        }
+
+        t.backdropPath?.let { spotlight_movie_image?.loadUrl(it, false) }
+        spotlight_movie_description?.text = t.overview.formatMovieCardName(100)
+        spotlight_movie_rating?.text = "%.1f".format(t.voteAverage)
+        spotlight_movie_name?.text = t.title
     }
 
     private fun subscribeToTopRatedMovies() {

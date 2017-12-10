@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,6 @@ import com.dev.moviedb.mvvm.extensions.prependCallLocation
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import kotlinx.android.synthetic.main.fragment_movies_tab_layout.*
 import petegabriel.com.yamda.R
-import timber.log.Timber
 
 /**
  * This class contains common behavior used to display
@@ -96,7 +96,7 @@ abstract class AbstractDisplayFragment : Fragment() {
     /**
      * Handle error after requesting data from ViewModel
      */
-    protected fun handleError(throwable: Throwable) = Timber.d(getLoggingTag(), throwable.message!!.toString().prependCallLocation())
+    protected fun handleError(throwable: Throwable) = Log.d(getLoggingTag(), throwable.message!!.toString().prependCallLocation())
 
 
     abstract fun getLoggingTag(): String
@@ -121,6 +121,8 @@ abstract class AbstractDisplayFragment : Fragment() {
         popularRecyclerView?.adapter = MovieDisplayAdapter()
         popularRecyclerView?.itemAnimator = DefaultItemAnimator()
     }
+
+
     /**
      * Configuration of the recycler view's adapter
      */

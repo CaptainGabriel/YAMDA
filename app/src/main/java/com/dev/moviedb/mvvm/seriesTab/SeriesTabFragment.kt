@@ -54,6 +54,8 @@ class SeriesTabFragment : AbstractDisplayFragment() {
                 ?.subscribe({ t -> addNewDataToThirdAdapter()(t.results) },
                         { throwable -> handleError(throwable) })
 
+
+
     }
 
 

@@ -25,8 +25,7 @@ class VideoPlayerFragment : DialogFragment() {
         fun newInstance(id: String): VideoPlayerFragment {
             val frag = VideoPlayerFragment()
             val args = Bundle()
-            val key = VIDEO_ID_ARGS_KEY
-            args.putString(key, id)
+            args.putString(VIDEO_ID_ARGS_KEY, id)
             frag.arguments = args
             return frag
         }

@@ -72,7 +72,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
     }
 
     private fun handleMostRecentMovieDetails(t: MovieDTO) {
-        //if
+        //if movie does not have enough info, hide the space
         if (t.backdropPath == null){
             header.visibility = View.GONE
             return

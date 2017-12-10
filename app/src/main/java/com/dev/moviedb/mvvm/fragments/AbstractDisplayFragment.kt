@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.dev.moviedb.mvvm.adapters.AbstractMovieItemAdapter
 import com.dev.moviedb.mvvm.adapters.MovieDisplayAdapter
 import com.dev.moviedb.mvvm.extensions.prependCallLocation
@@ -42,6 +43,16 @@ abstract class AbstractDisplayFragment : Fragment() {
      * A reference to the RecyclerView widget used to display a list of movies in theaters.
      */
     protected var nowPlayingRecyclerView: RecyclerView? = null
+
+
+    /**
+     * Override this function in order to perform a specific action
+     * for a given click in a certain item.
+     * 
+     */
+    open fun handleItemClick(): (MovieDTO) -> Unit {
+        return { it -> Toast.makeText(activity, it.title, Toast.LENGTH_SHORT).show() }
+    }
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -115,11 +126,7 @@ abstract class AbstractDisplayFragment : Fragment() {
         val tempView: View = view.findViewById(R.id.firstCardView)
         tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getFirstCardTitle()
         popularRecyclerView = tempView.findViewById(R.id.movieListRecyclerView)
-
-        popularRecyclerView?.setHasFixedSize(true)
-        popularRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        popularRecyclerView?.adapter = MovieDisplayAdapter()
-        popularRecyclerView?.itemAnimator = DefaultItemAnimator()
+        popularRecyclerView?.configureLocalLayoutView()
     }
 
 
@@ -130,11 +137,7 @@ abstract class AbstractDisplayFragment : Fragment() {
         val tempView = view.findViewById<View>(R.id.secondCardView)
         tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getSecondCardTitle()
         topRatedRecyclerView = tempView.findViewById(R.id.movieListRecyclerView)
-
-        topRatedRecyclerView?.setHasFixedSize(true)
-        topRatedRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        topRatedRecyclerView?.adapter = MovieDisplayAdapter()
-        topRatedRecyclerView?.itemAnimator = DefaultItemAnimator()
+        topRatedRecyclerView?.configureLocalLayoutView()
     }
 
     /**
@@ -144,10 +147,15 @@ abstract class AbstractDisplayFragment : Fragment() {
         val tempView = view.findViewById<View>(R.id.thirdCardView)
         tempView.findViewById<TextView>(R.id.cardviewDescriptionText).text = getThirdCardTitle()
         nowPlayingRecyclerView = tempView.findViewById(R.id.movieListRecyclerView)
-
-        nowPlayingRecyclerView?.setHasFixedSize(true)
-        nowPlayingRecyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        nowPlayingRecyclerView?.adapter = MovieDisplayAdapter()
-        nowPlayingRecyclerView?.itemAnimator = DefaultItemAnimator()
+        nowPlayingRecyclerView?.configureLocalLayoutView()
     }
+
+
+    private fun RecyclerView.configureLocalLayoutView(){
+        this.setHasFixedSize(true)
+        this.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        this.adapter = MovieDisplayAdapter(handleItemClick())
+        this.itemAnimator = DefaultItemAnimator()
+    }
+
 }

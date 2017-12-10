@@ -58,6 +58,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
 
     }
 
+
     private fun subscribeToTheMostRecentMovie() {
         viewModel?.getMostRecentMovie()
                 ?.subscribeOn(Schedulers.newThread())

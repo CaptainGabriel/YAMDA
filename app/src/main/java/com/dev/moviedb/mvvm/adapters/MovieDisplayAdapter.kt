@@ -15,10 +15,10 @@ import petegabriel.com.yamda.R
  *
  * Yamda 1.0.0.
  */
-class MovieDisplayAdapter : AbstractMovieItemAdapter<MovieDisplayAdapter.MovieViewHolder>() {
+class MovieDisplayAdapter(private var onItemClick: (MovieDTO) -> Unit = {}) : AbstractMovieItemAdapter<MovieDisplayAdapter.MovieViewHolder>() {
 
     override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
-        holder?.bind(movies?.get(position))
+        holder?.bind(movies?.get(position), onItemClick)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MovieViewHolder =
@@ -27,7 +27,7 @@ class MovieDisplayAdapter : AbstractMovieItemAdapter<MovieDisplayAdapter.MovieVi
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: MovieDTO?) = with(itemView) {
+        fun bind(item: MovieDTO?, onItemClick: (MovieDTO) -> Unit) = with(itemView) {
             //dto from tv shows and movies use different props for the name
             if (item?.title != null){
                 movieTitleTxtView.text = item.title
@@ -37,6 +37,8 @@ class MovieDisplayAdapter : AbstractMovieItemAdapter<MovieDisplayAdapter.MovieVi
 
             itemImageFrame.loadUrl(item?.posterPath!!)
             movieRatingValueTextView.text = "%.1f".format(item.voteAverage)
+
+            itemView.setOnClickListener { _ -> onItemClick(item) }
         }
     }
 

@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.dev.moviedb.mvvm.extensions.inflate
-import com.dev.moviedb.mvvm.extensions.loadUrl
+import com.dev.moviedb.mvvm.extensions.loadPosterUrl
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import kotlinx.android.synthetic.main.item_movie_generic_layout.view.*
 import petegabriel.com.yamda.R
@@ -35,7 +35,7 @@ class MovieDisplayAdapter(private var onItemClick: (MovieDTO) -> Unit = {}) : Ab
                 movieTitleTxtView.text = item.name
             }
 
-            itemImageFrame.loadUrl(item?.posterPath!!)
+            itemImageFrame.loadPosterUrl(item?.posterPath!!)
             movieRatingValueTextView.text = "%.1f".format(item.voteAverage)
 
             itemView.setOnClickListener { _ -> onItemClick(item) }

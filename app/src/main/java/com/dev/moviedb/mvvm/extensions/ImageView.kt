@@ -1,5 +1,6 @@
 package com.dev.moviedb.mvvm.extensions
 
+import android.content.Context
 import android.widget.ImageView
 import com.dev.moviedb.mvvm.repository.remote.ApiConsts
 import com.squareup.picasso.Picasso
@@ -14,9 +15,18 @@ import petegabriel.com.yamda.R
 
 
 
-fun ImageView.loadUrl(url: String, transform: Boolean = true) {
+fun ImageView.loadPosterUrl(url: String, transform: Boolean = true) {
+    loadMediumPoster(this, context, url, transform)
+}
+
+fun ImageView.loadBackdropUrl(url: String, transform: Boolean = true) {
+    loadMediumPoster(this, context, url, transform, ApiConsts.POSTER_BIG_IMG_SIZE)
+}
+
+
+private fun loadMediumPoster(view: ImageView, context: Context, url: String, transform: Boolean = true, size: String = ApiConsts.POSTER_MEDIUM_IMG_SIZE) {
     var loadUrl = ""
-    loadUrl = if (url.isEmpty()) loadUrl else "${ApiConsts.IMG_BASE_URL}${ApiConsts.POSTER_XXBIG_IMG_SIZE}$url"
+    loadUrl = if (url.isEmpty()) loadUrl else "${ApiConsts.IMG_BASE_URL}$size$url"
 
     if (transform){
         Picasso.with(context)
@@ -24,12 +34,12 @@ fun ImageView.loadUrl(url: String, transform: Boolean = true) {
                 .placeholder(R.color.material_grey_300)
                 .error(R.color.material_grey_300)
                 .transform(RoundedTransformation(7, 4))
-                .into(this)
+                .into(view)
     }else{
         Picasso.with(context)
                 .load(loadUrl)
                 .placeholder(R.color.material_grey_300)
                 .error(R.color.material_grey_300)
-                .into(this)
+                .into(view)
     }
 }

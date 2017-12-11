@@ -2,8 +2,6 @@ package com.dev.moviedb.mvvm.repository.remote.dto
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.dev.moviedb.mvvm.extensions.readBoolean
-import com.dev.moviedb.mvvm.extensions.writeBoolean
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -17,7 +15,6 @@ class MovieDTO() : Parcelable {
     @SerializedName("backdrop_path")
     @Expose
     var backdropPath: String? = ""
-        get() = field?.substring(1)
 
     var id: Int = 0
 
@@ -37,7 +34,7 @@ class MovieDTO() : Parcelable {
     @SerializedName("poster_path")
     @Expose
     var posterPath: String? = ""
-        get() = field?.substring(1)
+
 
     /**
      * MovieEntity's popularity
@@ -47,12 +44,12 @@ class MovieDTO() : Parcelable {
     /**
      * The movie title
      */
-    var title: String? = null
+    var title: String? = ""
 
     /**
      * The tv show's name
      */
-    var name: String? = null
+    var name: String? = ""
 
     /**
      * If has video or not
@@ -99,7 +96,8 @@ class MovieDTO() : Parcelable {
         posterPath = parcel.readString()
         popularity = parcel.readDouble()
         title = parcel.readString()
-        video = parcel.readBoolean()!!
+        name = parcel.readString()
+        video = parcel.readByte() != 0.toByte()
         voteAverage = parcel.readDouble()
         status = parcel.readString()
         runtime = parcel.readInt()
@@ -107,28 +105,27 @@ class MovieDTO() : Parcelable {
         imdbId = parcel.readString()
         homepage = parcel.readString()
         voteCount = parcel.readInt()
-        //trailers = parcel.createTypedArrayList(Results.CREATOR)
-        genres = parcel.createTypedArrayList(GenreDTO.CREATOR)
+        genres = parcel.createTypedArrayList(GenreDTO)
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(this.backdropPath)
+        parcel.writeString(backdropPath)
+        parcel.writeInt(id)
+        parcel.writeString(overview)
+        parcel.writeString(releaseDate)
+        parcel.writeString(posterPath)
+        parcel.writeDouble(popularity)
+        parcel.writeString(title)
+        parcel.writeString(name)
+        parcel.writeByte(if (video) 1 else 0)
+        parcel.writeDouble(voteAverage)
+        parcel.writeString(status)
+        parcel.writeInt(runtime)
+        parcel.writeString(tagline)
+        parcel.writeString(imdbId)
+        parcel.writeString(homepage)
+        parcel.writeInt(voteCount)
         parcel.writeTypedList(genres)
-        parcel.writeValue(this.id)
-        parcel.writeString(this.overview)
-        parcel.writeString(this.releaseDate)
-        parcel.writeString(this.posterPath)
-        parcel.writeValue(this.popularity)
-        parcel.writeString(this.title)
-        parcel.writeBoolean(this.video)
-        parcel.writeValue(this.voteAverage)
-        parcel.writeString(this.status)
-        parcel.writeInt(this.runtime)
-        parcel.writeString(this.tagline)
-        parcel.writeString(this.imdbId)
-        parcel.writeString(this.homepage)
-        parcel.writeInt(this.voteCount)
-        //parcel.writeParcelable(this.trailers, 0)
     }
 
     override fun describeContents(): Int {

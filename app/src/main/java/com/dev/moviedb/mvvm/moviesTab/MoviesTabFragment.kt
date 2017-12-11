@@ -1,11 +1,13 @@
 package com.dev.moviedb.mvvm.moviesTab
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.dev.moviedb.YamdaApplication
 import com.dev.moviedb.mvvm.extensions.formatMovieCardName
-import com.dev.moviedb.mvvm.extensions.loadUrl
+import com.dev.moviedb.mvvm.extensions.loadPosterUrl
 import com.dev.moviedb.mvvm.fragments.AbstractDisplayFragment
+import com.dev.moviedb.mvvm.movieDetails.MovieDetailsActivity
 import com.dev.moviedb.mvvm.repository.NowPlayingMovieRepository
 import com.dev.moviedb.mvvm.repository.PopularMovieRepository
 import com.dev.moviedb.mvvm.repository.TopRatedMovieRepository
@@ -58,6 +60,18 @@ class MoviesTabFragment : AbstractDisplayFragment() {
 
     }
 
+    override fun handleItemClick(): (MovieDTO) -> Unit {
+        return { m ->
+            run {
+                val intent = Intent(activity, MovieDetailsActivity::class.java)
+                val b = Bundle()
+                b.putParcelable(MovieDetailsActivity.ITEM_ARGS_KEY, m)
+                intent.putExtras(b) //Put your id to your next Intent
+                startActivity(intent)
+            }
+        }
+    }
+
 
     private fun subscribeToTheMostRecentMovie() {
         viewModel?.getMostRecentMovie()
@@ -79,7 +93,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
             return
         }
 
-        t.backdropPath?.let { spotlight_movie_image?.loadUrl(it, false) }
+        t.backdropPath?.let { spotlight_movie_image?.loadPosterUrl(it, false) }
         spotlight_movie_description?.text = t.overview.formatMovieCardName(100)
         spotlight_movie_rating?.text = "%.1f".format(t.voteAverage)
         spotlight_movie_name?.text = t.title

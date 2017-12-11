@@ -48,7 +48,7 @@ abstract class AbstractDisplayFragment : Fragment() {
     /**
      * Override this function in order to perform a specific action
      * for a given click in a certain item.
-     * 
+     *
      */
     open fun handleItemClick(): (MovieDTO) -> Unit {
         return { it -> Toast.makeText(activity, it.title, Toast.LENGTH_SHORT).show() }

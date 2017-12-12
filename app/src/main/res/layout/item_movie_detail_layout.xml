@@ -65,6 +65,26 @@
         app:layout_constraintStart_toEndOf="@+id/poster_movie_img"
         app:layout_constraintTop_toBottomOf="@+id/rating_score" />
 
+
+    <TextView
+        android:id="@+id/qmap_2"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/round_shape"
+        android:gravity="center"
+        android:paddingEnd="3dp"
+        android:paddingStart="3dp"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/poster_movie_img"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:text="Animation" />
+
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"

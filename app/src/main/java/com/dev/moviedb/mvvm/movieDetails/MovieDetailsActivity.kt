@@ -30,16 +30,17 @@ class MovieDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.item_movie_detail_layout)
 
         var movie = intent.extras[ITEM_ARGS_KEY] as MovieDTO
+        provideDataToLayout(movie)
+    }
 
+
+    private fun provideDataToLayout(movie: MovieDTO) {
         movie.backdropPath?.let { backdrop_movie_img.loadBackdropUrl(it, false) }
         movie.posterPath?.let { poster_movie_img.loadPosterUrl(it) }
         movie.title?.let { movie_name.text = it }
         storyline_content.text = movie.overview
         rating_score?.text = "%.1f".format(movie.voteAverage)
     }
-
-
-
 
 
 }

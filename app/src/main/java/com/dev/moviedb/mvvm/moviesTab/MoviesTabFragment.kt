@@ -17,6 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_movies_tab_layout.*
 import kotlinx.android.synthetic.main.include_item_spotlight.*
+import petegabriel.com.yamda.R
 
 
 /**
@@ -53,21 +54,29 @@ class MoviesTabFragment : AbstractDisplayFragment() {
         super.onActivityCreated(savedInstanceState)
 
         subscribeToTheMostRecentMovie()
-
         subscribeToMostPopularMovies()
-
         subscribeToTopRatedMovies()
-
     }
 
     override fun handleItemClick(): (MovieDTO) -> Unit {
         return { m ->
             run {
-                val intent = Intent(activity, MovieDetailsActivity::class.java)
-                val b = Bundle()
-                b.putParcelable(MovieDetailsActivity.ITEM_ARGS_KEY, m)
-                intent.putExtras(b) //Put your id to your next Intent
-                startActivity(intent)
+                viewModel?.findMovieById(m.id.toLong())
+                        ?.subscribeOn(Schedulers.newThread())
+                        ?.observeOn(AndroidSchedulers.mainThread())
+                        ?.subscribe({ t ->
+                            run {
+                                val intent = Intent(activity, MovieDetailsActivity::class.java)
+                                val b = Bundle()
+                                b.putParcelable(MovieDetailsActivity.ITEM_ARGS_KEY, t)
+                                intent.putExtras(b) //Put your id to your next Intent
+                                startActivity(intent)
+                                //set the animation of the exiting and entering Activities
+                                activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+                            }
+                        }, { throwable ->
+                            handleError(throwable)
+                        })
             }
         }
     }

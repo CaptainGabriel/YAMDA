@@ -5,6 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include layout="@layout/toolbar_center_text"/>
+
+    </android.support.design.widget.AppBarLayout>
 
     <ImageView
         android:id="@+id/backdrop_movie_img"
@@ -66,24 +75,17 @@
         app:layout_constraintTop_toBottomOf="@+id/rating_score" />
 
 
-    <TextView
-        android:id="@+id/qmap_2"
-        android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/round_shape"
-        android:gravity="center"
-        android:paddingEnd="3dp"
-        android:paddingStart="3dp"
-        android:textColor="#FFFFFF"
-        android:textSize="10dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/poster_movie_img"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:text="Animation" />
+    <LinearLayout
+        android:id="@+id/movie_categories_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView4"

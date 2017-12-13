@@ -1,9 +1,14 @@
 package com.dev.moviedb.mvvm.extensions
 
+import android.content.Context
 import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import petegabriel.com.yamda.R
+
+
 
 /**
  * This file contains the various extension methods for the class @see(ViewGroup) to
@@ -22,4 +27,12 @@ import android.view.ViewGroup
  */
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
+}
+
+fun View.slideOutToLeft(context: Context){
+    runSimpleAnimation(context, this, R.anim.slide_to_left)
+}
+
+private fun runSimpleAnimation(context: Context, view: View, animationId: Int) {
+    view.startAnimation(AnimationUtils.loadAnimation(context, animationId))
 }

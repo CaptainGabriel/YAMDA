@@ -1,11 +1,18 @@
 package com.dev.moviedb.mvvm.movieDetails
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
+import android.view.MenuItem
+import android.widget.TextView
 import com.dev.moviedb.mvvm.extensions.loadBackdropUrl
 import com.dev.moviedb.mvvm.extensions.loadPosterUrl
+import com.dev.moviedb.mvvm.repository.remote.dto.GenreDTO
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import kotlinx.android.synthetic.main.item_movie_detail_layout.*
+import kotlinx.android.synthetic.main.toolbar_center_text.*
 import petegabriel.com.yamda.R
 
 /**
@@ -29,8 +36,42 @@ class MovieDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.item_movie_detail_layout)
 
-        var movie = intent.extras[ITEM_ARGS_KEY] as MovieDTO
+        toolbar.title = ""
+        setSupportActionBar(toolbar)
+        //provide up navigation
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val movie = intent.extras[ITEM_ARGS_KEY] as MovieDTO
+
         provideDataToLayout(movie)
+
+        movie.genres?.forEach { genreDTO: GenreDTO ->
+            run {
+                val category = TextView(this)
+                category.text = genreDTO.name
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    category.background = getDrawable(R.drawable.round_shape)
+                }
+                category.gravity = Gravity.CENTER
+                category.setPadding(3,0, 3, 0)
+                category.setTextColor(Color.WHITE)
+                category.textSize = R.dimen.text_size_micro.toFloat()
+                movie_categories_container.addView(category)
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        when(item?.itemId){
+            android.R.id.home -> run {
+                //TODO animation is not working as expected
+                overridePendingTransition(R.anim.slide_to_right, R.anim.slide_from_left)
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 

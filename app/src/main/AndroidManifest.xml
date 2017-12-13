@@ -27,19 +27,14 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name="com.dev.moviedb.network.ConnectivityReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
         <activity
             android:name="com.dev.moviedb.mvvm.activities.TabOptionsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.dev.moviedb.mvvm.movieDetails.MovieDetailsActivity"></activity>
+
+        <activity
+            android:name="com.dev.moviedb.mvvm.movieDetails.MovieDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName="com.dev.moviedb.mvvm.activities.TabOptionsActivity"/>
     </application>
 
 </manifest>

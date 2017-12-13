@@ -37,6 +37,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        retainInstance = true
         val app = activity.applicationContext as YamdaApplication
         val popularRepo = PopularMovieRepository(app.apiService)
         val topRatedRepo = TopRatedMovieRepository(app.apiService)
@@ -46,7 +47,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //TODO this must be better handled
         thirdCardView.visibility = View.GONE
     }
 
@@ -58,10 +59,11 @@ class MoviesTabFragment : AbstractDisplayFragment() {
         subscribeToTopRatedMovies()
     }
 
+
     override fun handleItemClick(): (MovieDTO) -> Unit {
         return { m ->
             run {
-                viewModel?.findMovieById(m.id.toLong())
+                viewModel?.findMovieById(m.id.toLong(), "credits,videos")
                         ?.subscribeOn(Schedulers.newThread())
                         ?.observeOn(AndroidSchedulers.mainThread())
                         ?.subscribe({ t ->
@@ -113,7 +115,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe({ col ->
-                    addNewDataToSecondAdapter()(col.results)
+                    addNewDataToSecondAdapter()(ArrayList(col.results))
                 }, { throwable ->
                     handleError(throwable)
                 })
@@ -124,7 +126,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe({ t: MovieCollectionDTO ->
-                    addNewDataToFirstAdapter()(t.results)
+                    addNewDataToFirstAdapter()(ArrayList(t.results))
                 }, { t: Throwable? ->
                     handleError(t!!)
                 })

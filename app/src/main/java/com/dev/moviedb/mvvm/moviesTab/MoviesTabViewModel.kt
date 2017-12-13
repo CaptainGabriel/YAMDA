@@ -35,9 +35,9 @@ class MoviesTabViewModel constructor(private var apiService: TmdbApiService,
         return topRatedMovieRepository.findAll()
     }
 
-    fun findMovieById(id: Long) : Single<MovieDTO>{
+    fun findMovieById(id: Long, appendToResp: String = "") : Single<MovieDTO>{
         //TODO change to use repository later
-        return apiService.findMovieById(id)
+        return apiService.findMovieById(id, appendToResp)
     }
 
 }

@@ -19,7 +19,7 @@ import com.dev.moviedb.mvvm.userPreferences.UserPreferencesFragment
  * Copyright (c) 2017
  * All rights reserved.
  */
-class MainOptionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class MainOptionsPagerAdapter(var fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     //The amount fo fragments managed by this adapter.
     private val TOTAL_FRAGS = 4

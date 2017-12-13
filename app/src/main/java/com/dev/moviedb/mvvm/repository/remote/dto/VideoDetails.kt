@@ -8,6 +8,6 @@ class VideoDetails {
 
     var id: String? = null
 
-    var results: Array<Results>? = null
+    var results: Array<ResultsDTO>? = null
 
 }

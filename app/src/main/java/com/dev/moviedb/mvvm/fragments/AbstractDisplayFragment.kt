@@ -77,12 +77,13 @@ abstract class AbstractDisplayFragment : Fragment() {
     }
 
 
+
     /**
      * Send data to the popular movies adapter
      */
-    protected fun addNewDataToFirstAdapter(): (List<MovieDTO>?) -> Unit {
-        return { col: List<MovieDTO>? ->
-            (popularRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
+    protected fun addNewDataToFirstAdapter(): (ArrayList<MovieDTO>?) -> Unit {
+        return { col: ArrayList<MovieDTO>? ->
+            (popularRecyclerView?.adapter as AbstractMovieItemAdapter).addNewData(col)
             (popularRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
         }
     }
@@ -90,16 +91,16 @@ abstract class AbstractDisplayFragment : Fragment() {
     /**
      * Send data to the Top Rated movies adapter
      */
-    protected fun addNewDataToSecondAdapter(): (List<MovieDTO>?) -> Unit {
-        return { col: List<MovieDTO>? ->
-            (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
+    protected fun addNewDataToSecondAdapter(): (ArrayList<MovieDTO>?) -> Unit {
+        return { col: ArrayList<MovieDTO>? ->
+            (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).addNewData(col)
             (topRatedRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
         }
     }
 
-    protected fun addNewDataToThirdAdapter(): (List<MovieDTO>?) -> Unit {
-        return { col: List<MovieDTO>? ->
-            (nowPlayingRecyclerView?.adapter as AbstractMovieItemAdapter).adNewData(col)
+    protected fun addNewDataToThirdAdapter(): (ArrayList<MovieDTO>?) -> Unit {
+        return { col: ArrayList<MovieDTO>? ->
+            (nowPlayingRecyclerView?.adapter as AbstractMovieItemAdapter).addNewData(col)
             (nowPlayingRecyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
         }
     }

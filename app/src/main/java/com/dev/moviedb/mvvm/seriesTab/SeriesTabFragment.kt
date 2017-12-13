@@ -37,21 +37,21 @@ class SeriesTabFragment : AbstractDisplayFragment() {
         viewModel?.findAiringTodayTvSeries()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe( { t -> addNewDataToFirstAdapter()(t.results) },
+                ?.subscribe( { t -> addNewDataToFirstAdapter()(ArrayList(t.results)) },
                         { throwable -> handleError(throwable) })
 
         //most popular tv shows
         viewModel?.findPopularTvSeries()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe( { t -> addNewDataToSecondAdapter()(t.results) },
+                ?.subscribe( { t -> addNewDataToSecondAdapter()(ArrayList(t.results)) },
                              { throwable -> handleError(throwable) })
 
         //top rated tv shows
         viewModel?.findTopRatedTvSeries()
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe({ t -> addNewDataToThirdAdapter()(t.results) },
+                ?.subscribe({ t -> addNewDataToThirdAdapter()(ArrayList(t.results)) },
                         { throwable -> handleError(throwable) })
 
 

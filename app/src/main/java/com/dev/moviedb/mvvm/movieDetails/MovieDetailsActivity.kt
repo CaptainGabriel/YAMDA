@@ -5,10 +5,11 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
-import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
 import com.dev.moviedb.mvvm.extensions.loadBackdropUrl
 import com.dev.moviedb.mvvm.extensions.loadPosterUrl
+import com.dev.moviedb.mvvm.extensions.loadRoundedPhoto
 import com.dev.moviedb.mvvm.repository.remote.dto.GenreDTO
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import kotlinx.android.synthetic.main.item_movie_detail_layout.*
@@ -38,6 +39,8 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         toolbar.title = ""
         setSupportActionBar(toolbar)
+        toolbar_title.text = ""
+
         //provide up navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -59,21 +62,24 @@ class MovieDetailsActivity : AppCompatActivity() {
                 movie_categories_container.addView(category)
             }
         }
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-
-        when(item?.itemId){
-            android.R.id.home -> run {
-                //TODO animation is not working as expected
-                overridePendingTransition(R.anim.slide_to_right, R.anim.slide_from_left)
-                return true
+        movie.credits?.cast?.let { castingCrew ->
+            run {
+                (0..4).forEach { i ->
+                    run{
+                        val castPhoto = ImageView(this)
+                        castingCrew[i].profile_path?.let { castPhoto.loadRoundedPhoto(this, it) }
+                        casting_images_container.addView(castPhoto)
+                    }
+                }
             }
         }
-
-        return super.onOptionsItemSelected(item)
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
+    }
 
     private fun provideDataToLayout(movie: MovieDTO) {
         movie.backdropPath?.let { backdrop_movie_img.loadBackdropUrl(it, false) }

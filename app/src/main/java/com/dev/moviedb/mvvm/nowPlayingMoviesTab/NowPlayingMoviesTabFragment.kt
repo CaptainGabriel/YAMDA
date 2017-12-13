@@ -81,7 +81,7 @@ class NowPlayingMoviesTabFragment : Fragment()  {
                 ?.subscribeOn(Schedulers.newThread())
                 ?.observeOn(AndroidSchedulers.mainThread())
                 ?.subscribe({ t: MovieCollectionDTO ->
-                    (recyclerView?.adapter as AbstractMovieItemAdapter).adNewData(t.results)
+                    (recyclerView?.adapter as AbstractMovieItemAdapter).addNewData(ArrayList(t.results))
                     (recyclerView?.adapter as AbstractMovieItemAdapter).notifyDataSetChanged()
                 }, { throwable -> handleError(throwable) })
     }

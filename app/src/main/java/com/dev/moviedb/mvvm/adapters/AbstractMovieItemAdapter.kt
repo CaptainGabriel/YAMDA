@@ -11,12 +11,15 @@ import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
  */
 abstract class AbstractMovieItemAdapter<T : ViewHolder?>: RecyclerView.Adapter<T>(){
 
-    protected var movies: List<MovieDTO>? = null
+    var movies: ArrayList<MovieDTO>? = null
 
-    fun adNewData(movies: List<MovieDTO>?){
+    fun addNewData(movies: ArrayList<MovieDTO>?){
         this.movies = movies
     }
 
     override fun getItemCount(): Int = if (movies == null) 0 else movies?.size!!
+
+
+
 
 }

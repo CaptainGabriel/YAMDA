@@ -3,7 +3,9 @@ package com.dev.moviedb.mvvm.extensions;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Shader;
 
 import com.squareup.picasso.Transformation;
 
@@ -11,36 +13,45 @@ import com.squareup.picasso.Transformation;
  * Yamda 1.0.0.
  */
 public class CircleTransform implements Transformation {
+    private final int radius;
+    private final int margin;  // dp
+
+    // radius is corner radii in dp
+    // margin is the board in dp
+    public CircleTransform(final int radius, final int margin) {
+        this.radius = radius;
+        this.margin = margin;
+    }
+
     @Override
-    public Bitmap transform(Bitmap source) {
-        int size = Math.min(source.getWidth(), source.getHeight());
+    public Bitmap transform(final Bitmap source) {
 
-        int x = (source.getWidth() - size) / 2;
-        int y = (source.getHeight() - size) / 2;
 
-        Bitmap squaredBitmap = Bitmap.createBitmap(source, x, y, size, size);
-        if (squaredBitmap != source) {
+        final Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setShader(new BitmapShader(source, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+
+        Bitmap output = Bitmap.createBitmap(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-2, paint);
+
+        if (source != output) {
             source.recycle();
         }
 
-        Bitmap bitmap = Bitmap.createBitmap(size, size, source.getConfig());
+        Paint paint1 = new Paint();
+        paint1.setColor(Color.GRAY);
+        paint1.setStyle(Paint.Style.STROKE);
+        paint1.setAntiAlias(true);
+        paint1.setStrokeWidth(2);
+        canvas.drawCircle((source.getWidth() - margin)/2, (source.getHeight() - margin)/2, radius-2, paint1);
 
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint();
-        BitmapShader shader = new BitmapShader(squaredBitmap,
-                BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
-        paint.setShader(shader);
-        paint.setAntiAlias(true);
 
-        float r = size / 2f;
-        canvas.drawCircle(r, r, r, paint);
-
-        squaredBitmap.recycle();
-        return bitmap;
+        return output;
     }
 
     @Override
     public String key() {
-        return "circle";
+        return "rounded";
     }
 }

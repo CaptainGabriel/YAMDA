@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:textColor="#000000"
+        android:textColor="@color/donJuan"
         android:textSize="@dimen/text_size_medium"
         android:textStyle="bold"
         android:autoSizeMaxTextSize="@dimen/text_size_large"
@@ -126,7 +126,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Storyline"
-        android:textColor="#000"
+        android:textColor="@color/donJuan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/poster_movie_img" />
 
@@ -152,6 +152,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="The cast"
+        android:textColor="@color/donJuan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/storyline_content" />
 
@@ -160,7 +161,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView">

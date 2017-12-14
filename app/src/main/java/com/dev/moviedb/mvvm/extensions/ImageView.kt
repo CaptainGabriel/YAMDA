@@ -47,12 +47,12 @@ private fun loadMediumPoster(view: ImageView, context: Context, url: String, tra
 
 fun ImageView.loadRoundedPhoto(context: Context, url: String) {
     var loadUrl = ""//TODO add placeholder
-    loadUrl = if (url.isEmpty()) loadUrl else "${ApiConsts.IMG_BASE_URL}${ApiConsts.POSTER_MICRO_IMG_SIZE}$url"
+    loadUrl = if (url.isEmpty()) loadUrl else "${ApiConsts.IMG_BASE_URL}${ApiConsts.POSTER_SMALL_IMG_SIZE}$url"
 
     Picasso.with(context)
         .load(loadUrl)
         .placeholder(R.color.material_grey_300)
         .error(R.color.material_grey_300)
-        .transform(CircleTransform())
+        .transform(CircleTransform(70, 15))
         .into(this)
 }

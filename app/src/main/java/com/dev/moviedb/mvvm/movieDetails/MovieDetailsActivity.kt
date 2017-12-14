@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.dev.moviedb.mvvm.extensions.loadBackdropUrl
 import com.dev.moviedb.mvvm.extensions.loadPosterUrl
 import com.dev.moviedb.mvvm.extensions.loadRoundedPhoto
@@ -68,6 +69,8 @@ class MovieDetailsActivity : AppCompatActivity() {
                 (0..4).forEach { i ->
                     run{
                         val castPhoto = ImageView(this)
+                        castPhoto.setOnClickListener({ _ ->  Toast.makeText(this, castingCrew[i].name, Toast.LENGTH_SHORT).show()})
+                        castPhoto.setPadding(3, 0, 7, 0)
                         castingCrew[i].profile_path?.let { castPhoto.loadRoundedPhoto(this, it) }
                         casting_images_container.addView(castPhoto)
                     }

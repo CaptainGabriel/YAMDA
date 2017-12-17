@@ -120,13 +120,7 @@ fun String.isTomorrow(): Boolean {
     return release.compareToDate(DateTime.now().plusDays(1))
 }
 
-/**
- * For a given movie runtime, format it in the style xxhyy where 'xx' is hours
- * and 'yy' is minutes.
- */
-fun String.transformMovieRuntime(rawRuntime: Int): String {
-    return if (rawRuntime > 0) String.format("%dh%d", rawRuntime / 60, rawRuntime % 60) else "0h0"
-}
+
 
 /**
  * Checks if the given date follows the pattern "yyyy-mm-dd".

@@ -1,16 +1,14 @@
 package com.dev.moviedb.mvvm.movieDetails
 
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.dev.moviedb.mvvm.extensions.loadBackdropUrl
-import com.dev.moviedb.mvvm.extensions.loadPosterUrl
-import com.dev.moviedb.mvvm.extensions.loadRoundedPhoto
+import com.dev.moviedb.mvvm.extensions.*
 import com.dev.moviedb.mvvm.repository.remote.dto.GenreDTO
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import kotlinx.android.synthetic.main.item_movie_detail_layout.*
@@ -49,17 +47,23 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         provideDataToLayout(movie)
 
+
+        var params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT)
+        params.setMargins(9,9,9,9)
+
         movie.genres?.forEach { genreDTO: GenreDTO ->
             run {
+
                 val category = TextView(this)
                 category.text = genreDTO.name
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    category.background = getDrawable(R.drawable.round_shape)
-                }
+                category.background = resources.getDrawable(R.drawable.round_shape)
                 category.gravity = Gravity.CENTER
-                category.setPadding(3,0, 3, 0)
+                category.setPadding(3,3, 3, 3)
                 category.setTextColor(Color.WHITE)
-                category.textSize = R.dimen.text_size_micro.toFloat()
+                category.textSize = 11F
+                category.layoutParams = params
                 movie_categories_container.addView(category)
             }
         }
@@ -90,6 +94,9 @@ class MovieDetailsActivity : AppCompatActivity() {
         movie.title?.let { movie_name.text = it }
         storyline_content.text = movie.overview
         rating_score?.text = "%.1f".format(movie.voteAverage)
+        runtime_length.text = movie.runtime.formatMovieRuntime()
+        movie_release_status.text = movie.status
+        status_label.text = movie.releaseDate.getYear()
     }
 
 

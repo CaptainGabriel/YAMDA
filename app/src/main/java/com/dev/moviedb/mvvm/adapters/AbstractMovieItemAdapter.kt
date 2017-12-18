@@ -19,7 +19,4 @@ abstract class AbstractMovieItemAdapter<T : ViewHolder?>: RecyclerView.Adapter<T
 
     override fun getItemCount(): Int = if (movies == null) 0 else movies?.size!!
 
-
-
-
 }

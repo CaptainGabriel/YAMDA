@@ -2,8 +2,9 @@ package com.dev.moviedb.mvvm.seriesTab
 
 
 import android.os.Bundle
+import com.dev.moviedb.YamdaApplication
 import com.dev.moviedb.mvvm.fragments.AbstractDisplayFragment
-import com.dev.moviedb.mvvm.repository.remote.TmdbApiProvider
+import com.dev.moviedb.mvvm.repository.TvShowRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import petegabriel.com.yamda.R
@@ -26,7 +27,10 @@ class SeriesTabFragment : AbstractDisplayFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel =  SeriesTabViewModel(TmdbApiProvider().getTmdbApiService())
+
+        val app = activity.applicationContext as YamdaApplication
+        val tvShowRepo = TvShowRepository(app.apiService)
+        viewModel =  SeriesTabViewModel(tvShowRepo)
     }
 
 

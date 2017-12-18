@@ -1,145 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-        <include layout="@layout/toolbar_center_text" />
-    </android.support.design.widget.AppBarLayout>
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/backdrop_movie_img"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="h,16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/thor_poster" />
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-    <ImageView
-        android:id="@+id/poster_movie_img"
-        android:layout_width="0dp"
-        android:layout_height="210dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/backdrop_movie_img"
-        app:layout_constraintDimensionRatio="2:3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backdrop_movie_img"
-        tools:srcCompat="@drawable/madmax" />
+            <include layout="@layout/toolbar_center_text" />
+        </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        android:id="@+id/movie_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/donJuan"
-        android:textSize="@dimen/text_size_medium"
-        android:textStyle="bold"
-        android:autoSizeMaxTextSize="@dimen/text_size_large"
-        android:autoSizeMinTextSize="@dimen/text_size_micro"
-        android:autoSizeStepGranularity="1sp"
-        android:autoSizeTextType="uniform"
-        app:layout_constraintStart_toEndOf="@+id/poster_movie_img"
-        app:layout_constraintTop_toBottomOf="@+id/backdrop_movie_img"
-        tools:text="The Secret Life of Pets" />
+        <ImageView
+            android:id="@+id/backdrop_movie_img"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="h,16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/thor_poster" />
 
-    <TextView
-        android:id="@+id/rating_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/tumbleweed"
-        android:textSize="@dimen/text_size_medium"
-        app:layout_constraintStart_toEndOf="@+id/poster_movie_img"
-        app:layout_constraintTop_toBottomOf="@+id/movie_name"
-        tools:text="8.0" />
+        <ImageView
+            android:id="@+id/poster_movie_img"
+            android:layout_width="0dp"
+            android:layout_height="210dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/backdrop_movie_img"
+            app:layout_constraintDimensionRatio="2:3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backdrop_movie_img"
+            tools:srcCompat="@drawable/madmax" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="Ratings"
-        android:textColor="@color/medium_grey"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/poster_movie_img"
-        app:layout_constraintTop_toBottomOf="@+id/rating_score" />
+        <TextView
+            android:id="@+id/movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:autoSizeMaxTextSize="@dimen/text_size_large"
+            android:autoSizeMinTextSize="@dimen/text_size_micro"
+            android:autoSizeStepGranularity="1sp"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/donJuan"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/poster_movie_img"
+            app:layout_constraintTop_toBottomOf="@+id/backdrop_movie_img"
+            tools:text="The Secret Life of Pets" />
+
+        <TextView
+            android:id="@+id/rating_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/tumbleweed"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintStart_toEndOf="@+id/poster_movie_img"
+            app:layout_constraintTop_toBottomOf="@+id/movie_name"
+            tools:text="8.0" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="Ratings"
+            android:textColor="@color/medium_grey"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/poster_movie_img"
+            app:layout_constraintTop_toBottomOf="@+id/rating_score" />
 
 
-    <LinearLayout
-        android:id="@+id/movie_categories_container"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        <LinearLayout
+            android:id="@+id/movie_categories_container"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-        <!--
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/round_shape"
-                    android:gravity="center"
-                    android:padding="3dp"
+            <!--
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/round_shape"
+                        android:gravity="center"
+                        android:padding="3dp"
 
-                    android:text="Crime"
-                android:textColor="#FFF"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/round_shape"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="Drama"
+                        android:text="Crime"
                     android:textColor="#FFF"
-                    android:textSize="11sp" />
+                        android:textSize="11sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/round_shape"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="Misterio"
-                    android:textColor="#FFF"
-                    android:textSize="11sp" />
-        -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/round_shape"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Drama"
+                        android:textColor="#FFF"
+                        android:textSize="11sp" />
 
-    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:background="@drawable/round_shape"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Misterio"
+                        android:textColor="#FFF"
+                        android:textSize="11sp" />
+            -->
+
+        </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Storyline"
-        android:textColor="@color/donJuan"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/poster_movie_img" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Storyline"
+            android:textColor="@color/donJuan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/poster_movie_img" />
 
     <TextView
         android:id="@+id/storyline_content"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="66dp"
         android:layout_marginEnd="8dp"
         android:justificationMode="inter_word"
         android:textColor="@color/medium_grey"
@@ -151,73 +153,95 @@
         tools:text="Vestibulum donec nam, ipsum montes parturient sollicitudin, amet erat vehicula lacus consequat pede. Congue et venenatis gravida litora, arcu sit, porttitor interdum amet pede sed, eros est blandit ultrices elit faucibus amet, libero proin congue in. Curae sit, turpis quis. Eu vitae. Phasellus urna adipiscing. Sagittis ac velit facilisis sit elementum, venenatis dictum, felis amet diam " />
 
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Casting crew"
+            android:textColor="@color/donJuan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/images_list" />
+
+        <LinearLayout
+            android:id="@+id/casting_images_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/movie_release_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/medium_grey"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/status_label"
+            tools:text="Released" />
+
+        <TextView
+            android:id="@+id/status_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/tumbleweed"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintStart_toEndOf="@+id/rating_score"
+            app:layout_constraintTop_toBottomOf="@+id/movie_name"
+            tools:text="2017" />
+
+        <TextView
+            android:id="@+id/runtime_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:text="Runtime"
+            android:textColor="@color/medium_grey"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/movie_release_status"
+            app:layout_constraintTop_toBottomOf="@+id/runtime_length" />
+
+        <TextView
+            android:id="@+id/runtime_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/tumbleweed"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintStart_toEndOf="@+id/status_label"
+            app:layout_constraintTop_toBottomOf="@+id/movie_name"
+            tools:text="1:30h" />
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/images_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Casting crew"
         android:textColor="@color/donJuan"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/storyline_content" />
+        app:layout_constraintTop_toBottomOf="@+id/storyline_content"
+        android:text="Images" />
 
-    <LinearLayout
-        android:id="@+id/casting_images_container"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/images_list"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/images_label" />
 
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/movie_release_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:textColor="@color/medium_grey"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/status_label"
-        tools:text="Released" />
-
-    <TextView
-        android:id="@+id/status_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/tumbleweed"
-        android:textSize="@dimen/text_size_medium"
-        app:layout_constraintStart_toEndOf="@+id/rating_score"
-        app:layout_constraintTop_toBottomOf="@+id/movie_name"
-        tools:text="2017" />
-
-    <TextView
-        android:id="@+id/runtime_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:text="Runtime"
-        android:textColor="@color/medium_grey"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/movie_release_status"
-        app:layout_constraintTop_toBottomOf="@+id/runtime_length" />
-
-    <TextView
-        android:id="@+id/runtime_length"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/tumbleweed"
-        android:textSize="@dimen/text_size_medium"
-        app:layout_constraintStart_toEndOf="@+id/status_label"
-        app:layout_constraintTop_toBottomOf="@+id/movie_name"
-        tools:text="1h30" />
-
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>

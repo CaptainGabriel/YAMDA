@@ -31,7 +31,7 @@ class StaggeredMovieDisplayAdapter(var listener: (MovieDTO) -> Unit) : AbstractM
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: MovieDTO?, listener: (MovieDTO) -> Unit) = with(itemView) {
-            /*dto from tv shows and movies use different props for the name
+            /*dto from tv shows and imageList use different props for the name
             if (item?.title != null){
                 movieTitleTxtView.text = item.title
             }else if (item?.name != null){

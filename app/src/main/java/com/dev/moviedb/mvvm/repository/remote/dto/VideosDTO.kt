@@ -13,7 +13,7 @@ data class VideosDTO(var results: Array<ResultsDTO>): Parcelable
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-
+        parcel.writeTypedArray(results, flags)
     }
 
     override fun describeContents(): Int {

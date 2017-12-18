@@ -24,7 +24,7 @@ class MoviesTabViewModel constructor(private var apiService: TmdbApiService,
 
 
     /**
-     * Ask for the most popular movies
+     * Ask for the most popular imageList
      */
     fun findMostPopularMovieList(): Observable<MovieCollectionDTO> {
         return popularMovieRepository.findAll()

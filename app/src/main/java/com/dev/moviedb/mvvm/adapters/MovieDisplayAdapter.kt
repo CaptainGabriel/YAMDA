@@ -29,7 +29,7 @@ class MovieDisplayAdapter(private var onItemClick: (MovieDTO) -> Unit = {}) : Ab
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: MovieDTO?, onItemClick: (MovieDTO) -> Unit) = with(itemView) {
-            //dto from tv shows and movies use different props for the name
+            //dto from tv shows and imageList use different props for the name
             if (item?.title != null){
                 movieTitleTxtView.text = item.title?.formatMovieCardName()
             }else if (item?.name != null){

@@ -20,7 +20,7 @@ import io.reactivex.schedulers.Schedulers
 import petegabriel.com.yamda.R
 
 /**
- * This fragment displays the movies currently in theaters in a grid layout.
+ * This fragment displays the imageList currently in theaters in a grid layout.
  *
  *
  * Yamda 1.0.0.

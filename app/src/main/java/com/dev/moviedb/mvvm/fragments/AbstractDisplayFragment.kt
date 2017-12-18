@@ -20,7 +20,7 @@ import petegabriel.com.yamda.R
 
 /**
  * This class contains common behavior used to display
- * lists of movies/series.
+ * lists of imageList/series.
  *
  * Yamda 1.0.0.
  */
@@ -29,18 +29,18 @@ abstract class AbstractDisplayFragment : Fragment() {
 
     /**
      * A reference to the RecyclerView widget used to display the most
-     * popular movies.
+     * popular imageList.
      */
     protected var popularRecyclerView: RecyclerView? = null
 
     /**
      * A reference to the RecyclerView widget used to display the most
-     * top rated movies.
+     * top rated imageList.
      */
     protected var topRatedRecyclerView: RecyclerView? = null
 
     /**
-     * A reference to the RecyclerView widget used to display a list of movies in theaters.
+     * A reference to the RecyclerView widget used to display a list of imageList in theaters.
      */
     protected var nowPlayingRecyclerView: RecyclerView? = null
 
@@ -79,7 +79,7 @@ abstract class AbstractDisplayFragment : Fragment() {
 
 
     /**
-     * Send data to the popular movies adapter
+     * Send data to the popular imageList adapter
      */
     protected fun addNewDataToFirstAdapter(): (ArrayList<MovieDTO>?) -> Unit {
         return { col: ArrayList<MovieDTO>? ->
@@ -89,7 +89,7 @@ abstract class AbstractDisplayFragment : Fragment() {
     }
 
     /**
-     * Send data to the Top Rated movies adapter
+     * Send data to the Top Rated imageList adapter
      */
     protected fun addNewDataToSecondAdapter(): (ArrayList<MovieDTO>?) -> Unit {
         return { col: ArrayList<MovieDTO>? ->

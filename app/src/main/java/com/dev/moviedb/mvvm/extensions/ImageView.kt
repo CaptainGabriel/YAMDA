@@ -23,6 +23,10 @@ fun ImageView.loadBackdropUrl(url: String, transform: Boolean = true) {
     loadMediumPoster(this, context, url, transform, ApiConsts.POSTER_BIG_IMG_SIZE)
 }
 
+fun ImageView.loadBackdropUrl(url: String, size: String, transform: Boolean = true) {
+    loadMediumPoster(this, context, url, transform, size)
+}
+
 
 private fun loadMediumPoster(view: ImageView, context: Context, url: String, transform: Boolean = true, size: String = ApiConsts.POSTER_MEDIUM_IMG_SIZE) {
     var loadUrl = ""

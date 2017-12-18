@@ -6,5 +6,5 @@ package com.dev.moviedb.mvvm.extensions
  * and 'yy' is minutes.
  */
 fun Int.formatMovieRuntime(): String {
-    return if (this > 0) String.format("%d:%d", this / 60, this % 60) else "0:00"
+    return if (this > 0) String.format("%d:%dh", this / 60, this % 60) else "0:00h"
 }

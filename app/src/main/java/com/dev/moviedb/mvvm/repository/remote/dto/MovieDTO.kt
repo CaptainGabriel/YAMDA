@@ -90,6 +90,8 @@ class MovieDTO() : Parcelable {
 
     var credits: CreditsDTO? = null
 
+    var images: ImagesDTO? = null
+
     constructor(parcel: Parcel) : this() {
         backdropPath = parcel.readString()
         id = parcel.readInt()
@@ -110,6 +112,7 @@ class MovieDTO() : Parcelable {
         //videos = parcel.readParcelable(VideosDTO::class.java.classLoader)
         genres = parcel.createTypedArrayList(GenreDTO)
         credits = parcel.readParcelable(CreditsDTO::class.java.classLoader)
+        images = parcel.readParcelable(ImagesDTO::class.java.classLoader)
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -132,6 +135,7 @@ class MovieDTO() : Parcelable {
         //parcel.writeParcelable(videos, flags)
         parcel.writeTypedList(genres)
         parcel.writeParcelable(credits, flags)
+        parcel.writeParcelable(images, flags)
     }
 
     override fun describeContents(): Int {

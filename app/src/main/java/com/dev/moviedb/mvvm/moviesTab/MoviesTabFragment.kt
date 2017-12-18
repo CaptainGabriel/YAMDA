@@ -21,7 +21,7 @@ import petegabriel.com.yamda.R
 
 
 /**
- * Tab fragment that shows the different information for movies inside the application.
+ * Tab fragment that shows the different information for imageList inside the application.
  *
  * Yamda 1.0.0.
  */
@@ -63,7 +63,7 @@ class MoviesTabFragment : AbstractDisplayFragment() {
     override fun handleItemClick(): (MovieDTO) -> Unit {
         return { m ->
             run {
-                viewModel?.findMovieById(m.id.toLong(), "credits,videos")
+                viewModel?.findMovieById(m.id.toLong(), "credits,videos,images")
                         ?.subscribeOn(Schedulers.newThread())
                         ?.observeOn(AndroidSchedulers.mainThread())
                         ?.subscribe({ t ->

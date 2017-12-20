@@ -30,13 +30,13 @@ class MovieDisplayAdapter(private var onItemClick: (MovieDTO) -> Unit = {}) : Ab
 
         fun bind(item: MovieDTO?, onItemClick: (MovieDTO) -> Unit) = with(itemView) {
             //dto from tv shows and imageList use different props for the name
-            if (item?.title != null){
+            if (item?.title?.isNotEmpty()!!){
                 movieTitleTxtView.text = item.title?.formatMovieCardName()
-            }else if (item?.name != null){
+            }else if (item.name?.isNotEmpty()!!){
                 movieTitleTxtView.text = item.name?.formatMovieCardName()
             }
 
-            itemImageFrame.loadPosterUrl(item?.posterPath!!)
+            itemImageFrame.loadPosterUrl(item.posterPath!!)
             movieRatingValueTextView.text = "%.1f".format(item.voteAverage)
 
             itemView.setOnClickListener { _ -> onItemClick(item) }

@@ -26,15 +26,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.dev.moviedb.mvvm.activities.TabOptionsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name="com.dev.moviedb.mvvm.movieDetails.MovieDetailsActivity"
             android:parentActivityName="com.dev.moviedb.mvvm.activities.TabOptionsActivity"
-            android:theme="@style/AppTheme.ActionBar.Transparent"/>
+            android:theme="@style/AppTheme.ActionBar.Transparent" />
+
     </application>
 
 </manifest>

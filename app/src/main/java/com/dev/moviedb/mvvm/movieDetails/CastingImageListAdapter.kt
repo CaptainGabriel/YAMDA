@@ -3,10 +3,10 @@ package com.dev.moviedb.mvvm.movieDetails
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import com.dev.moviedb.mvvm.extensions.inflate
-import com.dev.moviedb.mvvm.extensions.loadBackdropUrl
-import com.dev.moviedb.mvvm.repository.remote.ApiConsts
+import com.dev.moviedb.mvvm.extensions.loadRoundedPhoto
+import com.dev.moviedb.mvvm.repository.remote.dto.CastDTO
+import kotlinx.android.synthetic.main.image_movie_viewholder.view.*
 import petegabriel.com.yamda.R
 
 /**
@@ -14,27 +14,23 @@ import petegabriel.com.yamda.R
  *
  * Yamda 1.0.0.
  */
-class ImageListAdapter: RecyclerView.Adapter<ImageListAdapter.ImageViewHolder>() {
+class CastingImageListAdapter(images: Array<CastDTO>) : RecyclerView.Adapter<CastingImageListAdapter.ImageViewHolder>() {
 
-    var imageList: ArrayList<String>? = null
-
-    fun addNewData(movies: ArrayList<String>?){
-        this.imageList = movies
-    }
+    private var imageList:  Array<CastDTO> = images
 
     override fun onBindViewHolder(holder: ImageViewHolder?, position: Int) {
-        holder?.bind(imageList?.get(position)!!)
+        holder?.bind(imageList[position])
     }
 
-    override fun getItemCount(): Int = if (imageList != null) imageList!!.size else 0
+    override fun getItemCount(): Int = imageList.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ImageViewHolder =
         ImageViewHolder(parent?.inflate(R.layout.image_movie_viewholder)!!)
 
 
     class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(uri: String) = with(itemView) {
-            (itemView as ImageView).loadBackdropUrl(uri, ApiConsts.POSTER_SMALL_IMG_SIZE)
+        fun bind(cast: CastDTO) = with(itemView) {
+            cast.profile_path?.let { casting_crew_photo.loadRoundedPhoto(itemView.context, it) }
         }
     }
 

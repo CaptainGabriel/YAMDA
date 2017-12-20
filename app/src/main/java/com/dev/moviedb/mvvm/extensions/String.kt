@@ -1,6 +1,7 @@
 package com.dev.moviedb.mvvm.extensions
 
 import org.joda.time.DateTime
+import java.text.DateFormat
 import java.util.regex.Pattern
 
 /**
@@ -82,6 +83,10 @@ fun String.getMonthAndDay(): String {
         EnvVars.TO_BE_ANNOUNCED
     else
         this.getMonth() + "/" + this.getDay()
+}
+
+fun String.getExtendedDate(): String{
+    return DateFormat.getDateInstance(DateFormat.LONG).format(this.toDatetime()?.toDate())
 }
 
 

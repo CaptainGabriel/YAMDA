@@ -1,24 +1,18 @@
 package com.dev.moviedb.mvvm.movieDetails
 
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.Gravity
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
-import com.dev.moviedb.mvvm.extensions.*
-import com.dev.moviedb.mvvm.repository.remote.ApiConsts
-import com.dev.moviedb.mvvm.repository.remote.dto.GenreDTO
+import com.dev.moviedb.mvvm.extensions.formatMovieRuntime
+import com.dev.moviedb.mvvm.extensions.getExtendedDate
+import com.dev.moviedb.mvvm.extensions.loadBackdropUrl
+import com.dev.moviedb.mvvm.extensions.loadPosterUrl
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
-import com.dev.moviedb.mvvm.repository.remote.dto.ResultImageDTO
 import kotlinx.android.synthetic.main.item_movie_detail_layout.*
-import kotlinx.android.synthetic.main.toolbar_center_text.*
 import petegabriel.com.yamda.R
+
+
 
 /**
  * This activity shows the details of a certain movie passed
@@ -32,88 +26,77 @@ class MovieDetailsActivity : AppCompatActivity() {
      * Use this key to pass a certain movie inside a bundle.
      */
     companion object {
-
         val ITEM_ARGS_KEY = "movie_item_argument"
     }
+
+    private var castingImagesRecyclerView: RecyclerView? = null
+    private var castingImagesAdapter: RecyclerView.Adapter<*>? = null
+    private var castingImagesLayoutManager: RecyclerView.LayoutManager? = null
+
+    private var backdropImagesRecyclerView: RecyclerView? = null
+    private var backdropImagesAdapter: RecyclerView.Adapter<*>? = null
+    private var backdropImagesLayoutManager: RecyclerView.LayoutManager? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.item_movie_detail_layout)
 
-
-        val recyclerView = findViewById<RecyclerView>(R.id.images_list)
-
-        recyclerView?.setHasFixedSize(true)
-        recyclerView?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView?.adapter = ImageListAdapter()
-        recyclerView?.itemAnimator = DefaultItemAnimator()
-
         toolbar.title = ""
         setSupportActionBar(toolbar)
-        toolbar_title.text = ""
+        //toolbar_title.text = ""
 
         //provide up navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val movie = intent.extras[ITEM_ARGS_KEY] as MovieDTO
-
-        (recyclerView?.adapter as ImageListAdapter).addNewData(movie.images?.backdrops?.map { result -> result.filePath } as ArrayList<String>?)
-        recyclerView.adapter.notifyDataSetChanged()
+        toolbar.title = movie.title
 
         provideDataToLayout(movie)
 
-        val params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT)
-        params.setMargins(9,9,9,9)
+        genre_description_content.text = formatGenreTags(movie)
 
-        handleGenreTags(movie, params)
+        release_date.text = movie.releaseDate.getExtendedDate()
 
-        handleCastingPhotos(movie)
+        setupCastingCrewImageList(movie)
 
-        movie.images?.backdrops?.forEach { backdrop: ResultImageDTO ->
-            run {
+        setupImagesList(movie)
 
-                val imageView = ImageView(this)
-                imageView.loadBackdropUrl(backdrop.filePath, ApiConsts.POSTER_SMALL_IMG_SIZE)
-                images_list.addView(imageView)
-            }
-        }
     }
 
-    private fun handleCastingPhotos(movie: MovieDTO) {
-        movie.credits?.cast?.let { castingCrew ->
-            run {
-                (0..4).forEach { i ->
-                    run {
-                        val castPhoto = ImageView(this)
-                        castPhoto.setOnClickListener({ _ -> Toast.makeText(this, castingCrew[i].name, Toast.LENGTH_SHORT).show() })
-                        castPhoto.setPadding(3, 0, 7, 0)
-                        castingCrew[i].profile_path?.let { castPhoto.loadRoundedPhoto(this, it) }
-                        casting_images_container.addView(castPhoto)
-                    }
-                }
-            }
-        }
+    private fun setupImagesList(movie: MovieDTO) {
+        backdropImagesRecyclerView = findViewById<RecyclerView>(R.id.backdrop_images_container)
+        backdropImagesRecyclerView?.isHorizontalScrollBarEnabled = false
+        backdropImagesRecyclerView?.setHasFixedSize(true)
+
+        // use a linear layout manager
+        backdropImagesLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        backdropImagesRecyclerView?.layoutManager = backdropImagesLayoutManager
+
+        // specify an castingImagesAdapter (see also next example)
+        backdropImagesAdapter = BackdropImageListAdapter(movie.images?.backdrops!!)
+        backdropImagesRecyclerView?.adapter = backdropImagesAdapter
     }
 
-    private fun handleGenreTags(movie: MovieDTO, params: LinearLayout.LayoutParams) {
-        movie.genres?.forEach { genreDTO: GenreDTO ->
-            run {
+    private fun setupCastingCrewImageList(movie: MovieDTO) {
+        castingImagesRecyclerView = findViewById<RecyclerView>(R.id.casting_images_container)
+        castingImagesRecyclerView?.isHorizontalScrollBarEnabled = false
+        castingImagesRecyclerView?.setHasFixedSize(true)
 
-                val category = TextView(this)
-                category.text = genreDTO.name
-                category.background = resources.getDrawable(R.drawable.round_shape)
-                category.gravity = Gravity.CENTER
-                category.setPadding(3, 3, 3, 3)
-                category.setTextColor(Color.WHITE)
-                category.textSize = 11F
-                category.layoutParams = params
-                movie_categories_container.addView(category)
-            }
-        }
+        // use a linear layout manager
+        castingImagesLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        castingImagesRecyclerView?.layoutManager = castingImagesLayoutManager
+
+        // specify an castingImagesAdapter (see also next example)
+        castingImagesAdapter = CastingImageListAdapter(movie.credits?.cast!!.copyOfRange(0, 9))
+        castingImagesRecyclerView?.adapter = castingImagesAdapter
     }
+
+   private fun formatGenreTags(movie: MovieDTO) =
+           movie.genres
+                   ?.map { genre -> genre.name }
+                   ?.fold("", {acc: String, next: String -> if (acc.isEmpty()) acc + next else acc + " | " + next })
+
 
     override fun onBackPressed() {
         super.onBackPressed()
@@ -127,8 +110,8 @@ class MovieDetailsActivity : AppCompatActivity() {
         storyline_content.text = movie.overview
         rating_score?.text = "%.1f".format(movie.voteAverage)
         runtime_length.text = movie.runtime.formatMovieRuntime()
-        movie_release_status.text = movie.status
-        status_label.text = movie.releaseDate.getYear()
+        //movie_release_status.text = movie.status
+        //status_label.text = movie.releaseDate.getYear()
     }
 
 

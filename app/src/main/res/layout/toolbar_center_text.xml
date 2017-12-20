@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textStyle="bold"
+        android:fontFamily="@font/sourcesanspro"
         android:textColor="@color/donJuan"
         android:textSize="@dimen/text_size_large"
         android:layout_gravity="center"

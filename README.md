@@ -8,14 +8,14 @@ The "visual part" of the app was not intended to be as good but this is somethin
 
 # Features roadmap
 
-- [x] Discover Popular, Now Playing and Top Rated movies.
+- [x] Discover Popular, Now Playing and Top Rated imageList.
 - [ ] Get detailed information about Movies, Cast and Crew.
-- [ ] Find similar movies and movies related to a certain actor.
+- [ ] Find similar imageList and imageList related to a certain actor.
 - [x] Watch movie trailer inline.
 - [ ] Share using Facebook or Twitter.
 - [ ] Free text search TMDb for Movies and Persons.
 - [ ] Handle your TMDb Favorites and watch list from within the app.
-- [ ] Rate movies when logged in to TMDb.
+- [ ] Rate imageList when logged in to TMDb.
 - [x] Fully supports the TMDb 3.0 API.
 - [ ] Get an account at themoviedb.org or from within the app.
 

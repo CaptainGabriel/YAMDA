@@ -84,7 +84,7 @@ class MovieDTO() : Parcelable {
     @Expose
     var voteCount: Int = 0
 
-    var videos: VideosDTO? = null
+    var videos: VideosDTO = VideosDTO(arrayOf())
 
     var genres: List<GenreDTO>? = null
 
@@ -109,7 +109,7 @@ class MovieDTO() : Parcelable {
         imdbId = parcel.readString()
         homepage = parcel.readString()
         voteCount = parcel.readInt()
-        //videos = parcel.readParcelable(VideosDTO::class.java.classLoader)
+        videos = parcel.readParcelable(VideosDTO::class.java.classLoader)
         genres = parcel.createTypedArrayList(GenreDTO)
         credits = parcel.readParcelable(CreditsDTO::class.java.classLoader)
         images = parcel.readParcelable(ImagesDTO::class.java.classLoader)
@@ -132,7 +132,7 @@ class MovieDTO() : Parcelable {
         parcel.writeString(imdbId)
         parcel.writeString(homepage)
         parcel.writeInt(voteCount)
-        //parcel.writeParcelable(videos, flags)
+        parcel.writeParcelable(videos, flags)
         parcel.writeTypedList(genres)
         parcel.writeParcelable(credits, flags)
         parcel.writeParcelable(images, flags)
@@ -152,5 +152,9 @@ class MovieDTO() : Parcelable {
         }
     }
 
+
+    object companion {
+        val DIRECTOR_JOB = "Director"
+    }
 
 }

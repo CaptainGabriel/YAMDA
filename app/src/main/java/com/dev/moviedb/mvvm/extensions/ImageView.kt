@@ -57,6 +57,6 @@ fun ImageView.loadRoundedPhoto(context: Context, url: String) {
         .load(loadUrl)
         .placeholder(R.color.material_grey_300)
         .error(R.color.material_grey_300)
-        .transform(CircleTransform(70, 4))
+        .transform(RoundedTransformation(7, 4))
         .into(this)
 }

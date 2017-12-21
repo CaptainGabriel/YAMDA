@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View.GONE
 import com.dev.moviedb.mvvm.extensions.formatMovieRuntime
 import com.dev.moviedb.mvvm.extensions.getExtendedDate
 import com.dev.moviedb.mvvm.extensions.loadBackdropUrl
 import com.dev.moviedb.mvvm.extensions.loadPosterUrl
+import com.dev.moviedb.mvvm.nowPlayingMoviesTab.VideoPlayerFragment
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import kotlinx.android.synthetic.main.item_movie_detail_layout.*
 import petegabriel.com.yamda.R
@@ -62,20 +64,38 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         setupImagesList(movie)
 
+        if (movie.videos.results.isNotEmpty()) {
+            movieTrailerFab.setOnClickListener({ view ->
+                run {
+                    movie.videos?.let {
+                        val manager = supportFragmentManager
+                        val videoPlayerFragDialog = VideoPlayerFragment.newInstance(it.results[0].key)
+                        videoPlayerFragDialog.show(manager, "VideoPlayerFragDialog")
+                    }
+                }
+            })
+        }else{
+            movieTrailerFab.visibility = GONE
+        }
+
     }
 
     private fun setupImagesList(movie: MovieDTO) {
-        backdropImagesRecyclerView = findViewById<RecyclerView>(R.id.backdrop_images_container)
-        backdropImagesRecyclerView?.isHorizontalScrollBarEnabled = false
-        backdropImagesRecyclerView?.setHasFixedSize(true)
+        if (movie.images?.backdrops?.size!! > 0) {
+            backdropImagesRecyclerView = findViewById<RecyclerView>(R.id.backdrop_images_container)
+            backdropImagesRecyclerView?.isHorizontalScrollBarEnabled = false
+            backdropImagesRecyclerView?.setHasFixedSize(true)
 
-        // use a linear layout manager
-        backdropImagesLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        backdropImagesRecyclerView?.layoutManager = backdropImagesLayoutManager
+            // use a linear layout manager
+            backdropImagesLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            backdropImagesRecyclerView?.layoutManager = backdropImagesLayoutManager
 
-        // specify an castingImagesAdapter (see also next example)
-        backdropImagesAdapter = BackdropImageListAdapter(movie.images?.backdrops!!)
-        backdropImagesRecyclerView?.adapter = backdropImagesAdapter
+            // specify an castingImagesAdapter (see also next example)
+            backdropImagesAdapter = BackdropImageListAdapter(movie.images?.backdrops!!)
+            backdropImagesRecyclerView?.adapter = backdropImagesAdapter
+        }else{
+            textView2.visibility = GONE
+        }
     }
 
     private fun setupCastingCrewImageList(movie: MovieDTO) {

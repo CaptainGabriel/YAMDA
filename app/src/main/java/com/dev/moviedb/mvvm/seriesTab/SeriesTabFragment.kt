@@ -1,10 +1,13 @@
 package com.dev.moviedb.mvvm.seriesTab
 
 
+import android.content.Intent
 import android.os.Bundle
 import com.dev.moviedb.YamdaApplication
 import com.dev.moviedb.mvvm.fragments.AbstractDisplayFragment
+import com.dev.moviedb.mvvm.movieDetails.MovieDetailsActivity
 import com.dev.moviedb.mvvm.repository.TvShowRepository
+import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import petegabriel.com.yamda.R
@@ -62,6 +65,32 @@ class SeriesTabFragment : AbstractDisplayFragment() {
 
     }
 
+    override fun handleItemClick(): (MovieDTO) -> Unit {
+        return { m ->
+            run {
+                viewModel?.findTvShowById(m.id.toLong(), "credits,videos,images")
+                        ?.subscribeOn(Schedulers.newThread())
+                        ?.observeOn(AndroidSchedulers.mainThread())
+                        ?.subscribe({ t ->
+                            run {
+                                navigateToDetailsVIew(t)
+                            }
+                        }, { throwable ->
+                            handleError(throwable)
+                        })
+            }
+        }
+    }
+
+    private fun navigateToDetailsVIew(t: MovieDTO?) {
+        val intent = Intent(activity, MovieDetailsActivity::class.java)
+        val b = Bundle()
+        b.putParcelable(MovieDetailsActivity.ITEM_ARGS_KEY, t)
+        intent.putExtras(b) //Put your id to your next Intent
+        startActivity(intent)
+        //set the animation of the exiting and entering Activities
+        activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+    }
 
     override fun getFirstCardTitle(): String = "Airing Today"
 

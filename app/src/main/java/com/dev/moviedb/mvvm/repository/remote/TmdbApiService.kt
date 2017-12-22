@@ -56,6 +56,11 @@ interface TmdbApiService {
                               @Query("language") lang: String = "en",
                               @Query("page") page: Int): Call<MovieCollectionDTO>
 
+    @GET("/3/tv/{id}")
+    fun findTvShowById(@Path("id") id: Long,
+                      @Query("append_to_response") whatToAppend: String = "",
+                      @Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
+                      @Query("language") lang: String = "en"): Single<MovieDTO>
 
     @GET("/3/tv/popular")
     fun findPopularTvSeries(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,

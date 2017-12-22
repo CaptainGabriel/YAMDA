@@ -4,6 +4,7 @@ import com.dev.moviedb.mvvm.repository.TvShowRepository
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
 import io.reactivex.Observable
+import io.reactivex.Single
 
 /**
  * The ViewModel for the tab related with tv show's information
@@ -27,5 +28,9 @@ class SeriesTabViewModel constructor(private var repo: TvShowRepository){
     fun findAiringTodayTvSeries(): Observable<MovieCollectionDTO> = repo.findAiringTodayTvSeries()
 
     fun getLatestTvShow(): Observable<MovieDTO> = repo.findLatestTvShow()
+
+
+    fun findTvShowById(id: Long, appendToResponse: String): Single<MovieDTO> = repo.findTvShowById(id, appendToResponse)
+
 
 }

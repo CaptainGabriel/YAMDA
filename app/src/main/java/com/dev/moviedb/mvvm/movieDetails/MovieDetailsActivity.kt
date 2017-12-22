@@ -67,7 +67,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         if (movie.videos.results.isNotEmpty()) {
             movieTrailerFab.setOnClickListener({ view ->
                 run {
-                    movie.videos?.let {
+                    movie.videos.let {
                         val manager = supportFragmentManager
                         val videoPlayerFragDialog = VideoPlayerFragment.newInstance(it.results[0].key)
                         videoPlayerFragDialog.show(manager, "VideoPlayerFragDialog")
@@ -99,17 +99,22 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun setupCastingCrewImageList(movie: MovieDTO) {
-        castingImagesRecyclerView = findViewById<RecyclerView>(R.id.casting_images_container)
-        castingImagesRecyclerView?.isHorizontalScrollBarEnabled = false
-        castingImagesRecyclerView?.setHasFixedSize(true)
+        if (movie.credits?.cast?.size!! > 0) {
+            castingImagesRecyclerView = findViewById<RecyclerView>(R.id.casting_images_container)
+            castingImagesRecyclerView?.isHorizontalScrollBarEnabled = false
+            castingImagesRecyclerView?.setHasFixedSize(true)
 
-        // use a linear layout manager
-        castingImagesLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        castingImagesRecyclerView?.layoutManager = castingImagesLayoutManager
+            // use a linear layout manager
+            castingImagesLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            castingImagesRecyclerView?.layoutManager = castingImagesLayoutManager
 
-        // specify an castingImagesAdapter (see also next example)
-        castingImagesAdapter = CastingImageListAdapter(movie.credits?.cast!!.copyOfRange(0, 9))
-        castingImagesRecyclerView?.adapter = castingImagesAdapter
+            // specify an castingImagesAdapter (see also next example)
+            val limit = if (movie.credits?.cast?.size!! < 9) movie.credits?.cast?.size!! else 9
+            castingImagesAdapter = CastingImageListAdapter(movie.credits?.cast!!.copyOfRange(0, limit))
+            castingImagesRecyclerView?.adapter = castingImagesAdapter
+        }else{
+            textView.visibility = GONE
+        }
     }
 
    private fun formatGenreTags(movie: MovieDTO) =
@@ -130,8 +135,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         storyline_content.text = movie.overview
         rating_score?.text = "%.1f".format(movie.voteAverage)
         runtime_length.text = movie.runtime.formatMovieRuntime()
-        //movie_release_status.text = movie.status
-        //status_label.text = movie.releaseDate.getYear()
     }
 
 

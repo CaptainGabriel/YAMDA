@@ -68,19 +68,23 @@ class MoviesTabFragment : AbstractDisplayFragment() {
                         ?.observeOn(AndroidSchedulers.mainThread())
                         ?.subscribe({ t ->
                             run {
-                                val intent = Intent(activity, MovieDetailsActivity::class.java)
-                                val b = Bundle()
-                                b.putParcelable(MovieDetailsActivity.ITEM_ARGS_KEY, t)
-                                intent.putExtras(b) //Put your id to your next Intent
-                                startActivity(intent)
-                                //set the animation of the exiting and entering Activities
-                                activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+                                navigateToDetailsVIew(t)
                             }
                         }, { throwable ->
                             handleError(throwable)
                         })
             }
         }
+    }
+
+    private fun navigateToDetailsVIew(t: MovieDTO?) {
+        val intent = Intent(activity, MovieDetailsActivity::class.java)
+        val b = Bundle()
+        b.putParcelable(MovieDetailsActivity.ITEM_ARGS_KEY, t)
+        intent.putExtras(b) //Put your id to your next Intent
+        startActivity(intent)
+        //set the animation of the exiting and entering Activities
+        activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
     }
 
 

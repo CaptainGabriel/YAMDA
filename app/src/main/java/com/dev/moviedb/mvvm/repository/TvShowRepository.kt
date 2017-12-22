@@ -20,4 +20,6 @@ class TvShowRepository(private val api: TmdbApiService) {
 
     fun findLatestTvShow(): Observable<MovieDTO> = api.findLatestTvShow()
 
+    fun findTvShowById(id: Long, appendToResponse: String) = api.findTvShowById(id, appendToResponse)
+
 }

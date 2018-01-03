@@ -58,7 +58,10 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         genre_description_content.text = formatGenreTags(movie)
 
-        release_date.text = movie.releaseDate.getExtendedDate()
+        //TODO handleThis release date Date when its empty
+        with(movie.releaseDate){
+            release_date.text = if (this.isEmpty()) "tba" else this.getExtendedDate()
+        }
 
         setupCastingCrewImageList(movie)
 

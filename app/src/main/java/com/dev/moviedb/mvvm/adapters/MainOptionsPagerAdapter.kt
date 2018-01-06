@@ -29,7 +29,7 @@ class MainOptionsPagerAdapter(var fm: FragmentManager) : FragmentPagerAdapter(fm
             when(position){
                 0 -> MoviesTabFragment()
                 1 -> SeriesTabFragment()
-                2 -> NowPlayingMoviesTabFragment()
+                2 -> Fragment()//NowPlayingMoviesTabFragment()
                 3 -> UserPreferencesFragment()
                 else -> MoviesInfoFragment()
             }

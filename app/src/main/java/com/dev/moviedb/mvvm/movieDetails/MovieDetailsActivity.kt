@@ -52,7 +52,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val movie = intent.extras[ITEM_ARGS_KEY] as MovieDTO
-        toolbar.title = movie.title
+        toolbar.title = if (movie.title?.isEmpty()!!) movie.name else movie.title
 
         provideDataToLayout(movie)
 

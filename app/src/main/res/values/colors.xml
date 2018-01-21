@@ -7,5 +7,7 @@
     <color name="tumbleweed">#D99D77</color>
     <color name="medium_grey">#9E9E9E</color>
     <color name="dairyCream">#ECD1A3</color>
+    <color name="splashBackground">#7f7fbf</color>
+
 
 </resources>

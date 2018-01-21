@@ -45,7 +45,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.item_movie_detail_layout)
 
         toolbar.title = ""
-        setSupportActionBar(toolbar)
+        //setSupportActionBar(toolbar)
         //toolbar_title.text = ""
 
         //provide up navigation
@@ -58,7 +58,6 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         genre_description_content.text = formatGenreTags(movie)
 
-        //TODO handleThis release date Date when its empty
         with(movie.releaseDate){
             release_date.text = if (this.isEmpty()) "tba" else this.getExtendedDate()
         }

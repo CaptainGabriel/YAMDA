@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
 
         startActivity(Intent(this, TabOptionsActivity::class.java))
-        finish();
-        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+        finish()
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
     }
 }

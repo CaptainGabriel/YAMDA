@@ -45,14 +45,14 @@ class MovieDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.item_movie_detail_layout)
 
         toolbar.title = ""
-        //setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar)
         //toolbar_title.text = ""
 
         //provide up navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val movie = intent.extras[ITEM_ARGS_KEY] as MovieDTO
-        toolbar.title = if (movie.title?.isEmpty()!!) movie.name else movie.title
+        //toolbar.title = if (movie.title?.isEmpty()!!) movie.name else movie.title
 
         provideDataToLayout(movie)
 
@@ -133,7 +133,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private fun provideDataToLayout(movie: MovieDTO) {
         movie.backdropPath?.let { backdrop_movie_img.loadBackdropUrl(it, false) }
         movie.posterPath?.let { poster_movie_img.loadPosterUrl(it) }
-        movie.title?.let { movie_name.text = it }
+        movie.title?.let { movie_name.text = if (movie.title?.isEmpty()!!) movie.name else movie.title }
         storyline_content.text = movie.overview
         rating_score?.text = "%.1f".format(movie.voteAverage)
         runtime_length.text = movie.runtime.formatMovieRuntime()

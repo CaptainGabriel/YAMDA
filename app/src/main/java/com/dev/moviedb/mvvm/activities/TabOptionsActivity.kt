@@ -1,11 +1,17 @@
 package com.dev.moviedb.mvvm.activities
 
 import android.os.Bundle
+import android.support.v4.view.MenuCompat
+import android.support.v4.view.MenuItemCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.widget.SearchView
+import android.widget.Toast
 import com.dev.moviedb.mvvm.adapters.MainOptionsPagerAdapter
 import kotlinx.android.synthetic.main.activity_tab_options.*
 import kotlinx.android.synthetic.main.toolbar_center_text.*
 import petegabriel.com.yamda.R
+import petegabriel.com.yamda.R.id.action_search
 
 
 /**
@@ -35,6 +41,24 @@ class TabOptionsActivity : AppCompatActivity() {
         pagerLayoutFrame.adapter = MainOptionsPagerAdapter(supportFragmentManager)
 
         setupTabLayout()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        /*val searchView = MenuItemCompat.getActionView(menu?.findItem(action_search)) as SearchView
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return true
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                return true
+            }
+        })*/
+        return true
     }
 
     private fun setupTabLayout() {

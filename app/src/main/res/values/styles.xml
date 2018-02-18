@@ -39,4 +39,13 @@
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
 
+
+    <style name="ActionBarThemeOverlay">
+        <item name="android:textColorPrimary">@color/tumbleweed</item>
+        <item name="colorControlNormal">@color/tumbleweed</item>
+        <item name="colorControlHighlight">@color/dairyCream</item>
+        <item name="android:textColorHint">@color/donJuan</item>
+    </style>
+
+
 </resources>

@@ -6,9 +6,18 @@ This was an Android application I made during college and most of all it helped 
 
 The "visual part" of the app was not intended to be as good but this is something I will also be improving through this refactoring series.
 
-# Features roadmap
+# Features
+
+<img src="https://i.imgur.com/B8iNlj6.png" width="250">
 
 A more detailed roadmap can be seen at [Waffle](https://waffle.io/PeteGabriel/Yamda)
 
-#
-<img src="https://i.imgur.com/B8iNlj6.png" width="250">
+# Development Environment
+
+
+# Architecture
+
+
+
+
+

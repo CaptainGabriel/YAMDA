@@ -2,6 +2,7 @@ package com.dev.moviedb.mvvm.repository.remote
 
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieCollectionDTO
 import com.dev.moviedb.mvvm.repository.remote.dto.MovieDTO
+import com.dev.moviedb.mvvm.repository.remote.dto.MultiDataDTO
 import com.dev.moviedb.mvvm.repository.remote.dto.VideoDetails
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -55,6 +56,14 @@ interface TmdbApiService {
                               @Query("query") title: String,
                               @Query("language") lang: String = "en",
                               @Query("page") page: Int): Call<MovieCollectionDTO>
+
+    @GET("/search/multi")
+    fun searchData(@Query("api_key") apiKey: String = RemoteCom.API_KEY_DEV,
+                              @Query("query") query: String,
+                              @Query("language") lang: String = "en",
+                              @Query("page") page: Int = 1): Single<MultiDataDTO>
+
+
 
     @GET("/3/tv/{id}")
     fun findTvShowById(@Path("id") id: Long,

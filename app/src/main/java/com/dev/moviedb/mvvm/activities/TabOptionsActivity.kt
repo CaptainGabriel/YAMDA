@@ -1,21 +1,24 @@
 package com.dev.moviedb.mvvm.activities
 
 import android.os.Bundle
-import android.support.v4.view.MenuCompat
-import android.support.v4.view.MenuItemCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.SearchView
-import android.widget.Toast
+import com.dev.moviedb.YamdaApplication
 import com.dev.moviedb.mvvm.adapters.MainOptionsPagerAdapter
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_tab_options.*
 import kotlinx.android.synthetic.main.toolbar_center_text.*
 import petegabriel.com.yamda.R
-import petegabriel.com.yamda.R.id.action_search
 
 
 /**
  * Presents the tabs for the user to navigate between the main features of the app.
+ *
+ * It handles the text query made via SearchView widget.
  */
 class TabOptionsActivity : AppCompatActivity() {
 
@@ -24,9 +27,13 @@ class TabOptionsActivity : AppCompatActivity() {
     private val TAB_THREE = 2
     private val TAB_FOUR = 3
 
+    private var viewModel: TabOptionsViewModel? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        viewModel = TabOptionsViewModel((applicationContext as YamdaApplication).apiService)
 
         setContentView(R.layout.activity_tab_options)
         /*
@@ -45,20 +52,39 @@ class TabOptionsActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
-        /*val searchView = MenuItemCompat.getActionView(menu?.findItem(action_search)) as SearchView
+        val searchMenuItem = menu?.findItem(R.id.action_search)
+        setupSearchView(searchMenuItem!!)
+        return true
+    }
+
+    private fun setupSearchView(item: MenuItem){
+        val searchView = item.actionView as SearchView
+        searchView.queryHint = resources.getString(R.string.action_search_query_hint)
+
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-
             override fun onQueryTextChange(newText: String?): Boolean {
-
-                return true
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onQueryTextSubmit(query: String?): Boolean {
-
+                //TODO log query statement
+                query?.let{ getData(it) }
                 return true
             }
-        })*/
-        return true
+        })
+    }
+
+    private fun getData(query: String): Disposable? {
+        return viewModel?.query(query)
+                ?.subscribeOn(Schedulers.newThread())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe({ t ->
+                    run {
+                        //TODO
+                    }
+                }, { throwable ->
+                    //TODO handle error
+                })
     }
 
     private fun setupTabLayout() {

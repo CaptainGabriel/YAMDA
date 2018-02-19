@@ -123,6 +123,7 @@
     <string name="popular_card_title">Popular</string>
     <string name="toprated_card_title">Top Rated</string>
     <string name="incinemas_card_title">In Theathers</string>
+    <string name="action_search_query_hint">Search for a movie...</string>
 
 
 </resources>

@@ -14,18 +14,18 @@ import petegabriel.com.yamda.R
  * An adapter used to display items with the StaggeredLayoutManager.
  * The listener is used to handle the click event for a given item.
  *
- * Yamda 1.0.0.
+ * Yamda 1.1.0.
  */
 //TODO document lambda
 class StaggeredMovieDisplayAdapter(var listener: (MovieDTO) -> Unit) : AbstractMovieItemAdapter<StaggeredMovieDisplayAdapter.MovieViewHolder>() {
 
 
-    override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
-        holder?.bind(movies?.get(position), listener)
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        holder.bind(movies?.get(position), listener)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MovieViewHolder =
-            MovieViewHolder(parent?.inflate(R.layout.item_movie_cardview_layout)!!)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
+            MovieViewHolder(parent.inflate(R.layout.item_movie_cardview_layout))
 
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -40,7 +40,7 @@ class StaggeredMovieDisplayAdapter(var listener: (MovieDTO) -> Unit) : AbstractM
 
             itemImageFrame.loadPosterUrl(item?.posterPath!!)
             //movieRatingValueTextView.text = "%.1f".format(item.voteAverage)
-            itemView.setOnClickListener { _ -> listener(item) }
+            itemView.setOnClickListener { listener(item) }
         }
     }
 

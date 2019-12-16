@@ -14,16 +14,17 @@ import petegabriel.com.yamda.R
  *
  * Generic adapter used to display a movie item
  *
- * Yamda 1.0.0.
+ * Yamda 1.1.0.
  */
 class MovieDisplayAdapter(private var onItemClick: (MovieDTO) -> Unit = {}) : AbstractMovieItemAdapter<MovieDisplayAdapter.MovieViewHolder>() {
 
-    override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
-        holder?.bind(movies?.get(position), onItemClick)
+
+    override fun onBindViewHolder(vHolder: MovieViewHolder, position: Int) {
+        vHolder.bind(movies?.get(position), onItemClick)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MovieViewHolder =
-            MovieViewHolder(parent?.inflate(R.layout.item_movie_generic_layout)!!)
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): MovieViewHolder =
+            MovieViewHolder(parent.inflate(R.layout.item_movie_generic_layout))
 
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,7 +40,7 @@ class MovieDisplayAdapter(private var onItemClick: (MovieDTO) -> Unit = {}) : Ab
             itemImageFrame.loadPosterUrl(item.posterPath!!)
             movieRatingValueTextView.text = "%.1f".format(item.voteAverage)
 
-            itemView.setOnClickListener { _ -> onItemClick(item) }
+            itemView.setOnClickListener { onItemClick(item) }
         }
     }
 

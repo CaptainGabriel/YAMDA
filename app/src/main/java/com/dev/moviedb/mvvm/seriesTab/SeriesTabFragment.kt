@@ -1,6 +1,7 @@
 package com.dev.moviedb.mvvm.seriesTab
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import com.dev.moviedb.YamdaApplication
@@ -16,7 +17,7 @@ import petegabriel.com.yamda.R
 /**
  * The ViewModel for the tab related with movie information
  *
- * Yamda 1.0.0
+ * Yamda 1.1.0
  */
 class SeriesTabFragment : AbstractDisplayFragment() {
 
@@ -31,12 +32,13 @@ class SeriesTabFragment : AbstractDisplayFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val app = activity.applicationContext as YamdaApplication
+        val app = activity?.applicationContext as YamdaApplication
         val tvShowRepo = TvShowRepository(app.apiService)
         viewModel =  SeriesTabViewModel(tvShowRepo)
     }
 
 
+    @SuppressLint("CheckResult")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -89,7 +91,7 @@ class SeriesTabFragment : AbstractDisplayFragment() {
         intent.putExtras(b) //Put your id to your next Intent
         startActivity(intent)
         //set the animation of the exiting and entering Activities
-        activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+        activity?.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
     }
 
     override fun getFirstCardTitle(): String = "Airing Today"

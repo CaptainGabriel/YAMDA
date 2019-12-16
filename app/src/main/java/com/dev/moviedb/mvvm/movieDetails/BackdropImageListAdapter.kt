@@ -19,20 +19,20 @@ import java.io.IOException
 
 /**
  *
- * Yamda 1.0.0.
+ * Yamda 1.1.0.
  */
 class BackdropImageListAdapter(images: Array<ResultImageDTO>) : RecyclerView.Adapter<BackdropImageListAdapter.ImageViewHolder>() {
 
     private var imageList:  Array<ResultImageDTO> = images
 
-    override fun onBindViewHolder(holder: ImageViewHolder?, position: Int) {
-        holder?.bind(imageList[position])
+    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+        holder.bind(imageList[position])
     }
 
     override fun getItemCount(): Int = imageList.size
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ImageViewHolder =
-            ImageViewHolder(parent?.inflate(R.layout.backdrop_image_viewholder)!!)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder =
+            ImageViewHolder(parent?.inflate(R.layout.backdrop_image_viewholder))
 
 
     class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -44,7 +44,7 @@ class BackdropImageListAdapter(images: Array<ResultImageDTO>) : RecyclerView.Ada
 
             execute {
                 try {
-                    val bitmap = Picasso.with(context)
+                    val bitmap = Picasso.get()
                             .load(url)
                             .placeholder(R.color.material_grey_300)
                             .error(R.color.material_grey_300).get()

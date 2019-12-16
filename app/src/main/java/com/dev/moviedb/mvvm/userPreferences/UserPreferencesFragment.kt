@@ -14,6 +14,8 @@ import petegabriel.com.yamda.R
 
 /**
  * Fragment responsible for managing user preferences.
+ *
+ * Yamda 1.1.0
  */
 class UserPreferencesFragment : Fragment() {
 
@@ -29,15 +31,12 @@ class UserPreferencesFragment : Fragment() {
     }
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        var view = inflater?.inflate(R.layout.fragment_user_preferences_layout, container, false)
-
-        return view
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_user_preferences_layout, container, false)
     }
 
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         simcard_preference_switch.setOnCheckedChangeListener(handleSimcardOptionChange())

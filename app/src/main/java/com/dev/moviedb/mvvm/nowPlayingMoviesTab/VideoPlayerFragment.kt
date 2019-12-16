@@ -32,11 +32,11 @@ class VideoPlayerFragment : DialogFragment() {
     }
 
 
-    override fun onCreateView(inflater: LayoutInflater?,
+    override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater?.inflate(R.layout.dialog_video_player_layout, container, false)
+        val view = inflater.inflate(R.layout.dialog_video_player_layout, container, false)
 
-        videoId = arguments.getString(VIDEO_ID_ARGS_KEY)
+        videoId = arguments?.getString(VIDEO_ID_ARGS_KEY)
 
         return view
     }

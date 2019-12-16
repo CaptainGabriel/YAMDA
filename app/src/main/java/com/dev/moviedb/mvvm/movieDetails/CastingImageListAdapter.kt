@@ -12,20 +12,20 @@ import petegabriel.com.yamda.R
 /**
  * Adapter class used to display a list of images inside the details view of a certain movie.
  *
- * Yamda 1.0.0.
+ * Yamda 1.1.0.
  */
 class CastingImageListAdapter(images: Array<CastDTO>) : RecyclerView.Adapter<CastingImageListAdapter.ImageViewHolder>() {
 
     private var imageList:  Array<CastDTO> = images
 
-    override fun onBindViewHolder(holder: ImageViewHolder?, position: Int) {
-        holder?.bind(imageList[position])
+    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+        holder.bind(imageList[position])
     }
 
     override fun getItemCount(): Int = imageList.size
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ImageViewHolder =
-        ImageViewHolder(parent?.inflate(R.layout.image_movie_viewholder)!!)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder =
+        ImageViewHolder(parent.inflate(R.layout.image_movie_viewholder))
 
 
     class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

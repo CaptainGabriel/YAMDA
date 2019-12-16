@@ -1,5 +1,6 @@
 package com.dev.moviedb.mvvm.nowPlayingMoviesTab
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
@@ -23,7 +24,7 @@ import petegabriel.com.yamda.R
  * This fragment displays the imageList currently in theaters in a grid layout.
  *
  *
- * Yamda 1.0.0.
+ * Yamda 1.1.0.
  */
 class NowPlayingMoviesTabFragment : Fragment()  {
 
@@ -34,16 +35,17 @@ class NowPlayingMoviesTabFragment : Fragment()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val app = activity.applicationContext as YamdaApplication
+        val app = activity?.applicationContext as YamdaApplication
         val nowPlayingRepo = NowPlayingMovieRepository(app.apiService)
         viewModel = NowPlayingMoviesTabViewModel(nowPlayingRepo)
     }
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                    savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater!!.inflate(R.layout.fragment_grid_nowplaying_movies_layout, container, false)
+        val view = inflater.inflate(R.layout.fragment_grid_nowplaying_movies_layout, container, false)
 
         recyclerView = view.findViewById(R.id.listRecyclerView)
 
@@ -68,14 +70,14 @@ class NowPlayingMoviesTabFragment : Fragment()  {
             }, { throwable -> handleError(throwable) })
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         subscribeToNowPlayingMovies()
     }
 
 
-
+    @SuppressLint("CheckResult")
     private fun subscribeToNowPlayingMovies() {
         viewModel?.findNowPlayingMovies()
                 ?.subscribeOn(Schedulers.newThread())

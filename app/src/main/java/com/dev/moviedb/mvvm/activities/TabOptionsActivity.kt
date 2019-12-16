@@ -2,9 +2,9 @@ package com.dev.moviedb.mvvm.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.SearchView
 import com.dev.moviedb.YamdaApplication
 import com.dev.moviedb.mvvm.adapters.MainOptionsPagerAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -63,7 +63,7 @@ class TabOptionsActivity : AppCompatActivity() {
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextChange(newText: String?): Boolean {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                return searchView.query == newText
             }
 
             override fun onQueryTextSubmit(query: String?): Boolean {

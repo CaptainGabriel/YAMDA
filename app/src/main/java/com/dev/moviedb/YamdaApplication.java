@@ -49,8 +49,7 @@ public class YamdaApplication extends Application{
         super.onCreate();
         JodaTimeAndroid.init(this);
 
-        Picasso.with(this)
-                .setIndicatorsEnabled(petegabriel.com.yamda.BuildConfig.SHOW_PICASSO_INDICATORS);
+        Picasso.get().setIndicatorsEnabled(petegabriel.com.yamda.BuildConfig.SHOW_PICASSO_INDICATORS);
 
 
         mCurrentAppLanguage = getResources().getConfiguration().locale;

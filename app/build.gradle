@@ -16,7 +16,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        buildConfigField("String", "TMDB_HOSTNAME", "\"https://api.themoviedb.org/3/\"")
+        buildConfigField("String", "TMDB_HOSTNAME", "\"https://api.themoviedb.org/\"")
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

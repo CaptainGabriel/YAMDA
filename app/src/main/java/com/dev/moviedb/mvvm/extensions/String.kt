@@ -8,7 +8,7 @@ import java.util.regex.Pattern
  * This file contains the various extension methods for the class @see(String) to
  * provide a certain utility throughout this application.
  *
- * Yamda 1.0.0.
+ * Yamda 1.1.0.
  */
 
 /**
@@ -17,7 +17,7 @@ import java.util.regex.Pattern
  */
 fun String.prependCallLocation(): String{
 
-    var stackTrace = Throwable().stackTrace
+    val stackTrace = Throwable().stackTrace
     if (stackTrace.size <= EnvVars.CALL_STACK_INDEX){
         throw IllegalStateException(
                 "Synthetic stacktrace didn't have enough elements: are you using proguard?")
@@ -25,7 +25,7 @@ fun String.prependCallLocation(): String{
 
     val className = stackTrace[EnvVars.CALL_STACK_INDEX].extractClassName()
     val lineNumber = stackTrace[EnvVars.CALL_STACK_INDEX].lineNumber
-    return ".($className.java:$lineNumber) - $this"
+    return ".($className.kt:$lineNumber) - $this"
 }
 
 /**
@@ -151,6 +151,6 @@ object EnvVars {
 
     val ANONYMOUS_CLASS = Pattern.compile("(\\$\\d+)+$")!!
 
-    val TO_BE_ANNOUNCED = "TBA"
+    const val TO_BE_ANNOUNCED = "TBA"
 
 }

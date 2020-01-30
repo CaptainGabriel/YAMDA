@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="aliceBlue">#F7FAFE</color>
-    <color name="pattensBlue">#E4E6E7</color>
-    <color name="donJuan">#584C50</color>
-    <color name="venus">#92898D</color>
-    <color name="tumbleweed">#FF5252</color>
-    <color name="medium_grey">#9E9E9E</color>
-    <color name="dairyCream">#ECD1A3</color>
+    <color name="headerBlue">#2188D6</color>
+    <color name="text_main">#112d40</color>
+    <color name="text_see_all">#238dd8</color>
+    <color name="stars">#f88f28</color>
+    <color name="actions">#f30059</color>
+    <color name="text_subtitles">#7b7b7b</color>
+    <color name="search_bar_background">#59b5e8</color>
+
     <color name="splashBackground">#7f7fbf</color>
 
 
